@@ -1,0 +1,47 @@
+<tui-stepper [(activeItemIndex)]="step">
+    <button tuiStep>Coordonnées</button>
+    <button tuiStep>Adresse</button>
+    <button tuiStep>Identifiants</button>
+</tui-stepper>
+
+<tui-elastic-container class="mt-8">
+    <form [formGroup]="formGroup" class="flex flex-col gap-8">
+
+        <section *ngIf="step === 0">
+
+            <h4>Vos coordonnées</h4>
+            <p>Entrez votre nom et prénom</p>
+
+        </section>
+
+        <section *ngIf="step === 1">
+
+            <h4>Votre adresse</h4>
+            <p>Entrez votre adresse</p>
+
+        </section>
+
+        <section *ngIf="step === 2">
+
+            <h4>Vos identifiants</h4>
+            <p>Entrez votre email et mot de passe</p>
+
+        </section>
+
+        <div class="flex gap-3 justify-between max-md:flex-col-reverse">
+
+            <button tuiButton type="button" (click)="step = step - 1" *ngIf="step > 0" appearance="flat">
+                Précédent
+            </button>
+
+            <button tuiButton type="submit" (click)="next()" class="ml-auto">
+                {{ step === maxStep
+                ? 'Créer mon compte'
+                : 'Suivant'
+                }}
+            </button>
+
+        </div>
+
+    </form>
+</tui-elastic-container>
