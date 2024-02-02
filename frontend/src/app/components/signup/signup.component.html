@@ -1,34 +1,104 @@
 <tui-stepper [(activeItemIndex)]="step">
-    <button tuiStep>Coordonnées</button>
-    <button tuiStep>Adresse</button>
-    <button tuiStep>Identifiants</button>
+    <button tuiStep [stepState]="getStepStatus(0)">
+        Adresse
+    </button>
+    <button tuiStep [stepState]="getStepStatus(1)">
+        Coordonnées
+    </button>
+    <button tuiStep [stepState]="getStepStatus(2)">
+        Identifiants
+    </button>
 </tui-stepper>
 
 <tui-elastic-container class="mt-8">
     <form [formGroup]="formGroup" class="flex flex-col gap-8">
 
-        <section *ngIf="step === 0">
+        <section *ngIf="step === 0" class="animate-in slide-in-from-left-8 fade-in duration-300 px-1">
 
             <h4>Vos coordonnées</h4>
-            <p>Entrez votre nom et prénom</p>
+            <p>Entrez votre nom, prénom et email</p>
 
+            <div class="flex flex-col gap-4 py-4">
 
+                <div class="grid lg:grid-cols-2 gap-4">
+                    <tui-input formControlName="lastName" tuiTextfieldIconLeft="tuiIconUser">
+                        Nom
+                        <input tuiTextfield placeholder="Maurice" type="text">
+                    </tui-input>
 
+                    <tui-input formControlName="firstName">
+                        Prénom
+                        <input tuiTextfield placeholder="Emmanuel" type="text">
+                    </tui-input>
+                </div>
 
+                <tui-input formControlName="email" tuiTextfieldIconLeft="tuiIconMail">
+                    Email
+                    <input tuiTextfield placeholder="contact@franck-g.fr" type="email">
+                </tui-input>
+
+                <tui-input-phone-international formControlName="phone" [countries]="countries"
+                    [(countryIsoCode)]="countryIsoCode">
+                    Téléphone
+                </tui-input-phone-international>
+
+            </div>
 
         </section>
 
-        <section *ngIf="step === 1">
+        <section *ngIf="step === 1" class="animate-in slide-in-from-left-8 fade-in duration-300 px-1">
 
             <h4>Votre adresse</h4>
-            <p>Entrez votre adresse</p>
+            <p>Entrez votre adresse postale</p>
+
+            <div class="flex flex-col gap-4 py-4">
+
+                <tui-input formControlName="address" tuiTextfieldIconLeft="tuiIconMapPin">
+                    Adresse postale
+                    <input tuiTextfield type="text" placeholder="1 rue de la Paix">
+                </tui-input>
+
+                <div class="grid lg:grid-cols-2 gap-4">
+                    <tui-input formControlName="city">
+                        Ville
+                        <input tuiTextfield type="text" placeholder="Strasbourg">
+                    </tui-input>
+
+                    <tui-input formControlName="zipCode">
+                        Code postal
+                        <input tuiTextfield placeholder="67000" type="number">
+                    </tui-input>
+
+                </div>
+
+                <tui-combo-box formControlName="country">
+                    Pays
+                    <input placeholder="Entrez votre pays de résidence" tuiTextfield type="text" />
+                    <tui-data-list-wrapper *tuiDataList [items]="countries | tuiFilterByInput"></tui-data-list-wrapper>
+                </tui-combo-box>
+
+            </div>
 
         </section>
 
-        <section *ngIf="step === 2">
+        <section *ngIf="step === 2" class="animate-in slide-in-from-left-8 fade-in duration-300 px-1">
 
-            <h4>Vos identifiants</h4>
-            <p>Entrez votre email et mot de passe</p>
+            <h4>Votre mot de passe</h4>
+            <p>Définissez un mot de passe sécurisé pour protéger votre compte.</p>
+
+            <div class="flex flex-col gap-4 py-4">
+
+                <tui-input formControlName="password" tuiTextfieldIconLeft="tuiIconLock">
+                    Mot de passe
+                    <input tuiTextfield type="password" placeholder="********">
+                </tui-input>
+
+                <tui-input formControlName="passwordConfirm" tuiTextfieldIconLeft="tuiIconLock">
+                    Confirmation du mot de passe
+                    <input tuiTextfield type="password" placeholder="********">
+                </tui-input>
+
+            </div>
 
         </section>
 
@@ -41,7 +111,7 @@
             <button tuiButton type="submit" (click)="next()" class="ml-auto">
                 {{ step === maxStep
                 ? 'Créer mon compte'
-                : 'Suivant'
+                : 'Continuer'
                 }}
             </button>
 

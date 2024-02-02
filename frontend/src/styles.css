@@ -15,4 +15,53 @@
         @apply text-2xl lg:text-3xl font-medium text-balance;
     }
 
+    p {
+        @apply text-base text-slate-700;
+    }
+
+}
+
+:root {
+    --tui-base-01: theme(colors.white);
+    --tui-base-02: theme(colors.slate.100);
+    --tui-base-03: theme(colors.slate.200);
+    --tui-base-04: theme(colors.slate.300);
+    --tui-base-05: theme(colors.slate.400);
+    --tui-base-06: theme(colors.slate.500);
+    --tui-base-07: theme(colors.slate.600);
+    --tui-base-08: theme(colors.slate.700);
+    --tui-base-09: theme(colors.slate.800);
+
+    --tui-text-01: theme(colors.slate.900);
+    --tui-text-02: theme(colors.slate.700);
+    --tui-text-03: theme(colors.slate.500);
+
+    --tui-primary: theme(colors.blue.800);
+    
+    --tui-link: theme(colors.blue.800);
+    --tui-link-hover: theme(colors.blue.600);
+
+    --tui-positive: theme(colors.green.800);
+    --tui-positive-hover: theme(colors.green.600);
+
+    --tui-negative: theme(colors.red.800);
+    --tui-negative-hover: theme(colors.red.600);
+
+    --tui-error-fill: theme(colors.red.800);
+    --tui-error-bg: theme(colors.red.100);
+    --tui-error-bg-hover: theme(colors.red.200);
+
+    --tui-success-fill: theme(colors.green.800);
+    --tui-success-bg: theme(colors.green.100);
+    --tui-success-bg-hover: theme(colors.green.200);
+
+    --tui-warning-fill: theme(colors.yellow.800);
+    --tui-warning-bg: theme(colors.yellow.100);
+    --tui-warning-bg-hover: theme(colors.yellow.200);
+
+    --tui-info-fill: theme(colors.blue.800);
+    --tui-info-bg: theme(colors.blue.100);
+    --tui-info-bg-hover: theme(colors.blue.200);
+
+
 }

@@ -10,6 +10,8 @@ module.exports = {
       padding: '2rem',
     }
   },
-  plugins: [],
+  plugins: [
+    require("tailwindcss-animate"),
+  ],
 }
 

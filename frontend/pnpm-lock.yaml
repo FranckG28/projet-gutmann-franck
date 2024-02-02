@@ -35,6 +35,9 @@ dependencies:
   '@taiga-ui/core':
     specifier: ^3.64.0
     version: 3.64.0(@angular/animations@17.1.2)(@angular/common@17.1.2)(@angular/core@17.1.2)(@angular/forms@17.1.2)(@angular/platform-browser@17.1.2)(@angular/router@17.1.2)(@ng-web-apis/common@3.0.6)(@ng-web-apis/mutation-observer@3.1.0)(@taiga-ui/cdk@3.64.0)(@taiga-ui/i18n@3.64.0)(@tinkoff/ng-event-plugins@3.1.0)(@tinkoff/ng-polymorpheus@4.3.0)(rxjs@7.8.1)
+  '@taiga-ui/i18n':
+    specifier: ^3.64.0
+    version: 3.64.0(@angular/core@17.1.2)(@ng-web-apis/common@3.0.6)(rxjs@7.8.1)
   '@taiga-ui/icons':
     specifier: ^3.64.0
     version: 3.64.0(@taiga-ui/cdk@3.64.0)
@@ -103,6 +106,9 @@ devDependencies:
   tailwindcss:
     specifier: ^3.4.1
     version: 3.4.1
+  tailwindcss-animate:
+    specifier: ^1.0.7
+    version: 1.0.7(tailwindcss@3.4.1)
   typescript:
     specifier: ~5.3.2
     version: 5.3.3
@@ -6892,6 +6898,14 @@ packages:
   /symbol-observable@4.0.0:
     resolution: {integrity: sha512-b19dMThMV4HVFynSAM1++gBHAbk2Tc/osgLIBZMKsyqh34jb2e8Os7T6ZW/Bt3pJFdBTd2JwAnAAEQV7rSNvcQ==}
     engines: {node: '>=0.10'}
+    dev: true
+
+  /tailwindcss-animate@1.0.7(tailwindcss@3.4.1):
+    resolution: {integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0 || insiders'
+    dependencies:
+      tailwindcss: 3.4.1
     dev: true
 
   /tailwindcss@3.4.1:
