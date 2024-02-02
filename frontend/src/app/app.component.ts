@@ -10,7 +10,12 @@ import { FooterComponent } from "./components/footer/footer.component";
   standalone: true,
   imports: [RouterOutlet, TuiRootModule, TuiDialogModule, TuiAlertModule, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
-  providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],
+  providers: [
+    {
+      provide: TUI_SANITIZER,
+      useClass: NgDompurifySanitizer
+    }
+  ],
 })
 export class AppComponent {
   title = 'livl-store';

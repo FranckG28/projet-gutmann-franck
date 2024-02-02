@@ -6,5 +6,9 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideAnimations(), provideRouter(routes), importProvidersFrom(TuiRootModule)]
+  providers: [
+    provideAnimations(),
+    provideRouter(routes),
+    importProvidersFrom(TuiRootModule)
+  ]
 };
