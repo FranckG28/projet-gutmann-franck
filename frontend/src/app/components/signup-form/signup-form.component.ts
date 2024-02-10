@@ -9,7 +9,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { TuiLetModule, TuiMapperPipeModule } from '@taiga-ui/cdk';
 
 @Component({
-  selector: 'app-signup',
+  selector: 'app-signup-form',
   standalone: true,
   imports: [
     CommonModule,
@@ -30,10 +30,10 @@ import { TuiLetModule, TuiMapperPipeModule } from '@taiga-ui/cdk';
     TuiHintModule,
     TuiMapperPipeModule,
   ],
-  templateUrl: './signup.component.html',
+  templateUrl: './signup-form.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SignupComponent {
+export class SignupFormComponent {
 
   PASSWORD_MIN_LENGTH = 8;
 

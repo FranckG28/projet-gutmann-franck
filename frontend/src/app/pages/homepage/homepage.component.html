@@ -1,16 +1,8 @@
-<div class="flex flex-col gap-6">
+<app-title>
+    Bienvenue au <span class="font-bold text-blue-800">Livl Store</span>
+    <ng-container ngProjectAs="content">
+        Je suis ravis de vous retrouver ici !
+    </ng-container>
+</app-title>
 
-    <section class="my-12">
-        <h1 class="mb-4">
-            Bienvenue au <span class="font-bold text-blue-800">Livl Store</span>
-        </h1>
-
-        <p>
-            Livl n'attend plus que vous ! Créez un compte client pour commencer sur de bonnes bases. Ce ne sera pas
-            long.
-        </p>
-    </section>
-
-    <app-signup></app-signup>
-
-</div>
+<button tuiButton routerLink="/signup" class="mt-4">Créer un compte</button>
