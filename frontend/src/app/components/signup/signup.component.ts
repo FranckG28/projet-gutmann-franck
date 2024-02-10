@@ -3,9 +3,10 @@ import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TuiAlertService, TuiButtonModule, TuiErrorModule, TuiHintModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
 import { TuiCountryIsoCode } from '@taiga-ui/i18n';
-import { TuiComboBoxModule, TuiDataListWrapperModule, TuiElasticContainerModule, TuiFieldErrorPipeModule, TuiFilterByInputPipeModule, TuiInputModule, TuiInputPhoneInternationalModule, TuiStepperModule } from '@taiga-ui/kit';
+import { TUI_COUNTRIES, TuiComboBoxModule, TuiDataListWrapperModule, TuiElasticContainerModule, TuiFieldErrorPipeModule, TuiFilterByInputPipeModule, TuiInputModule, TuiInputPhoneInternationalModule, TuiStepperModule } from '@taiga-ui/kit';
 import { confirmPasswordValidator } from '../../validators/confirmPassword.validator';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { TuiLetModule, TuiMapperPipeModule } from '@taiga-ui/cdk';
 
 @Component({
   selector: 'app-signup',
@@ -14,6 +15,7 @@ import { BehaviorSubject } from 'rxjs';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    TuiLetModule,
     TuiTextfieldControllerModule,
     TuiInputModule,
     TuiInputPhoneInternationalModule,
@@ -25,7 +27,8 @@ import { BehaviorSubject } from 'rxjs';
     TuiFilterByInputPipeModule,
     TuiErrorModule,
     TuiFieldErrorPipeModule,
-    TuiHintModule
+    TuiHintModule,
+    TuiMapperPipeModule,
   ],
   templateUrl: './signup.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -51,7 +54,7 @@ export class SignupComponent {
     address: new FormControl('', Validators.required),
     city: new FormControl('', Validators.required),
     zipCode: new FormControl('', Validators.required),
-    country: new FormControl(this.countryIsoCode, Validators.required),
+    country: new FormControl('', Validators.required),
   }, {
     validators: confirmPasswordValidator
   });
@@ -64,7 +67,10 @@ export class SignupComponent {
 
   isLoading$ = new BehaviorSubject<boolean>(false);
 
-  constructor(@Inject(TuiAlertService) private readonly alerts: TuiAlertService) { }
+  constructor(
+    @Inject(TuiAlertService) private readonly alerts: TuiAlertService,
+    @Inject(TUI_COUNTRIES) readonly countriesNames$: Observable<Record<TuiCountryIsoCode, string>>,
+  ) { }
 
 
   next() {
@@ -114,5 +120,8 @@ export class SignupComponent {
 
     return 'normal';
   }
+
+  countryNameMapper: (isoCodes: TuiCountryIsoCode[], countryNames: Record<TuiCountryIsoCode, string>) => string[] = (isoCodes, countryNames) =>
+    isoCodes.map(code => countryNames[code]);
 
 }

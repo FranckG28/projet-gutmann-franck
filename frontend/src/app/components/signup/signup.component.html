@@ -10,7 +10,7 @@
     </button>
 </tui-stepper>
 
-<tui-elastic-container class="mt-8">
+<tui-elastic-container class="mt-12">
     <form [formGroup]="formGroup" class="flex flex-col gap-8">
 
         <section *ngIf="step === 0" class="animate-in slide-in-from-left-8 fade-in duration-300 px-1">
@@ -71,10 +71,11 @@
 
                 </div>
 
-                <tui-combo-box formControlName="country">
+                <tui-combo-box formControlName="country" *tuiLet="countriesNames$ | async as countryNames">
                     Pays
                     <input placeholder="Entrez votre pays de résidence" tuiTextfield type="text" />
-                    <tui-data-list-wrapper *tuiDataList [items]="countries | tuiFilterByInput"></tui-data-list-wrapper>
+                    <tui-data-list-wrapper *tuiDataList
+                        [items]="countries | tuiMapper:countryNameMapper:countryNames | tuiFilterByInput"></tui-data-list-wrapper>
                 </tui-combo-box>
 
             </div>
