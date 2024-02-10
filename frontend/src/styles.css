@@ -1,25 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-    h1 {
-        @apply text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight text-balance;
-    }
-
-    h3 {
-        @apply text-2xl lg:text-4xl font-medium text-balance;
-    }
-
-    h4 {
-        @apply text-xl lg:text-2xl font-medium text-balance;
-    }
-
-    p {
-        @apply text-base;
-    }
-
-}
 
 :root {
     --tui-base-01: theme(colors.slate.950);
@@ -36,6 +19,9 @@
     --tui-text-01: theme(colors.slate.50);
     --tui-text-02: theme(colors.slate.200);
     --tui-text-03: theme(colors.slate.400);
+
+    --tui-heading-font: 'Albert Sans', sans-serif;
+    --tui-text-font: 'Albert Sans', sans-serif;
 
     --tui-primary: theme(colors.blue.700);
     --tui-primary-hover: theme(colors.blue.600);
@@ -99,4 +85,23 @@ tui-notification .t-content {
 
 tui-notification .t-icon {
     font: var(--tui-font-text-l-2);
+}
+
+@layer base {
+    h1 {
+        @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-balance;
+    }
+
+    h3 {
+        @apply text-2xl lg:text-4xl font-medium text-balance;
+    }
+
+    h4 {
+        @apply text-xl lg:text-2xl font-medium text-balance;
+    }
+    
+    p {
+        @apply text-base;
+    }
+
 }
