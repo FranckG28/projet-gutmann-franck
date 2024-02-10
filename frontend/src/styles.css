@@ -4,15 +4,15 @@
 
 @layer base {
     h1 {
-        @apply text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-balance;
+        @apply text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight text-balance;
     }
 
     h3 {
-        @apply text-3xl lg:text-4xl font-medium text-balance;
+        @apply text-2xl lg:text-4xl font-medium text-balance;
     }
 
     h4 {
-        @apply text-2xl lg:text-3xl font-medium text-balance;
+        @apply text-xl lg:text-2xl font-medium text-balance;
     }
 
     p {
