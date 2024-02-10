@@ -1,15 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { TuiLinkModule } from '@taiga-ui/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-footer',
+  selector: 'app-container',
   standalone: true,
   imports: [
     CommonModule,
-    TuiLinkModule
+    RouterOutlet
   ],
-  templateUrl: './footer.component.html',
+  templateUrl: './container.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FooterComponent { }
+export class ContainerComponent { }

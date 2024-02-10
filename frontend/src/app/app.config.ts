@@ -1,5 +1,5 @@
 import { provideAnimations } from "@angular/platform-browser/animations";
-import { TUI_SANITIZER, TuiRootModule } from "@taiga-ui/core";
+import { TUI_SANITIZER, TuiRootModule, tuiButtonOptionsProvider } from "@taiga-ui/core";
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
@@ -32,6 +32,9 @@ export const appConfig: ApplicationConfig = {
     {
       provide: TUI_LANGUAGE,
       useValue: of(TUI_FRENCH_LANGUAGE)
-    }
+    },
+    tuiButtonOptionsProvider({
+      shape: 'rounded'
+    })
   ]
 };

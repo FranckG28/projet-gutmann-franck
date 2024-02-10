@@ -94,7 +94,7 @@ export class SignupFormComponent {
 
     } catch (error) {
       console.error(error);
-      this.alerts.open((error as Error).message ?? 'Une erreur est survenue', { status: 'error' }).subscribe();
+      this.alerts.open((error as Error).message ?? 'Une erreur est survenue', { status: 'error', autoClose: false }).subscribe();
     } finally {
       this.isLoading$.next(false);
     }
