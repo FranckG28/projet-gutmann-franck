@@ -88,15 +88,25 @@
 
             <div class="flex flex-col gap-4 py-4">
 
-                <tui-input formControlName="password" tuiTextfieldIconLeft="tuiIconLock">
-                    Mot de passe
-                    <input tuiTextfield type="password" placeholder="********">
-                </tui-input>
+                <div>
+                    <tui-input formControlName="password" tuiTextfieldIconLeft="tuiIconLock"
+                        tuiHintContent="Votre mot de passe doit contenir au moins {{PASSWORD_MIN_LENGTH}} caractères">
+                        Mot de passe
+                        <input tuiTextfield type="password" placeholder="********">
+                    </tui-input>
 
-                <tui-input formControlName="passwordConfirm" tuiTextfieldIconLeft="tuiIconLock">
-                    Confirmation du mot de passe
-                    <input tuiTextfield type="password" placeholder="********">
-                </tui-input>
+                    <tui-error formControlName="password" [error]="[] | tuiFieldError | async"></tui-error>
+                </div>
+
+                <div>
+                    <tui-input formControlName="passwordConfirm" tuiTextfieldIconLeft="tuiIconLock">
+                        Confirmation du mot de passe
+                        <input tuiTextfield type="password" placeholder="********">
+                    </tui-input>
+
+                    <tui-error [formGroup]="formGroup"
+                        [error]="['passwordMismatch'] | tuiFieldError | async"></tui-error>
+                </div>
 
             </div>
 
@@ -108,7 +118,8 @@
                 Précédent
             </button>
 
-            <button tuiButton type="submit" (click)="next()" class="ml-auto">
+            <button tuiButton type="submit" (click)="next()" class="ml-auto"
+                [showLoader]="(isLoading$ | async) ?? false">
                 {{ step === maxStep
                 ? 'Créer mon compte'
                 : 'Continuer'

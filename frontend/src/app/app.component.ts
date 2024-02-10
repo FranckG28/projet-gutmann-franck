@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./components/header/header.component";
 import { FooterComponent } from "./components/footer/footer.component";
+import { TUI_VALIDATION_ERRORS } from "@taiga-ui/kit";
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,13 @@ import { FooterComponent } from "./components/footer/footer.component";
     {
       provide: TUI_SANITIZER,
       useClass: NgDompurifySanitizer
+    },
+    {
+      provide: TUI_VALIDATION_ERRORS,
+      useValue: {
+        passwordMismatch: 'Les mots de passe ne correspondent pas',
+        minLength: ({ requiredLength }: { requiredLength: string }) => `Vous devez entrer au moins ${requiredLength} caractères`
+      }
     }
   ],
 })

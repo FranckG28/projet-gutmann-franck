@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { TuiButtonModule, TuiDataListModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
+import { TuiAlertService, TuiButtonModule, TuiErrorModule, TuiHintModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
 import { TuiCountryIsoCode } from '@taiga-ui/i18n';
-import { TuiComboBoxModule, TuiDataListWrapperModule, TuiElasticContainerModule, TuiFilterByInputPipeModule, TuiInputDateModule, TuiInputModule, TuiInputPhoneInternationalModule, TuiStepperModule } from '@taiga-ui/kit';
+import { TuiComboBoxModule, TuiDataListWrapperModule, TuiElasticContainerModule, TuiFieldErrorPipeModule, TuiFilterByInputPipeModule, TuiInputModule, TuiInputPhoneInternationalModule, TuiStepperModule } from '@taiga-ui/kit';
+import { confirmPasswordValidator } from '../../validators/confirmPassword.validator';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-signup',
@@ -20,12 +22,17 @@ import { TuiComboBoxModule, TuiDataListWrapperModule, TuiElasticContainerModule,
     TuiElasticContainerModule,
     TuiComboBoxModule,
     TuiDataListWrapperModule,
-    TuiFilterByInputPipeModule
+    TuiFilterByInputPipeModule,
+    TuiErrorModule,
+    TuiFieldErrorPipeModule,
+    TuiHintModule
   ],
   templateUrl: './signup.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignupComponent {
+
+  PASSWORD_MIN_LENGTH = 8;
 
   step = 0;
   maxStep = 2;
@@ -38,14 +45,16 @@ export class SignupComponent {
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', Validators.required),
+    password: new FormControl('', [Validators.required, Validators.minLength(this.PASSWORD_MIN_LENGTH)]),
     passwordConfirm: new FormControl('', Validators.required),
     phone: new FormControl('', Validators.required),
     address: new FormControl('', Validators.required),
     city: new FormControl('', Validators.required),
     zipCode: new FormControl('', Validators.required),
     country: new FormControl(this.countryIsoCode, Validators.required),
-  })
+  }, {
+    validators: confirmPasswordValidator
+  });
 
   controlsByStep = [
     ['firstName', 'lastName', 'email', 'phone'],
@@ -53,19 +62,37 @@ export class SignupComponent {
     ['password', 'passwordConfirm']
   ]
 
+  isLoading$ = new BehaviorSubject<boolean>(false);
+
+  constructor(@Inject(TuiAlertService) private readonly alerts: TuiAlertService) { }
+
+
   next() {
-    if (this.step < this.maxStep) {
-      this.step++;
-    }
-
     if (this.step === this.maxStep) {
-      console.log('Form submitted');
+      this.onSubmit();
+      return;
     }
-
+    this.step++;
   }
 
   onSubmit() {
-    console.log(this.formGroup.value);
+
+    this.isLoading$.next(true);
+
+    try {
+      console.log('Form submitted', this.formGroup.value);
+
+      if (this.formGroup.invalid) {
+        throw new Error('Le formulaire contient des erreurs');
+      }
+
+    } catch (error) {
+      console.error(error);
+      this.alerts.open((error as Error).message ?? 'Une erreur est survenue', { status: 'error' }).subscribe();
+    } finally {
+      this.isLoading$.next(false);
+    }
+
   }
 
   getStepStatus(step: number): 'pass' | 'error' | 'normal' {
