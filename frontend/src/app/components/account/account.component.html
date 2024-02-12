@@ -1,0 +1,5 @@
+<app-title>
+    Votre compte
+    <p *ngIf="formData" ngProjectAs="content">Bonjour {{firstName}}, bienvenue sur votre compte.</p>
+</app-title>
+<pre>{{formData | json}}</pre>

@@ -1,7 +1,7 @@
 import { provideAnimations } from "@angular/platform-browser/animations";
 import { TUI_SANITIZER, TuiRootModule, tuiButtonOptionsProvider } from "@taiga-ui/core";
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 
 import { routes } from './app.routes';
 import { TUI_FRENCH_LANGUAGE, TUI_LANGUAGE } from "@taiga-ui/i18n";
@@ -12,7 +12,7 @@ import { NgDompurifySanitizer } from "@tinkoff/ng-dompurify";
 export const appConfig: ApplicationConfig = {
   providers: [
     provideAnimations(),
-    provideRouter(routes),
+    provideRouter(routes, withComponentInputBinding()),
     importProvidersFrom(TuiRootModule),
     {
       provide: TUI_LANGUAGE,

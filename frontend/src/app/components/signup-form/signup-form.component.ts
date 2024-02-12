@@ -7,6 +7,7 @@ import { TUI_COUNTRIES, TuiComboBoxModule, TuiDataListWrapperModule, TuiElasticC
 import { confirmPasswordValidator } from '../../validators/confirmPassword.validator';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { TuiLetModule, TuiMapperPipeModule } from '@taiga-ui/cdk';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup-form',
@@ -70,6 +71,7 @@ export class SignupFormComponent {
   constructor(
     @Inject(TuiAlertService) private readonly alerts: TuiAlertService,
     @Inject(TUI_COUNTRIES) readonly countriesNames$: Observable<Record<TuiCountryIsoCode, string>>,
+    private readonly router: Router
   ) { }
 
 
@@ -91,6 +93,12 @@ export class SignupFormComponent {
       if (this.formGroup.invalid) {
         throw new Error('Le formulaire contient des erreurs');
       }
+
+      this.router.navigate(['/account'], {
+        state: {
+          formData: this.formGroup.getRawValue()
+        }
+      })
 
     } catch (error) {
       console.error(error);
