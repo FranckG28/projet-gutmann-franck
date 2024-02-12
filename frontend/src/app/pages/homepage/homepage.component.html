@@ -1,17 +1,10 @@
-<div class="relative">
-    <img ngSrc="https://images.unsplash.com/photo-1585842563394-05637ccf61d4?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        fill priority alt="Studio header" class="w-full h-full absolute object-cover top-0 left-0 -z-20" />
-    <div
-        class="h-full w-full absolute top-0 left-0 -z-10 bg-gradient-to-b from-slate-950 via-slate-950/50 to-slate-950">
-    </div>
-    <app-container class="relative py-24 block">
-        <div class="flex flex-col items-center gap-4">
-            <h1 class="text-white">Bienvenue au studio</h1>
-            <p class="text-balance max-w-prose text-slate-100 text-center">Lorem Elsass ipsum et pellentesque
-                consectetur kougelhopf
-                vulputate
-                Morbi purus mamsell mollis Gal.</p>
-            <button tuiButton routerLink="/signup" class="mt-4">Créer un compte</button>
-        </div>
-    </app-container>
-</div>
+<app-title class="py-40">
+    Nous cuisinons vos burgers
+    <section ngProjectAs="content">
+        <p class="text-balance max-w-prose">Lorem Elsass ipsum et pellentesque
+            consectetur kougelhopf
+            vulputate
+            Morbi purus mamsell mollis Gal.</p>
+        <button tuiButton routerLink="/signup" class="mt-4">Créer un compte</button>
+    </section>
+</app-title>

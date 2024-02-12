@@ -4,7 +4,11 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      spacing: {
+        navbar: '4rem',
+      }
+    },
     container: {
       center: true,
       padding: '2rem',

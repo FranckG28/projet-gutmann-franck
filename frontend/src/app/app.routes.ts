@@ -12,12 +12,12 @@ export const routes: Routes = [{
     children: [
         {
             path: '',
-            component: HomepageComponent
-        },
-        {
-            path: '',
             component: ContainerComponent,
             children: [
+                {
+                    path: '',
+                    component: HomepageComponent
+                },
                 {
                     path: 'login',
                     component: LoginComponent

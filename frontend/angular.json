@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "67KHz": {
+    "tp-franckg": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/67KHz",
+            "outputPath": "dist/tp-franckg",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "67KHz:build:production"
+              "buildTarget": "tp-franckg:build:production"
             },
             "development": {
-              "buildTarget": "67KHz:build:development"
+              "buildTarget": "tp-franckg:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "67KHz:build"
+            "buildTarget": "tp-franckg:build"
           }
         },
         "test": {

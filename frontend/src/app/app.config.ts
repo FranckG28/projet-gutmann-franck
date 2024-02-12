@@ -9,6 +9,8 @@ import { of } from "rxjs";
 import { TUI_VALIDATION_ERRORS } from "@taiga-ui/kit";
 import { NgDompurifySanitizer } from "@tinkoff/ng-dompurify";
 
+export const appName = "Instagras";
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideAnimations(),
