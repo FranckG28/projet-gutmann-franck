@@ -8,6 +8,7 @@ import { AccountComponent } from './components/account/account.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
 import { LargeContainerComponent } from './components/large-container/large-container.component';
 import { ProductComponent } from './pages/product/product.component';
+import { DesignerComponent } from './pages/designer/designer.component';
 
 export const routes: Routes = [{
     path: '',
@@ -46,6 +47,10 @@ export const routes: Routes = [{
                 {
                     path: 'product/:productId',
                     component: ProductComponent,
+                },
+                {
+                    path: 'designer',
+                    component: DesignerComponent,
                 }
             ]
         }

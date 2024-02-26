@@ -5,6 +5,6 @@
         <p ngProjectAs="content">{{product?.description}}</p>
     </app-title>
 
-    <p>{{product?.price}} {{ currency | tuiCurrency}}</p>
+    <tui-money [value]="product?.price ?? 0" [currency]="currency"></tui-money>
 
 </div>

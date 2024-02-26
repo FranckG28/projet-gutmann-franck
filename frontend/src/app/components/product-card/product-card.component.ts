@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Product } from '../../models/product';
 import { TuiIslandModule } from '@taiga-ui/kit';
-import { TuiCurrencyPipeModule } from '@taiga-ui/addon-commerce';
+import { TuiMoneyModule } from '@taiga-ui/addon-commerce';
 import { CURRENCY } from '../../config/environment';
 import { RouterModule } from '@angular/router';
 
@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
     imports: [
         CommonModule,
         TuiIslandModule,
-        TuiCurrencyPipeModule,
+        TuiMoneyModule,
         RouterModule
     ],
     templateUrl: './product-card.component.html',

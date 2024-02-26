@@ -1,0 +1,41 @@
+<div class="flex flex-col gap-2 lg:grid lg:grid-cols-2 relative min-h-screen">
+
+    <div class="lg:fixed flex flex-col justify-center items-center gap-2">
+        <img
+            src="https://img.freepik.com/psd-gratuit/burger-boeuf-frais-isole-fond-transparent_191095-9018.jpg?size=338&ext=jpg&ga=GA1.1.1546980028.1703030400&semt=ais" />
+
+    </div>
+
+    <div class="col-start-2">
+        <h3>Votre recette</h3>
+
+        <tui-tiles [(order)]="order" class="grid grid-flow-row gap-2 pt-12 pb-40">
+
+            <tui-tile *ngFor="let item of designerService.items; let index = index" [style.order]="order.get(index)"
+                tuiTileHandle class="h-16">
+                <div class="p-3 bg-orange-50 border border-orange-100 rounded-xl cursor-ns-resize">
+                    <p class="text-lg">{{item}}</p>
+                </div>
+            </tui-tile>
+
+        </tui-tiles>
+    </div>
+
+</div>
+
+
+<div class="fixed bottom-0 left-0 right-0 border-t border-orange-100 bg-orange-50 p-3">
+    <div class="container flex gap-2 items-stretch max-md:flex-col-reverse md:items-center max-w-screen-xl">
+        <button tuiButton appearance="outline" (click)="exit()" class="md:mr-auto">
+            Abandonner
+        </button>
+
+        <button tuiButton appearance="secondary" (click)="save()">
+            Enregistrer pour plus tard
+        </button>
+
+        <button tuiButton appearance="primary" (click)="validate()" iconRight="tuiIconArrowRight">
+            Déguster
+        </button>
+    </div>
+</div>

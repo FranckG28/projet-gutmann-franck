@@ -4,7 +4,7 @@ import { Product } from '../../models/product';
 import { ProductService } from '../../services/product.service';
 import { Observable } from 'rxjs';
 import { TuiLetModule } from '@taiga-ui/cdk';
-import { TuiCurrencyPipeModule } from '@taiga-ui/addon-commerce';
+import { TuiCurrencyPipeModule, TuiMoneyModule } from '@taiga-ui/addon-commerce';
 import { CURRENCY } from '../../config/environment';
 import { TitleComponent } from '../../components/title/title.component';
 
@@ -13,8 +13,8 @@ import { TitleComponent } from '../../components/title/title.component';
     standalone: true,
     imports: [
         CommonModule,
-        TuiCurrencyPipeModule,
-        TitleComponent
+        TitleComponent,
+        TuiMoneyModule
     ],
     templateUrl: './product.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

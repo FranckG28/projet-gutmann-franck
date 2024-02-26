@@ -1,11 +1,14 @@
 <tui-island [routerLink]="['/product', product.id]" [hoverable]="true">
     <div class="flex flex-col gap-2">
 
+        <img
+            src="https://img.freepik.com/psd-gratuit/burger-boeuf-frais-isole-fond-transparent_191095-9018.jpg?size=338&ext=jpg&ga=GA1.1.1546980028.1703030400&semt=ais" />
+
         <h4>{{product.name}}</h4>
 
         <p class="text-slate-600 line-clamp-2">{{product.description}}</p>
 
-        <p class="">{{product.price}} {{ currency | tuiCurrency}}</p>
+        <tui-money [value]="product.price" [currency]="currency"></tui-money>
 
     </div>
 </tui-island>

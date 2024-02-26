@@ -7,7 +7,7 @@ export const menuEntries: MenuEntry[] = [
     },
     {
         title: 'Créer un burger',
-        path: '/design',
+        path: '/designer',
         style: 'primary'
     }
 ];
