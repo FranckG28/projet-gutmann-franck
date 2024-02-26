@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "name": "My Big Burger",
+        "description": "A big burger with a lot of meat and cheese",
+        "price": 10.00
+    },
+    {
+        "id": 2,
+        "name": "Pizza Burger",
+        "description": "A burger with a pizza on top",
+        "price": 12.00
+    },
+    {
+        "id": 3,
+        "name": "Bacon Burger",
+        "description": "A burger with a lot of bacon",
+        "price": 8.00
+    },
+    {
+        "id": 4,
+        "name": "Asparagus Burger",
+        "description": "A burger with a lot of asparagus",
+        "price": 7.00
+    },
+    {
+        "id": 5,
+        "name": "Mario Burger",
+        "description": "A burger with a lot of mushrooms",
+        "price": 9.00
+    },
+    {
+        "id": 6,
+        "name": "Davidous Burger",
+        "description": "Bon soleil à tous",
+        "price": 100.00
+    }
+]
