@@ -19,4 +19,10 @@ export class DesignerService {
     this.items.splice(index, 1);
   }
 
+  add(ingredient: Ingredient): void {
+    if (this.items.length < this.MAX_INGREDIENTS) {
+      this.items.push(ingredient);
+    }
+  }
+
 }

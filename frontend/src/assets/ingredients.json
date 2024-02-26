@@ -1,0 +1,91 @@
+[
+    {
+        "name": "Buns",
+        "description": "Various types of buns for burgers",
+        "ingredients": [
+            {
+                "name": "Regular Bun",
+                "price": 0.5,
+                "description": "Classic burger bun"
+            },
+            {
+                "name": "Sesame Bun",
+                "price": 0.6,
+                "description": "Burger bun with sesame seeds"
+            },
+            {
+                "name": "Whole Wheat Bun",
+                "price": 0.7,
+                "description": "Healthy whole wheat burger bun"
+            }
+        ]
+    },
+    {
+        "name": "Patties",
+        "description": "Different types of burger patties",
+        "ingredients": [
+            {
+                "name": "Beef Patty",
+                "price": 2.5,
+                "description": "Juicy beef patty"
+            },
+            {
+                "name": "Chicken Patty",
+                "price": 2.0,
+                "description": "Tender chicken patty"
+            },
+            {
+                "name": "Veggie Patty",
+                "price": 1.5,
+                "description": "Delicious vegetarian patty"
+            }
+        ]
+    },
+    {
+        "name": "Toppings",
+        "description": "Various toppings for burgers",
+        "ingredients": [
+            {
+                "name": "Lettuce",
+                "price": 0.3,
+                "description": "Fresh lettuce leaves"
+            },
+            {
+                "name": "Tomato",
+                "price": 0.4,
+                "description": "Ripe tomato slices"
+            },
+            {
+                "name": "Onion",
+                "price": 0.2,
+                "description": "Sliced onions"
+            },
+            {
+                "name": "Cheese",
+                "price": 0.8,
+                "description": "Melted cheese"
+            }
+        ]
+    },
+    {
+        "name": "Sauces",
+        "description": "Different sauces for burgers",
+        "ingredients": [
+            {
+                "name": "Ketchup",
+                "price": 0.2,
+                "description": "Classic ketchup"
+            },
+            {
+                "name": "Mustard",
+                "price": 0.2,
+                "description": "Tangy mustard"
+            },
+            {
+                "name": "Mayonnaise",
+                "price": 0.3,
+                "description": "Creamy mayonnaise"
+            }
+        ]
+    }
+]

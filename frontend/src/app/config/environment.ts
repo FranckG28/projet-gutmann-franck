@@ -1,3 +1,3 @@
-export const API_ENDPOINT = '../assets/products.json'
+export const API_ENDPOINT = '../assets'
 
 export const CURRENCY = 'EUR'

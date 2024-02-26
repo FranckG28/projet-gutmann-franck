@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { CatalogService } from '../../services/catalog.service';
 import { TitleComponent } from '../../components/title/title.component';
 import { ProductCardComponent } from '../../components/product-card/product-card.component';
 import { TuiLetModule } from '@taiga-ui/cdk';
+import { ProductService } from '../../services/product.service';
 
 @Component({
     selector: 'app-catalog',
@@ -19,6 +19,6 @@ import { TuiLetModule } from '@taiga-ui/cdk';
 })
 export class CatalogComponent {
 
-    products$ = inject(CatalogService).getCatalog();
+    products$ = inject(ProductService).getProducts();
 
 }

@@ -1,4 +1,4 @@
-<div class="flex flex-col gap-2 lg:grid lg:grid-cols-2 relative min-h-screen">
+<div class="flex flex-col gap-2 lg:grid lg:grid-cols-2 relative">
 
     <div class="lg:fixed flex flex-col justify-center items-center gap-2">
         <img
@@ -6,12 +6,12 @@
 
     </div>
 
-    <div class="col-start-2 flex flex-col gap-2">
+    <div class="col-start-2 flex flex-col gap-3">
         <h3 class="mb-4">Votre recette</h3>
 
         <tui-hosted-dropdown *ngIf="designerService.items.length < designerService.MAX_INGREDIENTS" [content]="dropdown"
-            [sided]="true" [(open)]="selectorOpen" class="w-full">
-            <button class="choice flex gap-2 items-center w-full">
+            [sided]="true" tuiDropdownAlign="left" class="w-full" [(open)]="selectorOpen">
+            <button class="choice flex gap-2 items-center w-full" type="button">
                 <tui-svg src="tuiIconPlus"></tui-svg>
                 <p>Ajouter un ingrédient </p>
             </button>
@@ -21,16 +21,16 @@
         <tui-tiles [(order)]="order" class="grid grid-flow-row gap-2 pb-40">
 
             <tui-tile *ngFor="let item of designerService.items; let index = index" [style.order]="order.get(index)"
-                tuiTileHandle class="h-16">
+                tuiTileHandle class="h-20">
                 <app-ingredient-tile [ingredient]="item" (delete)="designerService.delete(index)"></app-ingredient-tile>
             </tui-tile>
 
         </tui-tiles>
 
         <ng-template #dropdown let-close="close">
-            <app-ingredient-catalog></app-ingredient-catalog>
+            <app-ingredient-catalog [items]="ingredientCategories$ | async"
+                (add)="designerService.add($event)"></app-ingredient-catalog>
         </ng-template>
-
 
     </div>
 

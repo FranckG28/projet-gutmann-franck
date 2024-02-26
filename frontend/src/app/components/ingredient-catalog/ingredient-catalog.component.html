@@ -1,1 +1,29 @@
-<p>ingredient-catalog works!</p>,
+<div class="p-4 flex flex-col gap-4">
+    <h5>Ajouter un ingrédient</h5>
+
+    <div class="flex gap-4">
+
+        <tui-tabs [(activeItemIndex)]="index" vertical="left" class="w-32">
+            <button tuiTab *ngFor="let category of items">
+                {{category.name}}
+            </button>
+        </tui-tabs>
+
+        <tui-scrollbar *ngIf="items?.[index] as category; else emptyState" class="w-96">
+
+            <h3>{{category?.name}}</h3>
+            <p>{{category?.description}}</p>
+
+            <div class="flex flex-col gap-2">
+                <app-ingredient-preview *ngFor="let ingredient of category.ingredients" [ingredient]="ingredient"
+                    (click)="add.emit(ingredient)"></app-ingredient-preview>
+            </div>
+
+        </tui-scrollbar>
+
+        <ng-template #emptyState>
+            <p>Choisissez une catégorie</p>
+        </ng-template>
+
+    </div>
+</div>

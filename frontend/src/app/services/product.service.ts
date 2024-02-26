@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { CatalogService } from './catalog.service';
 import { Observable, map } from 'rxjs';
 import { Product } from '../models/product';
+import { API_ENDPOINT } from '../config/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +10,15 @@ import { Product } from '../models/product';
 export class ProductService {
 
   constructor(
-    private readonly catalogService: CatalogService,
+    private readonly http: HttpClient
   ) { }
 
+  getProducts() {
+    return this.http.get<Product[]>(API_ENDPOINT + '/products.json');
+  }
+
   getProduct(productId: string): Observable<Product> {
-    return this.catalogService.getCatalog().pipe(
+    return this.getProducts().pipe(
       map(products => {
         const product = products.find(product => product.id === +productId)
         return product as unknown as Product
