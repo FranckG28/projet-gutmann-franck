@@ -1,16 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Ingredient } from '../../models/ingredient';
-import { TuiMoneyModule } from '@taiga-ui/addon-commerce';
-import { CURRENCY } from '../../config/environment';
 import { TuiButtonModule, TuiSvgModule } from '@taiga-ui/core';
+import { MoneyComponent } from '../money/money.component';
 
 @Component({
     selector: 'app-ingredient-tile',
     standalone: true,
     imports: [
         CommonModule,
-        TuiMoneyModule,
+        MoneyComponent,
         TuiButtonModule,
         TuiSvgModule
     ],
@@ -23,5 +22,4 @@ export class IngredientTileComponent {
 
     @Output() delete = new EventEmitter<Ingredient>();
 
-    currency = CURRENCY;
 }

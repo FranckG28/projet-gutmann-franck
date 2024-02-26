@@ -25,4 +25,8 @@ export class DesignerService {
     }
   }
 
+  get total(): number {
+    return this.items.reduce((acc, item) => acc + item.price, 0);
+  }
+
 }

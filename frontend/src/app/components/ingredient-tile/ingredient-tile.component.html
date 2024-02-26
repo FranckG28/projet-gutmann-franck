@@ -5,7 +5,7 @@
         <p class="line-clamp-2 text-slate-600">{{ingredient.description}}</p>
     </div>
     <div class="flex items-center gap-2">
-        <tui-money [value]="ingredient.price" [currency]="currency"></tui-money>
+        <app-money [value]="ingredient.price"></app-money>
         <button tuiIconButton icon="tuiIconTrash" size="s" appearance="secondary-destructive"
             class="opacity-0 transition group-hover:opacity-100 " (click)="delete.emit()"></button>
     </div>

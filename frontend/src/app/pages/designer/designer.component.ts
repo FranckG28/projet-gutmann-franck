@@ -7,6 +7,7 @@ import { TuiIslandModule, TuiTilesModule } from '@taiga-ui/kit';
 import { IngredientTileComponent } from '../../components/ingredient-tile/ingredient-tile.component';
 import { IngredientCatalogComponent } from '../../components/ingredient-catalog/ingredient-catalog.component';
 import { IngredientsService } from '../../services/ingredients.service';
+import { MoneyComponent } from '../../components/money/money.component';
 
 @Component({
     selector: 'app-designer',
@@ -20,6 +21,7 @@ import { IngredientsService } from '../../services/ingredients.service';
         TuiHostedDropdownModule,
         IngredientCatalogComponent,
         TuiSvgModule,
+        MoneyComponent
     ],
     providers: [
         DesignerService,

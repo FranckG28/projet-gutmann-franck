@@ -32,6 +32,10 @@
                 (add)="designerService.add($event)"></app-ingredient-catalog>
         </ng-template>
 
+        <div class="w-full">
+            <h4>Total: <app-money [value]="designerService.total"></app-money></h4>
+        </div>
+
     </div>
 
 </div>
