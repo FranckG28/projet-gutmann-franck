@@ -7,6 +7,7 @@ import { ContainerComponent } from './components/container/container.component';
 import { AccountComponent } from './components/account/account.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
 import { LargeContainerComponent } from './components/large-container/large-container.component';
+import { ProductComponent } from './pages/product/product.component';
 
 export const routes: Routes = [{
     path: '',
@@ -41,6 +42,10 @@ export const routes: Routes = [{
                 {
                     path: 'catalog',
                     component: CatalogComponent,
+                },
+                {
+                    path: 'product/:productId',
+                    component: ProductComponent,
                 }
             ]
         }

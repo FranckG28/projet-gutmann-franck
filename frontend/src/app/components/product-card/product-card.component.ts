@@ -4,6 +4,7 @@ import { Product } from '../../models/product';
 import { TuiIslandModule } from '@taiga-ui/kit';
 import { TuiCurrencyPipeModule } from '@taiga-ui/addon-commerce';
 import { CURRENCY } from '../../config/environment';
+import { RouterModule } from '@angular/router';
 
 @Component({
     selector: 'app-product-card',
@@ -12,6 +13,7 @@ import { CURRENCY } from '../../config/environment';
         CommonModule,
         TuiIslandModule,
         TuiCurrencyPipeModule,
+        RouterModule
     ],
     templateUrl: './product-card.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
