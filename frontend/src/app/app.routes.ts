@@ -5,6 +5,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ContainerComponent } from './components/container/container.component';
 import { AccountComponent } from './components/account/account.component';
+import { CatalogComponent } from './pages/catalog/catalog.component';
 
 export const routes: Routes = [{
     path: '',
@@ -29,6 +30,10 @@ export const routes: Routes = [{
                 {
                     path: 'account',
                     component: AccountComponent,
+                },
+                {
+                    path: 'catalog',
+                    component: CatalogComponent,
                 }
             ]
         }
