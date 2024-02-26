@@ -1,10 +1,19 @@
 <nav class="flex gap-2 container h-navbar items-center justify-between">
     <img routerLink="/" ngSrc="assets/instagras.svg" alt="Logo" width="150" height="70"
         class="cursor-pointer transition hover:brightness-105" />
-    <div class="flex flex-wrap items-center gap-3">
-        <a *ngFor="let entry of menuEntries" tuiLink class="text-lg" [routerLink]="entry.path"
-            routerLinkActive="font-bold">
-            {{entry.title}}
-        </a>
+
+    <div class="flex flex-wrap items-center gap-6">
+        <ng-container *ngFor="let entry of menuEntries">
+
+            <button *ngIf="entry.style === 'primary'; else menuEntryLink" tuiButton [routerLink]="entry.path" size="m">
+                {{entry.title}}
+            </button>
+
+            <ng-template #menuEntryLink>
+                <a tuiLink class="!text-base" [routerLink]="entry.path" routerLinkActive="font-bold">
+                    {{entry.title}}
+                </a>
+            </ng-template>
+        </ng-container>
     </div>
 </nav>
