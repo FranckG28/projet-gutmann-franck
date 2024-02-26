@@ -13,4 +13,8 @@ export class DesignerService {
 
   constructor() { }
 
+  delete(index: number): void {
+    this.items.splice(index, 1);
+  }
+
 }

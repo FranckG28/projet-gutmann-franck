@@ -13,7 +13,7 @@
 
             <tui-tile *ngFor="let item of designerService.items; let index = index" [style.order]="order.get(index)"
                 tuiTileHandle class="h-16">
-                <app-ingredient-tile [ingredient]="item"></app-ingredient-tile>
+                <app-ingredient-tile [ingredient]="item" (delete)="designerService.delete(index)"></app-ingredient-tile>
             </tui-tile>
 
         </tui-tiles>

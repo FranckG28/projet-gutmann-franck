@@ -3,13 +3,16 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 import { Ingredient } from '../../models/ingredient';
 import { TuiMoneyModule } from '@taiga-ui/addon-commerce';
 import { CURRENCY } from '../../config/environment';
+import { TuiButtonModule, TuiSvgModule } from '@taiga-ui/core';
 
 @Component({
     selector: 'app-ingredient-tile',
     standalone: true,
     imports: [
         CommonModule,
-        TuiMoneyModule
+        TuiMoneyModule,
+        TuiButtonModule,
+        TuiSvgModule,
     ],
     templateUrl: './ingredient-tile.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

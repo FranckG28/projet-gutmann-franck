@@ -1,7 +1,12 @@
-<div class="choice flex justify-between">
-    <div>
+<div class="choice flex justify-between group items-center gap-2">
+    <tui-svg src="tuiIconDrag" class="text-slate-300 group-hover:text-slate-600 transition"></tui-svg>
+    <div class="flex-1">
         <p class="text-lg font-medium">{{ingredient.name}}</p>
         <p class="line-clamp-2 text-slate-600">{{ingredient.description}}</p>
     </div>
-    <tui-money [value]="ingredient.price" [currency]="currency"></tui-money>
+    <div class="flex items-center gap-2">
+        <tui-money [value]="ingredient.price" [currency]="currency"></tui-money>
+        <button tuiIconButton icon="tuiIconTrash" size="s" appearance="secondary-destructive"
+            class="opacity-0 transition group-hover:opacity-100 " (click)="delete.emit()"></button>
+    </div>
 </div>
