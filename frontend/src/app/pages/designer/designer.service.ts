@@ -4,6 +4,8 @@ import { Ingredient } from '../../models/ingredient';
 @Injectable()
 export class DesignerService {
 
+  readonly MAX_INGREDIENTS = 20;
+
   items: Ingredient[] = [{
     name: 'Bread',
     price: 1,

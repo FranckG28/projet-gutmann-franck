@@ -6,10 +6,19 @@
 
     </div>
 
-    <div class="col-start-2">
-        <h3>Votre recette</h3>
+    <div class="col-start-2 flex flex-col gap-2">
+        <h3 class="mb-4">Votre recette</h3>
 
-        <tui-tiles [(order)]="order" class="grid grid-flow-row gap-2 pt-12 pb-40">
+        <tui-hosted-dropdown *ngIf="designerService.items.length < designerService.MAX_INGREDIENTS" [content]="dropdown"
+            [sided]="true" [(open)]="selectorOpen" class="w-full">
+            <button class="choice flex gap-2 items-center w-full">
+                <tui-svg src="tuiIconPlus"></tui-svg>
+                <p>Ajouter un ingrédient </p>
+            </button>
+        </tui-hosted-dropdown>
+
+
+        <tui-tiles [(order)]="order" class="grid grid-flow-row gap-2 pb-40">
 
             <tui-tile *ngFor="let item of designerService.items; let index = index" [style.order]="order.get(index)"
                 tuiTileHandle class="h-16">
@@ -17,6 +26,12 @@
             </tui-tile>
 
         </tui-tiles>
+
+        <ng-template #dropdown let-close="close">
+            <app-ingredient-catalog></app-ingredient-catalog>
+        </ng-template>
+
+
     </div>
 
 </div>

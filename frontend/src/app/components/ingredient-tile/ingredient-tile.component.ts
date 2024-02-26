@@ -12,7 +12,7 @@ import { TuiButtonModule, TuiSvgModule } from '@taiga-ui/core';
         CommonModule,
         TuiMoneyModule,
         TuiButtonModule,
-        TuiSvgModule,
+        TuiSvgModule
     ],
     templateUrl: './ingredient-tile.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
