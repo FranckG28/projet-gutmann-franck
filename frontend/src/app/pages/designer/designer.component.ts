@@ -4,6 +4,7 @@ import { TitleComponent } from '../../components/title/title.component';
 import { TuiButtonModule } from '@taiga-ui/core';
 import { DesignerService } from './designer.service';
 import { TuiIslandModule, TuiTilesModule } from '@taiga-ui/kit';
+import { IngredientTileComponent } from '../../components/ingredient-tile/ingredient-tile.component';
 
 @Component({
     selector: 'app-designer',
@@ -13,6 +14,7 @@ import { TuiIslandModule, TuiTilesModule } from '@taiga-ui/kit';
         TitleComponent,
         TuiButtonModule,
         TuiTilesModule,
+        IngredientTileComponent,
     ],
     providers: [
         DesignerService,

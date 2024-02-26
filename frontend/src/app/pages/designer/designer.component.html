@@ -13,9 +13,7 @@
 
             <tui-tile *ngFor="let item of designerService.items; let index = index" [style.order]="order.get(index)"
                 tuiTileHandle class="h-16">
-                <div class="p-3 bg-orange-50 border border-orange-100 rounded-xl cursor-ns-resize">
-                    <p class="text-lg">{{item}}</p>
-                </div>
+                <app-ingredient-tile [ingredient]="item"></app-ingredient-tile>
             </tui-tile>
 
         </tui-tiles>

@@ -133,4 +133,8 @@ tui-notification .t-icon {
         @apply text-balance;
     }
 
+    .choice {
+        @apply p-3 bg-orange-50 border border-orange-100 rounded-xl cursor-ns-resize;
+    }
+
 }

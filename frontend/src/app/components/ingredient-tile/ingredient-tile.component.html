@@ -1,0 +1,7 @@
+<div class="choice flex justify-between">
+    <div>
+        <p class="text-lg font-medium">{{ingredient.name}}</p>
+        <p class="line-clamp-2 text-slate-600">{{ingredient.description}}</p>
+    </div>
+    <tui-money [value]="ingredient.price" [currency]="currency"></tui-money>
+</div>
