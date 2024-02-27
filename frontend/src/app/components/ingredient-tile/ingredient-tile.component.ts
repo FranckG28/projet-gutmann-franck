@@ -20,6 +20,8 @@ export class IngredientTileComponent {
 
     @Input() ingredient!: Ingredient;
 
+    @Input() showControls = false;
+
     @Output() delete = new EventEmitter<Ingredient>();
 
 }

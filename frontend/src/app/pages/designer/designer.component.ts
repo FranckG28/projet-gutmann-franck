@@ -1,13 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { TitleComponent } from '../../components/title/title.component';
-import { TuiButtonModule, TuiHostedDropdownModule, TuiSvgModule } from '@taiga-ui/core';
-import { DesignerService } from './designer.service';
-import { TuiIslandModule, TuiTilesModule } from '@taiga-ui/kit';
+import { TuiButtonModule, tuiButtonOptionsProvider } from '@taiga-ui/core';
 import { IngredientTileComponent } from '../../components/ingredient-tile/ingredient-tile.component';
-import { IngredientCatalogComponent } from '../../components/ingredient-catalog/ingredient-catalog.component';
-import { IngredientsService } from '../../services/ingredients.service';
 import { MoneyComponent } from '../../components/money/money.component';
+import { DesignerDroplistComponent } from '../../components/designer-droplist/designer-droplist.component';
+import { DesignerService } from './designer.service';
 
 @Component({
     selector: 'app-designer',
@@ -16,15 +14,15 @@ import { MoneyComponent } from '../../components/money/money.component';
         CommonModule,
         TitleComponent,
         TuiButtonModule,
-        TuiTilesModule,
         IngredientTileComponent,
-        TuiHostedDropdownModule,
-        IngredientCatalogComponent,
-        TuiSvgModule,
-        MoneyComponent
+        MoneyComponent,
+        DesignerDroplistComponent
     ],
     providers: [
         DesignerService,
+        tuiButtonOptionsProvider({
+            size: 'm'
+        })
     ],
     templateUrl: './designer.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -32,11 +30,6 @@ import { MoneyComponent } from '../../components/money/money.component';
 export class DesignerComponent {
 
     readonly designerService = inject(DesignerService);
-
-    readonly ingredientCategories$ = inject(IngredientsService).getIngredientCategories();
-
-    order = new Map();
-    selectorOpen = false;
 
     exit() {
 

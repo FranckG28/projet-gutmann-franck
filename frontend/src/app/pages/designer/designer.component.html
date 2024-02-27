@@ -1,58 +1,24 @@
-<div class="flex flex-col gap-2 lg:grid lg:grid-cols-2 relative">
+<div class="flex flex-col gap-3 h-full relative">
+    <h4 class="mb-4">Votre recette</h4>
 
-    <div class="lg:fixed flex flex-col justify-center items-center gap-2">
-        <img
-            src="https://img.freepik.com/psd-gratuit/burger-boeuf-frais-isole-fond-transparent_191095-9018.jpg?size=338&ext=jpg&ga=GA1.1.1546980028.1703030400&semt=ais" />
+    <app-designer-droplist class="flex-1"></app-designer-droplist>
 
+    <div class="text-right">
+        <h4>Total: <app-money [value]="designerService.total"></app-money></h4>
     </div>
 
-    <div class="col-start-2 flex flex-col gap-3">
-        <h3 class="mb-4">Votre recette</h3>
-
-        <tui-hosted-dropdown *ngIf="designerService.items.length < designerService.MAX_INGREDIENTS" [content]="dropdown"
-            [sided]="true" tuiDropdownAlign="left" class="w-full" [(open)]="selectorOpen">
-            <button class="choice flex gap-2 items-center w-full" type="button">
-                <tui-svg src="tuiIconPlus"></tui-svg>
-                <p>Ajouter un ingrédient </p>
-            </button>
-        </tui-hosted-dropdown>
-
-
-        <tui-tiles [(order)]="order" class="grid grid-flow-row gap-2 pb-40">
-
-            <tui-tile *ngFor="let item of designerService.items; let index = index" [style.order]="order.get(index)"
-                tuiTileHandle class="h-20">
-                <app-ingredient-tile [ingredient]="item" (delete)="designerService.delete(index)"></app-ingredient-tile>
-            </tui-tile>
-
-        </tui-tiles>
-
-        <ng-template #dropdown let-close="close">
-            <app-ingredient-catalog [items]="ingredientCategories$ | async"
-                (add)="designerService.add($event)"></app-ingredient-catalog>
-        </ng-template>
-
-        <div class="w-full">
-            <h4>Total: <app-money [value]="designerService.total"></app-money></h4>
-        </div>
-
-    </div>
-
-</div>
-
-
-<div class="fixed bottom-0 left-0 right-0 border-t border-orange-100 bg-orange-50 p-3">
-    <div class="container flex gap-2 items-stretch max-md:flex-col-reverse md:items-center max-w-screen-xl">
+    <div class="flex gap-2 items-stretch max-md:flex-col-reverse md:items-center max-w-screen-xl">
         <button tuiButton appearance="outline" (click)="exit()" class="md:mr-auto">
             Abandonner
         </button>
 
         <button tuiButton appearance="secondary" (click)="save()">
-            Enregistrer pour plus tard
+            Enregistrer
         </button>
 
         <button tuiButton appearance="primary" (click)="validate()" iconRight="tuiIconArrowRight">
             Déguster
         </button>
     </div>
+
 </div>

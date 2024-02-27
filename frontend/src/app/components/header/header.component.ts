@@ -1,4 +1,4 @@
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TuiButtonModule, TuiLinkModule } from '@taiga-ui/core';
@@ -12,7 +12,6 @@ import { menuEntries } from '../../config/menu-entries.config';
     CommonModule,
     RouterModule,
     TuiLinkModule,
-    NgOptimizedImage,
     RouterModule,
     TuiButtonModule
   ],

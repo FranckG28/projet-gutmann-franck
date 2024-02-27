@@ -1,4 +1,4 @@
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TitleComponent } from '../../components/title/title.component';
 import { TuiButtonModule } from '@taiga-ui/core';
@@ -14,7 +14,6 @@ import { appName } from '../../app.config';
     TitleComponent,
     TuiButtonModule,
     RouterModule,
-    NgOptimizedImage,
     ContainerComponent,
     TitleComponent,
   ],

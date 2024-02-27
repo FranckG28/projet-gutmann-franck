@@ -1,7 +1,7 @@
-<div class="p-4 flex flex-col gap-4">
-    <h5>Ajouter un ingrédient</h5>
+<div class="p-5 flex flex-col gap-4 h-full">
+    <h4>Ingrédients</h4>
 
-    <div class="flex gap-4">
+    <div class="flex gap-4" *ngIf="items$ | async as items">
 
         <tui-tabs [(activeItemIndex)]="index" vertical="left" class="w-32">
             <button tuiTab *ngFor="let category of items">
@@ -9,14 +9,21 @@
             </button>
         </tui-tabs>
 
-        <tui-scrollbar *ngIf="items?.[index] as category; else emptyState" class="w-96">
+        <tui-scrollbar *ngIf="items?.[index] as category; else emptyState"
+            class="w-96 animate-in fade-in slide-out-to-left-2">
 
-            <h3>{{category?.name}}</h3>
-            <p>{{category?.description}}</p>
+            <div class="flex flex-col gap-4">
+                <div>
+                    <h3>{{category?.name}}</h3>
+                    <p>{{category?.description}}</p>
+                </div>
 
-            <div class="flex flex-col gap-2">
-                <app-ingredient-preview *ngFor="let ingredient of category.ingredients" [ingredient]="ingredient"
-                    (click)="add.emit(ingredient)"></app-ingredient-preview>
+                <div cdkDropList id="ingredient-list" class="flex flex-col gap-2"
+                    [cdkDropListData]="category.ingredients" [cdkDropListConnectedTo]="['designer-list']"
+                    [cdkDropListSortingDisabled]="true">
+                    <app-ingredient-tile *ngFor="let ingredient of category.ingredients" [ingredient]="ingredient"
+                        cdkDrag class="cursor-move"></app-ingredient-tile>
+                </div>
             </div>
 
         </tui-scrollbar>

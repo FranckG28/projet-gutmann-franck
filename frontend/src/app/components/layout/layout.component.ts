@@ -15,5 +15,14 @@ import { RouterOutlet } from '@angular/router';
   ],
   templateUrl: './layout.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  styles: [
+    `
+      :host {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+      }
+    `,
+  ],
 })
 export class LayoutComponent { }

@@ -3,138 +3,149 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: "Outfit";
-    font-display: swap;
-    src: url(./assets/Outfit.ttf) format("truetype-variations");
-    font-weight: 400;
+  font-family: "Outfit";
+  font-display: swap;
+  src: url(./assets/Outfit.ttf)
+    format("truetype-variations");
+  font-weight: 400;
 }
 
 body {
-    font-feature-settings: "calt", "liga", "rlig", "rvrn", "kern", "rclt", "ss01" !important;
-    color: theme(colors.orange.50);
+  font-feature-settings: "calt", "liga", "rlig", "rvrn",
+    "kern", "rclt", "ss01" !important;
+  color: theme(colors.orange.50);
 }
-  
+
 :root {
+  --tui-base-01: theme(colors.stone.50);
+  --tui-base-02: theme(colors.stone.200);
+  --tui-base-03: theme(colors.stone.300);
+  --tui-base-04: theme(colors.stone.400);
+  --tui-base-05: theme(colors.stone.500);
+  --tui-base-06: theme(colors.stone.600);
+  --tui-base-07: theme(colors.stone.700);
+  --tui-base-08: theme(colors.stone.800);
+  --tui-base-09: theme(colors.stone.900);
 
-    --tui-base-01: theme(colors.stone.50);
-    --tui-base-02: theme(colors.stone.200);
-    --tui-base-03: theme(colors.stone.300);
-    --tui-base-04: theme(colors.stone.400);
-    --tui-base-05: theme(colors.stone.500);
-    --tui-base-06: theme(colors.stone.600);
-    --tui-base-07: theme(colors.stone.700);
-    --tui-base-08: theme(colors.stone.800);
-    --tui-base-09: theme(colors.stone.900);
+  --tui-text-01: theme(colors.orange.950);
+  --tui-text-02: theme(colors.stone.600);
+  --tui-text-03: theme(colors.stone.400);
 
-    --tui-text-01: theme(colors.orange.950);
-    --tui-text-02: theme(colors.stone.600);
-    --tui-text-03: theme(colors.stone.400);
+  --tui-heading-font: "Outfit", sans-serif;
+  --tui-text-font: "InterVariable", "Inter", sans-serif;
 
-    --tui-heading-font: 'Outfit', sans-serif;
-    --tui-text-font: 'InterVariable', 'Inter', sans-serif;
+  --tui-primary: theme(colors.orange.600);
+  --tui-primary-hover: theme(colors.orange.500);
+  --tui-primary-active: theme(colors.orange.700);
 
-    --tui-primary: theme(colors.orange.600);
-    --tui-primary-hover: theme(colors.orange.500);
-    --tui-primary-active: theme(colors.orange.700);
+  --tui-secondary: theme(colors.orange.100);
+  --tui-secondary-hover: theme(colors.orange.100);
+  --tui-secondary-active: theme(colors.orange.300);
 
-    --tui-secondary: theme(colors.orange.100);
-    --tui-secondary-hover: theme(colors.orange.100);
-    --tui-secondary-active: theme(colors.orange.300);
-    
-    --tui-link: theme(colors.orange.600);
-    --tui-link-hover: theme(colors.orange.500);
-    --tui-link-active: theme(colors.orange.700);
+  --tui-link: theme(colors.orange.600);
+  --tui-link-hover: theme(colors.orange.500);
+  --tui-link-active: theme(colors.orange.700);
 
-    --tui-positive: theme(colors.green.800);
-    --tui-positive-hover: theme(colors.green.600);
+  --tui-positive: theme(colors.green.800);
+  --tui-positive-hover: theme(colors.green.600);
 
-    --tui-negative: theme(colors.red.300);
-    --tui-negative-hover: theme(colors.red.400);
+  --tui-negative: theme(colors.red.300);
+  --tui-negative-hover: theme(colors.red.400);
 
-    --tui-error-fill: theme(colors.red.600);
-    --tui-error-bg: theme(colors.red.50);
-    --tui-error-bg-hover: theme(colors.red.100);
+  --tui-error-fill: theme(colors.red.600);
+  --tui-error-bg: theme(colors.red.50);
+  --tui-error-bg-hover: theme(colors.red.100);
 
-    --tui-success-fill: theme(colors.green.600);
-    --tui-success-bg: theme(colors.green.50);
-    --tui-success-bg-hover: theme(colors.green.100);
+  --tui-success-fill: theme(colors.green.600);
+  --tui-success-bg: theme(colors.green.50);
+  --tui-success-bg-hover: theme(colors.green.100);
 
-    --tui-warning-fill: theme(colors.yellow.600);
-    --tui-warning-bg: theme(colors.yellow.50);
-    --tui-warning-bg-hover: theme(colors.yellow.100);
+  --tui-warning-fill: theme(colors.yellow.600);
+  --tui-warning-bg: theme(colors.yellow.50);
+  --tui-warning-bg-hover: theme(colors.yellow.100);
 
-    --tui-info-fill: theme(colors.blue.600);
-    --tui-info-bg: theme(colors.blue.50);
-    --tui-info-bg-hover: theme(colors.blue.100);
+  --tui-info-fill: theme(colors.blue.600);
+  --tui-info-bg: theme(colors.blue.50);
+  --tui-info-bg-hover: theme(colors.blue.100);
 
-    --tui-autofill: theme(colors.stone.200);
+  --tui-autofill: theme(colors.stone.200);
 
-    --tui-radius-xs: theme(borderRadius.sm);
-    --tui-radius-s: theme(borderRadius.md);
-    --tui-radius-m: theme(borderRadius.lg);
-    --tui-radius-l: theme(borderRadius.xl);
-    --tui-radius-xl: theme(borderRadius.2xl);
+  --tui-radius-xs: theme(borderRadius.sm);
+  --tui-radius-s: theme(borderRadius.md);
+  --tui-radius-m: theme(borderRadius.lg);
+  --tui-radius-l: theme(borderRadius.xl);
+  --tui-radius-xl: theme(borderRadius.2xl);
 
-    --tui-padding-xs: theme(spacing[1]);
-    --tui-padding-s: theme(spacing[2]);
-    --tui-padding-m: theme(spacing[3]);
-    --tui-padding-l: theme(spacing[4]);
+  --tui-padding-xs: theme(spacing[1]);
+  --tui-padding-s: theme(spacing[2]);
+  --tui-padding-m: theme(spacing[3]);
+  --tui-padding-l: theme(spacing[4]);
 
-    --tui-height-xs: theme(spacing[6]);
-    --tui-height-s: theme(spacing[8]);
-    --tui-height-m: theme(spacing[10]);
-    --tui-height-l: theme(spacing[14]);
+  --tui-height-xs: theme(spacing[6]);
+  --tui-height-s: theme(spacing[8]);
+  --tui-height-m: theme(spacing[10]);
+  --tui-height-l: theme(spacing[14]);
 
-
-    --tui-shadow: theme(boxShadow.DEFAULT);
-    --tui-shadow-hover: theme(boxShadow.md);
-    --tui-shadow-modal: theme(boxShadow.xl);
-    --tui-shadow-sidebar: theme(boxShadow.lg);
-    --tui-shadow-navigation: theme(boxShadow.md);
-    --tui-shadow-sheet: theme(boxShadow.lg);
-
+  --tui-shadow: theme(boxShadow.DEFAULT);
+  --tui-shadow-hover: theme(boxShadow.md);
+  --tui-shadow-modal: theme(boxShadow.xl);
+  --tui-shadow-sidebar: theme(boxShadow.lg);
+  --tui-shadow-navigation: theme(boxShadow.md);
+  --tui-shadow-sheet: theme(boxShadow.lg);
 }
 
 tui-notification .t-content {
-    font: var(--tui-font-text-m-2);
+  font: var(--tui-font-text-m-2);
 }
 
 tui-notification .t-icon {
-    font: var(--tui-font-text-l-2);
+  font: var(--tui-font-text-l-2);
 }
 
 [tuiButton] {
-    font-family: var(--tui-heading-font) !important;
+  font-family: var(--tui-heading-font) !important;
+}
+
+.cdk-drag-animating {
+  @apply transition-all;
+}
+
+.cdk-drag-preview {
+  @apply shadow-xl;
+}
+
+.t-root-content {
+  @apply min-h-screen;
 }
 
 @layer base {
-    h1 {
-        @apply text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight;
-    }
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight;
+  }
 
-    h2 {
-        @apply text-2xl lg:text-4xl font-medium;
-    }
+  h2 {
+    @apply text-2xl lg:text-4xl font-medium;
+  }
 
-    h3 {
-        @apply text-xl lg:text-3xl font-medium tracking-tight;
-    }
+  h3 {
+    @apply text-xl lg:text-3xl font-medium tracking-tight;
+  }
 
-    h4 {
-        @apply text-xl lg:text-2xl font-medium tracking-tight;
-    }
-    
-    p {
-        @apply text-base;
-    }
+  h4 {
+    @apply text-xl lg:text-2xl font-medium tracking-tight;
+  }
 
-    h1, h2, h3, h4, h5, h6 {
-        font-family: var(--tui-heading-font);
-        @apply text-balance;
-    }
+  p {
+    @apply text-base;
+  }
 
-    .choice {
-        @apply p-3 bg-orange-50 ring-1 ring-orange-100 rounded-xl hover:bg-orange-100/50 hover:shadow-xl hover:shadow-orange-600/5 hover:ring-0;
-    }
-
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--tui-heading-font);
+    @apply text-balance;
+  }
 }
