@@ -9,9 +9,10 @@ import {
     CdkDropList,
 } from '@angular/cdk/drag-drop';
 import { IngredientTileComponent } from '../ingredient-tile/ingredient-tile.component';
-import { debounceTime, distinctUntilChanged, map, of, switchMap } from 'rxjs';
+import { BehaviorSubject, debounceTime, distinctUntilChanged, map, of, switchMap } from 'rxjs';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ingredient } from '../../models/ingredient';
+import { SearchBarComponent } from '../../search-bar/search-bar.component';
 
 @Component({
     selector: 'app-ingredient-catalog',
@@ -24,17 +25,14 @@ import { Ingredient } from '../../models/ingredient';
         IngredientTileComponent,
         CdkDrag,
         CdkDropList,
-        TuiInputModule,
-        FormsModule,
-        ReactiveFormsModule,
-        TuiTextfieldControllerModule
+        SearchBarComponent
     ],
     templateUrl: './ingredient-catalog.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IngredientCatalogComponent {
 
-    search = new FormControl<string>('');
+    search$ = new BehaviorSubject<string>('');
 
     categories$ = inject(IngredientsService).getIngredientCategories();
 
@@ -46,7 +44,7 @@ export class IngredientCatalogComponent {
         })
     );
 
-    searchResults$ = this.search.valueChanges.pipe(
+    searchResults$ = this.search$.pipe(
         debounceTime(300),
         distinctUntilChanged(),
         switchMap((search) => {

@@ -1,12 +1,10 @@
 <div class="p-5 flex flex-col gap-6 h-full">
     <h4>Ingrédients</h4>
 
-    <tui-input class="w-full" tuiTextfieldIconLeft="tuiIconSearchLarge" tuiTextfieldSize="m"
-        [tuiTextfieldCleaner]="true" [formControl]="search">
-        Rechercher un ingrédient
-    </tui-input>
+    <app-search-bar [search]="(search$ | async) ?? ''" (searchChange)="search$.next($event)"
+        placeholder="Rechercher un ingrédient"></app-search-bar>
 
-    <div *ngIf="search.value?.length ?? 0 > 3; else catalog">
+    <div *ngIf="(search$ | async)?.length ?? 0 > 3; else catalog">
         <div class="flex flex-col gap-2 animate-in fade-in slide-out-to-left-2"
             *ngIf="searchResults$ | async as results">
             <p *ngIf="results?.length === 0">Aucun résultat</p>

@@ -1,4 +1,9 @@
-<app-title>Catalogue</app-title>
+<app-title>
+    Catalogue
+    <app-search-bar ngProjectAs="content" [search]="(search$ | async) ?? ''" (searchChange)="search$.next($event)"
+        placeholder="Rechercher une recette"></app-search-bar>
+</app-title>
+
 
 <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-4" *tuiLet="products$ | async as products">
 
