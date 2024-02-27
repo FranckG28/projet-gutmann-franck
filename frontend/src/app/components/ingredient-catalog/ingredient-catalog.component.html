@@ -1,7 +1,23 @@
-<div class="p-5 flex flex-col gap-4 h-full">
+<div class="p-5 flex flex-col gap-6 h-full">
     <h4>Ingrédients</h4>
 
-    <div class="flex gap-4" *ngIf="items$ | async as items">
+    <tui-input class="w-full" tuiTextfieldIconLeft="tuiIconSearchLarge" tuiTextfieldSize="m"
+        [tuiTextfieldCleaner]="true" [formControl]="search">
+        Rechercher un ingrédient
+    </tui-input>
+
+    <div *ngIf="search.value?.length ?? 0 > 3; else catalog">
+        <div class="flex flex-col gap-2 animate-in fade-in slide-out-to-left-2"
+            *ngIf="searchResults$ | async as results">
+            <p *ngIf="results?.length === 0">Aucun résultat</p>
+            <ng-container *ngTemplateOutlet="ingredientList; context: { $implicit: results }"></ng-container>
+        </div>
+    </div>
+
+</div>
+
+<ng-template #catalog>
+    <div class="flex gap-4 animate-in fade-in slide-out-to-left-2" *ngIf="categories$ | async as items">
 
         <tui-tabs [(activeItemIndex)]="index" vertical="left" class="w-32">
             <button tuiTab *ngFor="let category of items">
@@ -9,8 +25,7 @@
             </button>
         </tui-tabs>
 
-        <tui-scrollbar *ngIf="items?.[index] as category; else emptyState"
-            class="w-96 animate-in fade-in slide-out-to-left-2">
+        <tui-scrollbar *ngIf="items?.[index] as category; else emptyState" class="w-96">
 
             <div class="flex flex-col gap-4">
                 <div>
@@ -18,12 +33,9 @@
                     <p>{{category?.description}}</p>
                 </div>
 
-                <div cdkDropList id="ingredient-list" class="flex flex-col gap-2"
-                    [cdkDropListData]="category.ingredients" [cdkDropListConnectedTo]="['designer-list']"
-                    [cdkDropListSortingDisabled]="true">
-                    <app-ingredient-tile *ngFor="let ingredient of category.ingredients" [ingredient]="ingredient"
-                        cdkDrag class="cursor-move"></app-ingredient-tile>
-                </div>
+                <ng-container
+                    *ngTemplateOutlet="ingredientList; context: { $implicit: category?.ingredients }"></ng-container>
+
             </div>
 
         </tui-scrollbar>
@@ -33,4 +45,13 @@
         </ng-template>
 
     </div>
-</div>
+</ng-template>
+
+<ng-template #ingredientList let-ingredients>
+    <div cdkDropList id="ingredient-list" class="flex flex-col gap-2" [cdkDropListData]="ingredients"
+        [cdkDropListConnectedTo]="['designer-list']" [cdkDropListSortingDisabled]="true">
+        <app-ingredient-tile *ngFor="let ingredient of ingredients" [ingredient]="ingredient" cdkDrag
+            class="cursor-move"></app-ingredient-tile>
+    </div>
+</ng-template>
+```
