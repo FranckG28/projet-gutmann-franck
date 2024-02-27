@@ -11,5 +11,14 @@ import { RouterOutlet } from '@angular/router';
     ],
     templateUrl: './large-container.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: [
+        `
+        :host {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+        `
+    ]
 })
 export class LargeContainerComponent { }
