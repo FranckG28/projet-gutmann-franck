@@ -1,7 +1,7 @@
 <div class="rounded-xl p-3 border border-orange-100 bg-orange-50 flex justify-between group items-center gap-2">
     <div class="flex-1">
         <p class="text-lg font-medium">{{ingredient.name}}</p>
-        <p class="line-clamp-2 text-slate-600">{{ingredient.description}}</p>
+        <p class="line-clamp-2 opacity-60 text-sm">{{ingredient.description}}</p>
         <app-money [value]="ingredient.price"></app-money>
     </div>
     <div class="flex items-center gap-2" [class.hidden]="!showControls">
