@@ -1,8 +1,8 @@
 <tui-island [routerLink]="['/product', product.id]" [hoverable]="true">
     <div class="flex flex-col gap-2">
 
-        <img
-            src="https://img.freepik.com/psd-gratuit/burger-boeuf-frais-isole-fond-transparent_191095-9018.jpg?size=338&ext=jpg&ga=GA1.1.1546980028.1703030400&semt=ais" />
+        <app-product-preview [product]="product"
+            class="aspect-square flex items-center justify-center"></app-product-preview>
 
         <h4>{{product.name}}</h4>
 

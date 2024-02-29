@@ -15,8 +15,9 @@
 
     @for (ingredient of designerService.list; track ingredient) {
 
-    <app-ingredient-preview [ingredient]="ingredient" cdkDrag
-        class="cursor-ns-resize transition-all max-w-64"></app-ingredient-preview>
+    <div class="cursor-ns-resize transition-all max-w-64" cdkDrag>
+        <app-ingredient-preview [ingredient]="ingredient"></app-ingredient-preview>
+    </div>
 
     }
 

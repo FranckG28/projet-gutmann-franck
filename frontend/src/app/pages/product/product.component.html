@@ -1,10 +1,16 @@
-<div class="flex flex-col gap-4" *ngIf="product$ | async as product">
+<div class="flex gap-6" *ngIf="product$ | async as product">
+
+    <app-product-preview [product]="product"
+        class="aspect-square flex items-center justify-center"></app-product-preview>
 
     <app-title>
         {{product?.name}}
-        <p ngProjectAs="content">{{product?.description}}</p>
+        <div ngProjectAs="content">
+            <p>{{product?.description}}</p>
+            <app-money [value]="product?.price ?? 0"></app-money>
+        </div>
     </app-title>
 
-    <tui-money [value]="product?.price ?? 0" [currency]="currency"></tui-money>
+
 
 </div>

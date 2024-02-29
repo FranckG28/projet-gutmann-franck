@@ -3,36 +3,73 @@
         "id": 1,
         "name": "My Big Burger",
         "description": "A big burger with a lot of meat and cheese",
-        "price": 10.00
+        "price": 10.00,
+        "recipe": [
+            "regular_bun",
+            "beef_patty",
+            "cheese",
+            "tomato"
+        ]
     },
     {
         "id": 2,
         "name": "Pizza Burger",
         "description": "A burger with a pizza on top",
-        "price": 12.00
+        "price": 12.00,
+        "recipe": [
+            "sesame_bun",
+            "beef_patty",
+            "cheese",
+            "tomato",
+            "lettuce"
+        ]
     },
     {
         "id": 3,
         "name": "Bacon Burger",
         "description": "A burger with a lot of bacon",
-        "price": 8.00
+        "price": 8.00,
+        "recipe": [
+            "whole_wheat_bun",
+            "beef_patty",
+            "lettuce",
+            "onion"
+        ]
     },
     {
         "id": 4,
         "name": "Asparagus Burger",
         "description": "A burger with a lot of asparagus",
-        "price": 7.00
+        "price": 7.00,
+        "recipe": [
+            "regular_bun",
+            "veggie_patty",
+            "cheese",
+            "mayonnaise",
+            "lettuce",
+            "tomato"
+        ]
     },
     {
         "id": 5,
         "name": "Mario Burger",
         "description": "A burger with a lot of mushrooms",
-        "price": 9.00
+        "price": 9.00,
+        "recipe": [
+            "sesame_bun",
+            "veggie_patty",
+            "veggie_patty",
+            "lettuce",
+            "tomato",
+            "onion",
+            "cheese"
+        ]
     },
     {
         "id": 6,
         "name": "Davidous Burger",
         "description": "Bon soleil à tous",
-        "price": 100.00
+        "price": 100.00,
+        "recipe": []
     }
 ]

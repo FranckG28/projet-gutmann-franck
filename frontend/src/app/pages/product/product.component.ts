@@ -7,6 +7,8 @@ import { TuiLetModule } from '@taiga-ui/cdk';
 import { TuiCurrencyPipeModule, TuiMoneyModule } from '@taiga-ui/addon-commerce';
 import { CURRENCY } from '../../config/environment';
 import { TitleComponent } from '../../components/title/title.component';
+import { ProductPreviewComponent } from '../../components/product-preview/product-preview.component';
+import { MoneyComponent } from '../../components/money/money.component';
 
 @Component({
     selector: 'app-product',
@@ -14,7 +16,8 @@ import { TitleComponent } from '../../components/title/title.component';
     imports: [
         CommonModule,
         TitleComponent,
-        TuiMoneyModule
+        MoneyComponent,
+        ProductPreviewComponent,
     ],
     templateUrl: './product.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
