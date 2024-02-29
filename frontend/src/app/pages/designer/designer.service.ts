@@ -16,7 +16,6 @@ export class DesignerService {
   }
 
   drop(event: CdkDragDrop<Ingredient[]>) {
-    console.log(event);
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {

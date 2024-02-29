@@ -6,17 +6,20 @@
             {
                 "name": "Regular Bun",
                 "price": 0.5,
-                "description": "Classic burger bun"
+                "description": "Classic burger bun",
+                "image": "regular_bun"
             },
             {
                 "name": "Sesame Bun",
                 "price": 0.6,
-                "description": "Burger bun with sesame seeds"
+                "description": "Burger bun with sesame seeds",
+                "image": "sesame_bun"
             },
             {
                 "name": "Whole Wheat Bun",
                 "price": 0.7,
-                "description": "Healthy whole wheat burger bun"
+                "description": "Healthy whole wheat burger bun",
+                "image": "whole_wheat_bun"
             }
         ]
     },
@@ -27,17 +30,20 @@
             {
                 "name": "Beef Patty",
                 "price": 2.5,
-                "description": "Juicy beef patty"
+                "description": "Juicy beef patty",
+                "image": "beef_patty"
             },
             {
                 "name": "Chicken Patty",
                 "price": 2.0,
-                "description": "Tender chicken patty"
+                "description": "Tender chicken patty",
+                "image": "chicken_patty"
             },
             {
                 "name": "Veggie Patty",
                 "price": 1.5,
-                "description": "Delicious vegetarian patty"
+                "description": "Delicious vegetarian patty",
+                "image": "veggie_patty"
             }
         ]
     },
@@ -48,22 +54,26 @@
             {
                 "name": "Lettuce",
                 "price": 0.3,
-                "description": "Fresh lettuce leaves"
+                "description": "Fresh lettuce leaves",
+                "image": "lettuce"
             },
             {
                 "name": "Tomato",
                 "price": 0.4,
-                "description": "Ripe tomato slices"
+                "description": "Ripe tomato slices",
+                "image": "tomato"
             },
             {
                 "name": "Onion",
                 "price": 0.2,
-                "description": "Sliced onions"
+                "description": "Sliced onions",
+                "image": "onion"
             },
             {
                 "name": "Cheese",
                 "price": 0.8,
-                "description": "Melted cheese"
+                "description": "Melted cheese",
+                "image": "cheese"
             }
         ]
     },
@@ -74,17 +84,20 @@
             {
                 "name": "Ketchup",
                 "price": 0.2,
-                "description": "Classic ketchup"
+                "description": "Classic ketchup",
+                "image": "ketchup"
             },
             {
                 "name": "Mustard",
                 "price": 0.2,
-                "description": "Tangy mustard"
+                "description": "Tangy mustard",
+                "image": "mustard"
             },
             {
                 "name": "Mayonnaise",
                 "price": 0.3,
-                "description": "Creamy mayonnaise"
+                "description": "Creamy mayonnaise",
+                "image": "mayonnaise"
             }
         ]
     }
