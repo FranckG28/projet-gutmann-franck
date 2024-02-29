@@ -6,6 +6,7 @@ import { TuiLetModule } from '@taiga-ui/cdk';
 import { IngredientsService } from '../../services/ingredients.service';
 import {
     CdkDrag,
+    CdkDragPlaceholder,
     CdkDropList,
 } from '@angular/cdk/drag-drop';
 import { IngredientTileComponent } from '../ingredient-tile/ingredient-tile.component';
@@ -25,6 +26,7 @@ import { SearchBarComponent } from '../../search-bar/search-bar.component';
         IngredientTileComponent,
         CdkDrag,
         CdkDropList,
+        CdkDragPlaceholder,
         SearchBarComponent
     ],
     templateUrl: './ingredient-catalog.component.html',

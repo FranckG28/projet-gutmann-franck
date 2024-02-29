@@ -1,8 +1,8 @@
-import { CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
+import { CdkDrag, CdkDragPlaceholder, CdkDropList } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { IngredientTileComponent } from '../ingredient-tile/ingredient-tile.component';
 import { DesignerService } from '../../pages/designer/designer.service';
+import { IngredientPreviewComponent } from '../ingredient-preview/ingredient-preview.component';
 
 @Component({
     selector: 'app-designer-droplist',
@@ -11,7 +11,8 @@ import { DesignerService } from '../../pages/designer/designer.service';
         CommonModule,
         CdkDrag,
         CdkDropList,
-        IngredientTileComponent
+        CdkDragPlaceholder,
+        IngredientPreviewComponent,
     ],
     templateUrl: './designer-droplist.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

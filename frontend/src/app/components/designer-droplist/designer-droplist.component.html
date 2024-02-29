@@ -1,16 +1,23 @@
-<div class="flex flex-col gap-2 h-full rounded-xl p-5 flex-1 border-2 transition-all duration-300 border-dashed border-transparent bg-white"
+<div class="flex flex-col -space-y-2 h-full rounded-xl p-5 flex-1 border-2 transition-all duration-300 border-dashed border-transparent bg-white items-center justify-center"
     [ngClass]="{
     '!border-orange-100': designerService.list.length === 0
 }" cdkDropList id="designer-list" [cdkDropListData]="designerService.list"
     (cdkDropListDropped)="designerService.drop($event)">
 
     <div [attr.data-shown]="designerService.list.length === 0" *ngIf="designerService.list.length === 0"
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-50">
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-50 text-center">
         <p>Glissez-déposez des ingrédients ici</p>
     </div>
 
-    <app-ingredient-tile *ngFor="let ingredient of designerService.list; let i = index" [ingredient]="ingredient"
-        cdkDrag [showControls]="true" (delete)="designerService.delete(i)"
-        class="cursor-ns-resize"></app-ingredient-tile>
+
+    <div class="bg-slate-500 h-16 w-full rounded-xl" *cdkDragPlaceholder></div>
+
+
+    @for (ingredient of designerService.list; track ingredient) {
+
+    <app-ingredient-preview [ingredient]="ingredient" cdkDrag
+        class="cursor-ns-resize transition-all max-w-64"></app-ingredient-preview>
+
+    }
 
 </div>
