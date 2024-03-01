@@ -1,12 +1,30 @@
 <app-title>
     Catalogue
-    <app-search-bar ngProjectAs="content" [search]="(search$ | async) ?? ''" (searchChange)="search$.next($event)"
-        placeholder="Rechercher une recette"></app-search-bar>
+    <div ngProjectAs="content" class="py-2 flex flex-col gap-4">
+
+        <p>Découvrez le plus grand catalogue de burgers du monde, créés par la communauté.</p>
+
+        <app-search-bar [search]="(search$ | async) ?? ''" (searchChange)="search$.next($event)"
+            placeholder="Rechercher une recette"></app-search-bar>
+
+        <tui-scrollbar class="overflow-y-hidden h-12">
+            <tui-filter [formControl]="filters" [items]="(ingredients$ | async) ?? []" [content]="filterContent"
+                class="!flex flex-nowrap"></tui-filter>
+        </tui-scrollbar>
+
+        <ng-template #filterContent let-item>
+            {{item.name}}
+        </ng-template>
+
+    </div>
 </app-title>
 
 
 <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-4" *tuiLet="products$ | async as products">
 
-    <app-product-card *ngFor="let product of products" [product]="product" x></app-product-card>
+    @for (product of products; track product.id) {
+    <app-product-card [product]="product"
+        class="animate-in fade-in slide-in-from-top-2 transition-all"></app-product-card>
+    }
 
 </div>
