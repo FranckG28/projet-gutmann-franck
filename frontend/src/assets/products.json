@@ -9,7 +9,8 @@
             "beef_patty",
             "cheese",
             "tomato"
-        ]
+        ],
+        "rating": 4.5
     },
     {
         "id": 2,
@@ -22,7 +23,8 @@
             "cheese",
             "tomato",
             "lettuce"
-        ]
+        ],
+        "rating": 3.8
     },
     {
         "id": 3,
@@ -34,7 +36,8 @@
             "beef_patty",
             "lettuce",
             "onion"
-        ]
+        ],
+        "rating": 4.2
     },
     {
         "id": 4,
@@ -48,7 +51,8 @@
             "mayonnaise",
             "lettuce",
             "tomato"
-        ]
+        ],
+        "rating": 4.7
     },
     {
         "id": 5,
@@ -63,13 +67,15 @@
             "tomato",
             "onion",
             "cheese"
-        ]
+        ],
+        "rating": 4.0
     },
     {
         "id": 6,
         "name": "Davidous Burger",
         "description": "Bon soleil à tous",
         "price": 100.00,
-        "recipe": []
+        "recipe": [],
+        "rating": 2.5
     }
 ]

@@ -5,12 +5,11 @@
 
     <app-title>
         {{product?.name}}
-        <div ngProjectAs="content">
+        <div ngProjectAs="content" class="flex flex-col gap-2">
             <p>{{product?.description}}</p>
-            <app-money [value]="product?.price ?? 0"></app-money>
+            <p class="font-medium text-lg"><app-money [value]="product?.price ?? 0"></app-money></p>
+            <tui-rating [ngModel]="product?.rating" [readOnly]="true"></tui-rating>
         </div>
     </app-title>
-
-
 
 </div>

@@ -8,6 +8,8 @@
 
         <p class="text-stone-600 line-clamp-2">{{product.description}}</p>
 
+        <tui-rating [ngModel]="product.rating" [readOnly]="true"></tui-rating>
+
         <app-money [value]="product.price"></app-money>
 
     </div>

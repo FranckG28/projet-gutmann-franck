@@ -3,12 +3,11 @@ import { ChangeDetectionStrategy, Component, Input, OnInit, inject } from '@angu
 import { Product } from '../../models/product';
 import { ProductService } from '../../services/product.service';
 import { Observable } from 'rxjs';
-import { TuiLetModule } from '@taiga-ui/cdk';
-import { TuiCurrencyPipeModule, TuiMoneyModule } from '@taiga-ui/addon-commerce';
-import { CURRENCY } from '../../config/environment';
 import { TitleComponent } from '../../components/title/title.component';
 import { ProductPreviewComponent } from '../../components/product-preview/product-preview.component';
 import { MoneyComponent } from '../../components/money/money.component';
+import { TuiRatingModule } from '@taiga-ui/kit';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-product',
@@ -18,6 +17,9 @@ import { MoneyComponent } from '../../components/money/money.component';
         TitleComponent,
         MoneyComponent,
         ProductPreviewComponent,
+        TuiRatingModule,
+        FormsModule,
+        ReactiveFormsModule,
     ],
     templateUrl: './product.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -31,8 +33,6 @@ export class ProductComponent implements OnInit {
     private readonly productService = inject(ProductService);
 
     product$?: Observable<Product>;
-
-    currency = CURRENCY;
 
     ngOnInit(): void {
         this.product$ = this.productService.getProduct(this.productId);

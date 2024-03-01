@@ -138,6 +138,10 @@ tui-notification .t-icon {
     @apply text-xl lg:text-2xl font-medium tracking-tight;
   }
 
+  h5 {
+    @apply text-lg lg:text-xl font-medium tracking-tight;
+  }
+
   p {
     @apply text-base;
   }
