@@ -38,7 +38,8 @@ export const appConfig: ApplicationConfig = {
       useValue: of(TUI_FRENCH_LANGUAGE)
     },
     tuiButtonOptionsProvider({
-      shape: 'rounded'
+      shape: 'rounded',
+      size: 'm'
     })
   ]
 };

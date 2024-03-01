@@ -18,12 +18,26 @@ export const routes: Routes = [{
     children: [
         {
             path: '',
-            component: ContainerComponent,
+            component: LargeContainerComponent,
             children: [
                 {
                     path: '',
                     component: HomepageComponent
                 },
+                {
+                    path: 'catalog',
+                    component: CatalogComponent,
+                },
+                {
+                    path: 'product/:productId',
+                    component: ProductComponent,
+                },
+            ]
+        },
+        {
+            path: '',
+            component: ContainerComponent,
+            children: [
                 {
                     path: 'login',
                     component: LoginComponent
@@ -35,20 +49,6 @@ export const routes: Routes = [{
                 {
                     path: 'account',
                     component: AccountComponent,
-                },
-            ]
-        },
-        {
-            path: '',
-            component: LargeContainerComponent,
-            children: [
-                {
-                    path: 'catalog',
-                    component: CatalogComponent,
-                },
-                {
-                    path: 'product/:productId',
-                    component: ProductComponent,
                 },
             ]
         },
