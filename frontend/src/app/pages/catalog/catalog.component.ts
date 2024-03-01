@@ -6,6 +6,8 @@ import { TuiLetModule } from '@taiga-ui/cdk';
 import { ProductService } from '../../services/product.service';
 import { BehaviorSubject, combineLatest, debounceTime, map, withLatestFrom } from 'rxjs';
 import { SearchBarComponent } from '../../search-bar/search-bar.component';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TuiFilterModule } from '@taiga-ui/kit';
 
 @Component({
     selector: 'app-catalog',
@@ -15,7 +17,10 @@ import { SearchBarComponent } from '../../search-bar/search-bar.component';
         TitleComponent,
         ProductCardComponent,
         TuiLetModule,
-        SearchBarComponent
+        SearchBarComponent,
+        TuiFilterModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     templateUrl: './catalog.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -23,6 +28,8 @@ import { SearchBarComponent } from '../../search-bar/search-bar.component';
 export class CatalogComponent {
 
     search$ = new BehaviorSubject<string>('');
+
+    filters = new FormControl([]);
 
     products$ = combineLatest([
         inject(ProductService).getProducts(),

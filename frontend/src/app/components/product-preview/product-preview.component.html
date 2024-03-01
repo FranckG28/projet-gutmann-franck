@@ -1,5 +1,5 @@
 <ng-container *ngIf="ingredients$ | async as ingredients">
-    @if (product?.recipe?.length) {
+    @if (product.recipe.length) {
     <div class="flex flex-col -space-y-2 max-w-40">
 
         @for (ingredient of product.recipe; track ingredient) {
