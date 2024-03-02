@@ -9,8 +9,10 @@ import { SearchBarComponent } from '../../components/search-bar/search-bar.compo
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TuiFilterModule } from '@taiga-ui/kit';
 import { IngredientsService } from '../../services/ingredients.service';
-import { TuiScrollbarModule } from '@taiga-ui/core';
+import { TuiButtonModule, TuiScrollbarModule } from '@taiga-ui/core';
 import { Ingredient } from '../../models/ingredient';
+import { RouterModule } from '@angular/router';
+import { MoneyComponent } from '../../components/money/money.component';
 
 @Component({
     selector: 'app-catalog',
@@ -24,7 +26,10 @@ import { Ingredient } from '../../models/ingredient';
         TuiFilterModule,
         FormsModule,
         ReactiveFormsModule,
-        TuiScrollbarModule
+        TuiScrollbarModule,
+        RouterModule,
+        MoneyComponent,
+        TuiButtonModule
     ],
     templateUrl: './catalog.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

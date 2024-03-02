@@ -3,14 +3,20 @@ import { ChangeDetectionStrategy, Component, Input, OnInit, inject } from '@angu
 import { Product } from '../../models/product';
 import { ProductService } from '../../services/product.service';
 import { Observable } from 'rxjs';
-import { ProductCardComponent } from '../../components/product-card/product-card.component';
+import { ProductInfoComponent } from '../../components/product-info/product-info.component';
+import { ProductPreviewComponent } from '../../components/product-preview/product-preview.component';
+import { TuiButtonModule } from '@taiga-ui/core';
+import { MoneyComponent } from '../../components/money/money.component';
 
 @Component({
     selector: 'app-product',
     standalone: true,
     imports: [
         CommonModule,
-        ProductCardComponent,
+        ProductInfoComponent,
+        ProductPreviewComponent,
+        TuiButtonModule,
+        MoneyComponent
     ],
     templateUrl: './product.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
