@@ -8,6 +8,7 @@ import { RatingComponent } from '../rating/rating.component';
 import { TuiButtonModule, TuiHintModule } from '@taiga-ui/core';
 import { ProductAuthorComponent } from '../product-author/product-author.component';
 import { ProductStatsComponent } from '../product-stats/product-stats.component';
+import { TimeAgoPipe } from '../../pipes/time-ago.pipe';
 
 @Component({
     selector: 'app-product-card',
@@ -22,6 +23,7 @@ import { ProductStatsComponent } from '../product-stats/product-stats.component'
         TuiHintModule,
         ProductAuthorComponent,
         ProductStatsComponent,
+        TimeAgoPipe
     ],
     templateUrl: './product-card.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
