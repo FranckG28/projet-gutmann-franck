@@ -2,11 +2,15 @@ import { MenuEntry } from "../models/menu-entry";
 
 export const menuEntries: MenuEntry[] = [
     {
-        title: 'Catalogue',
+        title: 'Nos ingredients',
+        path: '/ingredients'
+    },
+    {
+        title: 'Vos recettes',
         path: '/catalog'
     },
     {
-        title: 'Créer un burger',
+        title: 'Créer ma recette',
         path: '/designer',
         style: 'primary'
     }
