@@ -3,22 +3,14 @@ import { ChangeDetectionStrategy, Component, Input, OnInit, inject } from '@angu
 import { Product } from '../../models/product';
 import { ProductService } from '../../services/product.service';
 import { Observable } from 'rxjs';
-import { TitleComponent } from '../../components/title/title.component';
-import { ProductPreviewComponent } from '../../components/product-preview/product-preview.component';
-import { MoneyComponent } from '../../components/money/money.component';
-import { RatingComponent } from '../../components/rating/rating.component';
-import { ProductAuthorComponent } from '../../components/product-author/product-author.component';
+import { ProductCardComponent } from '../../components/product-card/product-card.component';
 
 @Component({
     selector: 'app-product',
     standalone: true,
     imports: [
         CommonModule,
-        TitleComponent,
-        MoneyComponent,
-        ProductPreviewComponent,
-        RatingComponent,
-        ProductAuthorComponent,
+        ProductCardComponent,
     ],
     templateUrl: './product.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

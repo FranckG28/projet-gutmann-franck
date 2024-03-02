@@ -4,7 +4,6 @@ import { Product } from '../../models/product';
 import { RouterModule } from '@angular/router';
 import { MoneyComponent } from '../money/money.component';
 import { ProductPreviewComponent } from '../product-preview/product-preview.component';
-import { RatingComponent } from '../rating/rating.component';
 import { TuiButtonModule, TuiHintModule } from '@taiga-ui/core';
 import { ProductAuthorComponent } from '../product-author/product-author.component';
 import { ProductStatsComponent } from '../product-stats/product-stats.component';
@@ -18,7 +17,6 @@ import { TimeAgoPipe } from '../../pipes/time-ago.pipe';
         MoneyComponent,
         RouterModule,
         ProductPreviewComponent,
-        RatingComponent,
         TuiButtonModule,
         TuiHintModule,
         ProductAuthorComponent,

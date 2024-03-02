@@ -1,8 +1,0 @@
-<a class="flex items-center gap-1 cursor-pointer">
-    <span>{{ rating }}</span>
-    @if (preview) {
-    <tui-svg src="tuiIconStarLarge" class="!text-sm"></tui-svg>
-    } @else {
-    <tui-rating [ngModel]="rating" [readOnly]="true"></tui-rating>
-    }
-</a>
