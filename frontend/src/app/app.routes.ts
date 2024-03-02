@@ -14,6 +14,8 @@ import { IngredientCatalogComponent } from './components/ingredient-catalog/ingr
 import { HorizontalLayoutComponent } from './components/horizontal-layout/horizontal-layout.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { AsideComponent } from './components/aside/aside.component';
+import { AppbarComponent } from './components/appbar/appbar.component';
+import { appTitleProvider } from './providers/app-title.provider';
 
 export const routes: Routes = [{
     path: '',
@@ -61,13 +63,17 @@ export const routes: Routes = [{
     ]
 },
 {
-    path: '',
+    path: 'app',
     component: HorizontalLayoutComponent,
     children: [
         {
             path: '',
             component: NavigationComponent,
             outlet: 'navigation'
+        },
+        {
+            path: '',
+            component: CatalogComponent,
         },
         {
             path: '',
@@ -79,12 +85,24 @@ export const routes: Routes = [{
             component: AccountComponent,
         },
         {
-            path: 'catalog',
-            component: CatalogComponent,
-        },
-        {
-            path: 'product/:productId',
-            component: ProductComponent,
+            path: ':productId',
+            providers: [
+                {
+                    provide: appTitleProvider,
+                    useValue: 'Recette'
+                }
+            ],
+            children: [
+                {
+                    path: '',
+                    component: ProductComponent
+                },
+                {
+                    path: '',
+                    outlet: 'appbar',
+                    component: AppbarComponent
+                }
+            ]
         },
     ]
 

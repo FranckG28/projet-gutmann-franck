@@ -7,7 +7,7 @@ export const menuEntries: MenuEntry[] = [
     },
     {
         title: 'Vos recettes',
-        path: '/catalog'
+        path: '/app'
     },
     {
         title: 'Créer ma recette',

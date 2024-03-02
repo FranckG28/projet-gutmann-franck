@@ -5,7 +5,7 @@ import { ProductCardComponent } from '../../components/product-card/product-card
 import { TuiLetModule } from '@taiga-ui/cdk';
 import { ProductService } from '../../services/product.service';
 import { BehaviorSubject, combineLatest, debounceTime, map, startWith } from 'rxjs';
-import { SearchBarComponent } from '../../search-bar/search-bar.component';
+import { SearchBarComponent } from '../../components/search-bar/search-bar.component';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TuiFilterModule } from '@taiga-ui/kit';
 import { IngredientsService } from '../../services/ingredients.service';

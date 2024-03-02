@@ -13,7 +13,7 @@ import { IngredientTileComponent } from '../ingredient-tile/ingredient-tile.comp
 import { BehaviorSubject, debounceTime, distinctUntilChanged, map, of, switchMap } from 'rxjs';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ingredient } from '../../models/ingredient';
-import { SearchBarComponent } from '../../search-bar/search-bar.component';
+import { SearchBarComponent } from '../search-bar/search-bar.component';
 
 @Component({
     selector: 'app-ingredient-catalog',
