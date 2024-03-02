@@ -7,6 +7,7 @@ module.exports = {
         navbar: "4rem",
       },
       gridTemplateColumns: {
+        "horizontal-layout": "220px auto 320px",
         sidebar: "450px auto",
         "sidebar-collapsed": "64px auto",
       },

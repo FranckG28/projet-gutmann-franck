@@ -1,0 +1,18 @@
+<div class="flex flex-col p-4 py-8 sticky top-0">
+    <img routerLink="/" src="assets/instagras.svg" alt="Instagras logo" width="120" height="60"
+        class="cursor-pointer transition mb-4 ml-6" />
+
+    @for (entry of menuEntries; track entry.path) {
+
+    @if (entry.style === 'primary') {
+    <button tuiButton [routerLink]="entry.path" class="mt-2">
+        {{entry.title}}
+    </button>
+    } @else {
+    <button tuiButton [routerLink]="entry.path" appearance="flat" [icon]="entry.icon" class="w-fit">
+        {{entry.title}}
+    </button>
+    }
+
+    }
+</div>

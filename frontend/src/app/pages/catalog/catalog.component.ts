@@ -28,6 +28,15 @@ import { Ingredient } from '../../models/ingredient';
     ],
     templateUrl: './catalog.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: [
+        `
+        :host {
+            display: block;
+            width: 100%;
+            max-width: 100%
+        }
+        `,
+    ]
 })
 export class CatalogComponent {
 

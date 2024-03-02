@@ -1,0 +1,11 @@
+<div class="flex justify-between items-center gap-2 w-full">
+
+    <app-stat (click)="likeClick.emit()" label="Likes" [icon]="'tuiIconHeart'" [value]="product.likes"></app-stat>
+    <app-stat (click)="commentClick.emit()" label="Commentaires" [icon]="'tuiIconMessageCircle'"
+        [value]="product.comments"></app-stat>
+    <app-stat (click)="orderClick.emit()" label="Avis" [icon]="'tuiIconStar'" [value]="product.rating"></app-stat>
+    <app-stat (click)="orderClick.emit()" label="Commandes" [icon]="'tuiIconShoppingCart'"
+        [value]="product.orders"></app-stat>
+    <ng-content></ng-content>
+
+</div>

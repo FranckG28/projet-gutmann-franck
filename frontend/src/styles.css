@@ -75,6 +75,7 @@
   --tui-radius-l: theme(borderRadius.xl);
   --tui-radius-xl: theme(borderRadius.2xl);
 
+  --tui-padding: theme(spacing[6]);
   --tui-padding-xs: theme(spacing[1]);
   --tui-padding-s: theme(spacing[2]);
   --tui-padding-m: theme(spacing[3]);

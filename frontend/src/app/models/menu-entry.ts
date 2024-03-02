@@ -1,5 +1,6 @@
 export interface MenuEntry {
     title: string;
     path: string;
-    style?: 'normal' | 'primary'
+    style?: 'normal' | 'primary';
+    icon?: string;
 }

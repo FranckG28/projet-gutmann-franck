@@ -7,6 +7,7 @@ import { TitleComponent } from '../../components/title/title.component';
 import { ProductPreviewComponent } from '../../components/product-preview/product-preview.component';
 import { MoneyComponent } from '../../components/money/money.component';
 import { RatingComponent } from '../../components/rating/rating.component';
+import { ProductAuthorComponent } from '../../components/product-author/product-author.component';
 
 @Component({
     selector: 'app-product',
@@ -16,7 +17,8 @@ import { RatingComponent } from '../../components/rating/rating.component';
         TitleComponent,
         MoneyComponent,
         ProductPreviewComponent,
-        RatingComponent
+        RatingComponent,
+        ProductAuthorComponent,
     ],
     templateUrl: './product.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

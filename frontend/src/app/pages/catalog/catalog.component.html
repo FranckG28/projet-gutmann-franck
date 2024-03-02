@@ -1,4 +1,4 @@
-<app-title>
+<app-title class="px-8 block">
     Vos recettes préférés
     <div ngProjectAs="content" class="py-2 flex flex-col gap-4">
 
@@ -7,10 +7,10 @@
         <app-search-bar [search]="(search$ | async) ?? ''" (searchChange)="search$.next($event)"
             placeholder="Rechercher une recette"></app-search-bar>
 
-        <tui-scrollbar class="overflow-y-hidden h-12">
+        <!-- <tui-scrollbar class="overflow-y-hidden h-12 max-w-screen-sm">
             <tui-filter [formControl]="filters" [items]="(ingredients$ | async) ?? []" [content]="filterContent"
                 class="!flex flex-nowrap"></tui-filter>
-        </tui-scrollbar>
+        </tui-scrollbar> -->
 
         <ng-template #filterContent let-item>
             {{item.name}}
@@ -24,7 +24,7 @@
     @if (!products?.length) {
     <p class="text-center">Aucun burger ne correspond à votre recherche.</p>
     } @else {
-    <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-4">
+    <div class="flex flex-col divide-y divide-stone-200">
         @for (product of products; track product.id) {
         <app-product-card [product]="product"
             class="animate-in fade-in slide-in-from-top-2 transition-all"></app-product-card>

@@ -3,8 +3,11 @@ export interface Product {
     name: string;
     description: string;
     price: number;
-    rating: number;
     recipe: string[];
     author: string;
+    rating: number;
     createdOn: string;
+    likes: number;
+    comments: number;
+    orders: number;
 }

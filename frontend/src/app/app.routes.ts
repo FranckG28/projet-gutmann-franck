@@ -11,6 +11,9 @@ import { ProductComponent } from './pages/product/product.component';
 import { DesignerComponent } from './pages/designer/designer.component';
 import { SidebarLayoutComponent } from './components/sidebar-layout/sidebar-layout.component';
 import { IngredientCatalogComponent } from './components/ingredient-catalog/ingredient-catalog.component';
+import { HorizontalLayoutComponent } from './components/horizontal-layout/horizontal-layout.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { AsideComponent } from './components/aside/aside.component';
 
 export const routes: Routes = [{
     path: '',
@@ -23,14 +26,6 @@ export const routes: Routes = [{
                 {
                     path: '',
                     component: HomepageComponent
-                },
-                {
-                    path: 'catalog',
-                    component: CatalogComponent,
-                },
-                {
-                    path: 'product/:productId',
-                    component: ProductComponent,
                 },
             ]
         },
@@ -45,10 +40,6 @@ export const routes: Routes = [{
                 {
                     path: 'signup',
                     component: SignupComponent
-                },
-                {
-                    path: 'account',
-                    component: AccountComponent,
                 },
             ]
         },
@@ -68,4 +59,33 @@ export const routes: Routes = [{
             ]
         }
     ]
+},
+{
+    path: '',
+    component: HorizontalLayoutComponent,
+    children: [
+        {
+            path: '',
+            component: NavigationComponent,
+            outlet: 'navigation'
+        },
+        {
+            path: '',
+            component: AsideComponent,
+            outlet: 'aside'
+        },
+        {
+            path: 'account',
+            component: AccountComponent,
+        },
+        {
+            path: 'catalog',
+            component: CatalogComponent,
+        },
+        {
+            path: 'product/:productId',
+            component: ProductComponent,
+        },
+    ]
+
 }];

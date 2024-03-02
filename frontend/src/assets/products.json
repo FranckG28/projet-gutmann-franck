@@ -11,7 +11,11 @@
             "tomato"
         ],
         "rating": 4.5,
-        "author": "@burgerlover"
+        "author": "@burgerlover",
+        "createdOn": "2022-01-01",
+        "likes": 10,
+        "comments": 5,
+        "orders": 20
     },
     {
         "id": 2,
@@ -26,7 +30,11 @@
             "lettuce"
         ],
         "rating": 3.8,
-        "author": "@pizzaburgerfan"
+        "author": "@pizzaburgerfan",
+        "createdOn": "2022-01-02",
+        "likes": 15,
+        "comments": 8,
+        "orders": 25
     },
     {
         "id": 3,
@@ -40,7 +48,11 @@
             "onion"
         ],
         "rating": 4.2,
-        "author": "@baconlover"
+        "author": "@baconlover",
+        "createdOn": "2022-01-03",
+        "likes": 20,
+        "comments": 10,
+        "orders": 30
     },
     {
         "id": 4,
@@ -56,7 +68,11 @@
             "tomato"
         ],
         "rating": 4.7,
-        "author": "@veggieburgerfan"
+        "author": "@veggieburgerfan",
+        "createdOn": "2022-01-04",
+        "likes": 25,
+        "comments": 12,
+        "orders": 35
     },
     {
         "id": 5,
@@ -73,7 +89,11 @@
             "cheese"
         ],
         "rating": 4.0,
-        "author": "@mushroomlover"
+        "author": "@mushroomlover",
+        "createdOn": "2022-01-05",
+        "likes": 30,
+        "comments": 15,
+        "orders": 40
     },
     {
         "id": 6,
@@ -82,6 +102,10 @@
         "price": 100.00,
         "recipe": [],
         "rating": 2.5,
-        "author": "@davidous"
+        "author": "@davidous",
+        "createdOn": "2022-01-06",
+        "likes": 5,
+        "comments": 2,
+        "orders": 10
     }
 ]
