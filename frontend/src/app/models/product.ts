@@ -10,4 +10,5 @@ export interface Product {
     likes: number;
     comments: number;
     orders: number;
+    remixes: number;
 }

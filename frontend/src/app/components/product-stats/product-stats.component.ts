@@ -20,7 +20,8 @@ export class ProductStatsComponent {
     @Input() product!: Product;
 
     @Output() likeClick = new EventEmitter<void>();
-    @Output() commentClick = new EventEmitter<void>();
+    @Output() reviewClick = new EventEmitter<void>();
+    @Output() remixClick = new EventEmitter<void>();
     @Output() orderClick = new EventEmitter<void>();
 
 }

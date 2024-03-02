@@ -15,7 +15,8 @@
         "createdOn": "2022-01-01",
         "likes": 10,
         "comments": 5,
-        "orders": 20
+        "orders": 20,
+        "remixes": 5
     },
     {
         "id": 2,
@@ -34,7 +35,8 @@
         "createdOn": "2022-01-02",
         "likes": 15,
         "comments": 8,
-        "orders": 25
+        "orders": 25,
+        "remixes": 3
     },
     {
         "id": 3,
@@ -52,7 +54,8 @@
         "createdOn": "2022-01-03",
         "likes": 20,
         "comments": 10,
-        "orders": 30
+        "orders": 30,
+        "remixes": 7
     },
     {
         "id": 4,
@@ -72,7 +75,8 @@
         "createdOn": "2022-01-04",
         "likes": 25,
         "comments": 12,
-        "orders": 35
+        "orders": 35,
+        "remixes": 2
     },
     {
         "id": 5,
@@ -93,7 +97,8 @@
         "createdOn": "2022-01-05",
         "likes": 30,
         "comments": 15,
-        "orders": 40
+        "orders": 40,
+        "remixes": 1
     },
     {
         "id": 6,
@@ -106,6 +111,7 @@
         "createdOn": "2022-01-06",
         "likes": 5,
         "comments": 2,
-        "orders": 10
+        "orders": 10,
+        "remixes": 0
     }
 ]

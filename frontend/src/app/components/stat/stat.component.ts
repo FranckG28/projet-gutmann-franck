@@ -17,6 +17,6 @@ export class StatComponent {
 
     @Input() label!: string;
     @Input() icon!: string;
-    @Input() value!: number;
+    @Input() value!: number | string;
 
 }
