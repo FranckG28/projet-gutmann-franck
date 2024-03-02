@@ -10,7 +10,8 @@
             "cheese",
             "tomato"
         ],
-        "rating": 4.5
+        "rating": 4.5,
+        "author": "@burgerlover"
     },
     {
         "id": 2,
@@ -24,7 +25,8 @@
             "tomato",
             "lettuce"
         ],
-        "rating": 3.8
+        "rating": 3.8,
+        "author": "@pizzaburgerfan"
     },
     {
         "id": 3,
@@ -37,7 +39,8 @@
             "lettuce",
             "onion"
         ],
-        "rating": 4.2
+        "rating": 4.2,
+        "author": "@baconlover"
     },
     {
         "id": 4,
@@ -52,7 +55,8 @@
             "lettuce",
             "tomato"
         ],
-        "rating": 4.7
+        "rating": 4.7,
+        "author": "@veggieburgerfan"
     },
     {
         "id": 5,
@@ -68,7 +72,8 @@
             "onion",
             "cheese"
         ],
-        "rating": 4.0
+        "rating": 4.0,
+        "author": "@mushroomlover"
     },
     {
         "id": 6,
@@ -76,6 +81,7 @@
         "description": "Bon soleil à tous",
         "price": 100.00,
         "recipe": [],
-        "rating": 2.5
+        "rating": 2.5,
+        "author": "@davidous"
     }
 ]

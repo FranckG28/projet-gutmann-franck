@@ -2,7 +2,12 @@
     <div class="flex flex-col gap-2">
 
         <div class="flex justify-between items-center">
-            <h5 class="line-clamp-2">{{product.name}}</h5>
+            <div>
+                <h5 class="line-clamp-2">{{product.name}}</h5>
+                <p class="text-stone-600 hover:text-stonz-500 line-clamp-2 text-sm"><app-product-author
+                        [author]="product.author"></app-product-author></p>
+            </div>
+
             <app-rating [rating]="product.rating" [preview]="true" class="text-orange-900 text-sm"></app-rating>
         </div>
 

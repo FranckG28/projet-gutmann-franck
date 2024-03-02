@@ -5,4 +5,6 @@ export interface Product {
     price: number;
     rating: number;
     recipe: string[];
+    author: string;
+    createdOn: string;
 }

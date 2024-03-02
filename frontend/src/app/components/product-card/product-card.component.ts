@@ -6,7 +6,8 @@ import { RouterModule } from '@angular/router';
 import { MoneyComponent } from '../money/money.component';
 import { ProductPreviewComponent } from '../product-preview/product-preview.component';
 import { RatingComponent } from '../rating/rating.component';
-import { TuiButtonModule, TuiHintModule, TuiSvgModule } from '@taiga-ui/core';
+import { TuiButtonModule, TuiHintModule } from '@taiga-ui/core';
+import { ProductAuthorComponent } from '../product-author/product-author.component';
 
 @Component({
     selector: 'app-product-card',
@@ -19,7 +20,8 @@ import { TuiButtonModule, TuiHintModule, TuiSvgModule } from '@taiga-ui/core';
         ProductPreviewComponent,
         RatingComponent,
         TuiButtonModule,
-        TuiHintModule
+        TuiHintModule,
+        ProductAuthorComponent
     ],
     templateUrl: './product-card.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
