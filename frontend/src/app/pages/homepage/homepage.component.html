@@ -1,18 +1,23 @@
-<app-title class="py-40">
-    Nous cuisinons vos burgers
-    <section ngProjectAs="content">
-        <p class="text-balance max-w-prose">Lorem Elsass ipsum et pellentesque
-            consectetur kougelhopf
-            vulputate
-            Morbi purus mamsell mollis Gal.
+<app-title class="text-center">
+    <h1>Nous cuisinons vos burgers</h1>
+    <section ngProjectAs="content" class="flex flex-col gap-6">
+        <p class="text-balance max-w-prose text-lg mx-auto">
+            Découvrez les burgers conçus par la communauté, faites vous livrer chez vous et partagez vos créations.
         </p>
+        <div class="flex gap-4 flex-wrap justify-center">
+
+            <tui-badged-content [contentTop]="badge" size="l" [rounded]="true">
+                <button tuiButton routerLink="/catalog">Recettes populaires</button>
+            </tui-badged-content>
+
+            <ng-template #badge>
+                <div class="bg-orange-100 w-full h-full flex items-center justify-center">
+                    <span>🔥</span>
+                </div>
+            </ng-template>
+
+            <button tuiButton appearance="secondary" routerLink="/signup">Créer ma recette</button>
+
+        </div>
     </section>
 </app-title>
-
-<div class="flex gap-2 flex-wrap">
-
-    <button tuiButton routerLink="/catalog">Consulter le catalogue</button>
-
-    <button tuiButton appearance="secondary" routerLink="/signup">Créer un compte</button>
-
-</div>

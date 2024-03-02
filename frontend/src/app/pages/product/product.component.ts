@@ -6,8 +6,7 @@ import { Observable } from 'rxjs';
 import { TitleComponent } from '../../components/title/title.component';
 import { ProductPreviewComponent } from '../../components/product-preview/product-preview.component';
 import { MoneyComponent } from '../../components/money/money.component';
-import { TuiRatingModule } from '@taiga-ui/kit';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RatingComponent } from '../../components/rating/rating.component';
 
 @Component({
     selector: 'app-product',
@@ -17,9 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         TitleComponent,
         MoneyComponent,
         ProductPreviewComponent,
-        TuiRatingModule,
-        FormsModule,
-        ReactiveFormsModule,
+        RatingComponent
     ],
     templateUrl: './product.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

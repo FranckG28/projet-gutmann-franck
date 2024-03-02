@@ -8,7 +8,7 @@
         <div ngProjectAs="content" class="flex flex-col gap-2">
             <p>{{product?.description}}</p>
             <p class="font-medium text-lg"><app-money [value]="product?.price ?? 0"></app-money></p>
-            <tui-rating [ngModel]="product?.rating" [readOnly]="true"></tui-rating>
+            <app-rating [rating]="product.rating"></app-rating>
         </div>
     </app-title>
 

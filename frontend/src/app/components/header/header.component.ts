@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { TuiButtonModule, TuiLinkModule } from '@taiga-ui/core';
+import { TuiButtonModule, TuiHintModule, TuiLinkModule } from '@taiga-ui/core';
 import { appName } from '../../app.config';
 import { menuEntries } from '../../config/menu-entries.config';
 
@@ -13,7 +13,8 @@ import { menuEntries } from '../../config/menu-entries.config';
     RouterModule,
     TuiLinkModule,
     RouterModule,
-    TuiButtonModule
+    TuiButtonModule,
+    TuiHintModule
   ],
   templateUrl: './header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,5 +1,5 @@
 <app-title>
-    Vos burgers préférés
+    Vos recettes préférés
     <div ngProjectAs="content" class="py-2 flex flex-col gap-4">
 
         <p>Découvrez le plus grand catalogue de burgers du monde, créés par la communauté.</p>
@@ -19,12 +19,17 @@
     </div>
 </app-title>
 
+<ng-container *ngIf="products$ | async as products">
 
-<div class="grid gap-2 md:grid-cols-2 lg:grid-cols-4" *tuiLet="products$ | async as products">
-
-    @for (product of products; track product.id) {
-    <app-product-card [product]="product"
-        class="animate-in fade-in slide-in-from-top-2 transition-all"></app-product-card>
+    @if (!products?.length) {
+    <p class="text-center">Aucun burger ne correspond à votre recherche.</p>
+    } @else {
+    <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-4">
+        @for (product of products; track product.id) {
+        <app-product-card [product]="product"
+            class="animate-in fade-in slide-in-from-top-2 transition-all"></app-product-card>
+        }
+    </div>
     }
 
-</div>
+</ng-container>

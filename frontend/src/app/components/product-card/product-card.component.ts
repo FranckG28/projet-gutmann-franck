@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Product } from '../../models/product';
-import { TuiIslandModule, TuiRatingModule } from '@taiga-ui/kit';
+import { TuiIslandModule } from '@taiga-ui/kit';
 import { RouterModule } from '@angular/router';
 import { MoneyComponent } from '../money/money.component';
 import { ProductPreviewComponent } from '../product-preview/product-preview.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RatingComponent } from '../rating/rating.component';
+import { TuiButtonModule, TuiHintModule, TuiSvgModule } from '@taiga-ui/core';
 
 @Component({
     selector: 'app-product-card',
@@ -16,9 +17,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         MoneyComponent,
         RouterModule,
         ProductPreviewComponent,
-        TuiRatingModule,
-        FormsModule,
-        ReactiveFormsModule,
+        RatingComponent,
+        TuiButtonModule,
+        TuiHintModule
     ],
     templateUrl: './product-card.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
