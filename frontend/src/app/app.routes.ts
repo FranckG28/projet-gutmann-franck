@@ -16,6 +16,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { AsideComponent } from './components/aside/aside.component';
 import { AppbarComponent } from './components/appbar/appbar.component';
 import { appTitleProvider } from './providers/app-title.provider';
+import { FiltersService } from './services/filters.service';
 
 export const routes: Routes = [{
     path: '',
@@ -65,6 +66,7 @@ export const routes: Routes = [{
 {
     path: 'app',
     component: HorizontalLayoutComponent,
+    providers: [FiltersService],
     children: [
         {
             path: '',

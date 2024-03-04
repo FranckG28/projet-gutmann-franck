@@ -4,14 +4,11 @@ import { TitleComponent } from '../../components/title/title.component';
 import { ProductCardComponent } from '../../components/product-card/product-card.component';
 import { TuiLetModule } from '@taiga-ui/cdk';
 import { ProductService } from '../../services/product.service';
-import { combineLatest, debounceTime, map, startWith } from 'rxjs';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TuiFilterModule } from '@taiga-ui/kit';
-import { IngredientsService } from '../../services/ingredients.service';
-import { TuiButtonModule, TuiScrollbarModule } from '@taiga-ui/core';
-import { Ingredient } from '../../models/ingredient';
+import { combineLatest, map } from 'rxjs';
+import { TuiButtonModule } from '@taiga-ui/core';
 import { RouterModule } from '@angular/router';
 import { MoneyComponent } from '../../components/money/money.component';
+import { FiltersService } from '../../services/filters.service';
 
 @Component({
     selector: 'app-catalog',
@@ -21,10 +18,6 @@ import { MoneyComponent } from '../../components/money/money.component';
         TitleComponent,
         ProductCardComponent,
         TuiLetModule,
-        TuiFilterModule,
-        FormsModule,
-        ReactiveFormsModule,
-        TuiScrollbarModule,
         RouterModule,
         MoneyComponent,
         TuiButtonModule
@@ -43,19 +36,9 @@ import { MoneyComponent } from '../../components/money/money.component';
 })
 export class CatalogComponent {
 
-
-    ingredients$ = inject(IngredientsService).getAllIngredients().pipe(
-        map((ingredients) => Object.values(ingredients))
-    );
-
-    filters = new FormControl<Ingredient[]>([]);
-
     products$ = combineLatest([
         inject(ProductService).getProducts(),
-        this.filters.valueChanges.pipe(
-            debounceTime(300),
-            startWith([])
-        )
+        inject(FiltersService).filters$
     ]).pipe(
         map(([products, filters]) => {
             return products.filter((product) => {

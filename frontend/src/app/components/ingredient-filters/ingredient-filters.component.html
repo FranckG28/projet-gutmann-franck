@@ -1,0 +1,6 @@
+<tui-filter [formControl]="formControl" [items]="(ingredients$ | async) ?? []" [content]="filterContent"
+    size="s"></tui-filter>
+
+<ng-template #filterContent let-item>
+    {{item.name}}
+</ng-template>
