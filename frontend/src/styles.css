@@ -39,7 +39,7 @@
 
   --tui-secondary: theme(colors.orange.100);
   --tui-secondary-hover: theme(colors.orange.100);
-  --tui-secondary-active: theme(colors.orange.300);
+  --tui-secondary-active: theme(colors.orange.200);
 
   --tui-link: theme(colors.orange.600);
   --tui-link-hover: theme(colors.orange.500);
@@ -120,6 +120,11 @@ tui-notification .t-icon {
 
 .t-root-content {
   @apply min-h-screen;
+}
+
+/* Sidebar active button style */
+[tuiButton][data-appearance="flat"].active [tuiWrapper] {
+  background-color: var(--tui-secondary);
 }
 
 @layer base {

@@ -19,27 +19,27 @@ export const menuEntries: MenuEntry[] = [
 export const appEntries: MenuEntry[] = [
     {
         title: 'Tendances',
-        path: '/trending',
+        path: '/app/trending',
         icon: 'tuiIconChartLineLarge'
     },
     {
         title: 'Nouveautés',
-        path: '/new',
+        path: '/app/latest',
         icon: 'tuiIconSunLarge'
     },
     {
         title: 'Rechercher',
-        path: '/search',
+        path: '/app/search',
         icon: 'tuiIconSearchLarge'
     },
     {
         title: 'Favoris',
-        path: '/likes',
+        path: '/app/likes',
         icon: 'tuiIconHeartLarge'
     },
     {
         title: 'Historique',
-        path: '/orders',
+        path: '/app/orders',
         icon: 'tuiIconBookmarkLarge'
     },
     {

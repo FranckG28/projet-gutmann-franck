@@ -9,6 +9,7 @@ import { TuiButtonModule } from '@taiga-ui/core';
 import { RouterModule } from '@angular/router';
 import { MoneyComponent } from '../../components/money/money.component';
 import { FiltersService } from '../../services/filters.service';
+import { catalogOptionsProvider } from '../../providers/catalog-options.provider';
 
 @Component({
     selector: 'app-catalog',
@@ -36,6 +37,8 @@ import { FiltersService } from '../../services/filters.service';
 })
 export class CatalogComponent {
 
+    options = inject(catalogOptionsProvider);
+
     products$ = combineLatest([
         inject(ProductService).getProducts(),
         inject(FiltersService).filters$
@@ -49,7 +52,8 @@ export class CatalogComponent {
 
                 return products;
             });
-        })
+        }),
+        map((products) => this.options.sorter ? products.sort(this.options.sorter) : products)
     );
 
 }

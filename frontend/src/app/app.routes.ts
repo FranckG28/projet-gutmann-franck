@@ -17,6 +17,8 @@ import { AsideComponent } from './components/aside/aside.component';
 import { AppbarComponent } from './components/appbar/appbar.component';
 import { appTitleProvider } from './providers/app-title.provider';
 import { FiltersService } from './services/filters.service';
+import { catalogOptionsProvider } from './providers/catalog-options.provider';
+import { newCatalogOptions, trendingCatalogOptions } from './config/catalog-options.config';
 
 export const routes: Routes = [{
     path: '',
@@ -68,6 +70,7 @@ export const routes: Routes = [{
     component: HorizontalLayoutComponent,
     providers: [FiltersService],
     children: [
+        { path: '', pathMatch: 'full', redirectTo: 'trending' },
         {
             path: '',
             component: NavigationComponent,
@@ -75,37 +78,58 @@ export const routes: Routes = [{
         },
         {
             path: '',
-            component: CatalogComponent,
-        },
-        {
-            path: '',
             component: AsideComponent,
             outlet: 'aside'
+        },
+        {
+            path: 'trending',
+            component: CatalogComponent,
+            providers: [
+                {
+                    provide: catalogOptionsProvider,
+                    useValue: trendingCatalogOptions,
+                }
+            ]
+        },
+        {
+            path: 'latest',
+            component: CatalogComponent,
+            providers: [
+                {
+                    provide: catalogOptionsProvider,
+                    useValue: newCatalogOptions,
+                }
+            ]
         },
         {
             path: 'account',
             component: AccountComponent,
         },
         {
-            path: ':productId',
-            providers: [
-                {
-                    provide: appTitleProvider,
-                    useValue: 'Recette'
-                }
-            ],
+            path: 'product',
             children: [
                 {
-                    path: '',
-                    component: ProductComponent
+                    path: ':productId',
+                    providers: [
+                        {
+                            provide: appTitleProvider,
+                            useValue: 'Recette'
+                        }
+                    ],
+                    children: [
+                        {
+                            path: '',
+                            component: ProductComponent
+                        },
+                        {
+                            path: '',
+                            outlet: 'appbar',
+                            component: AppbarComponent
+                        }
+                    ]
                 },
-                {
-                    path: '',
-                    outlet: 'appbar',
-                    component: AppbarComponent
-                }
             ]
-        },
+        }
     ]
 
 }];

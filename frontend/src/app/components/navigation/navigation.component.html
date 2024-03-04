@@ -5,11 +5,12 @@
     @for (entry of menuEntries; track entry.path) {
 
     @if (entry.style === 'primary') {
-    <button tuiButton [routerLink]="entry.path" class="mt-2">
+    <button tuiButton [routerLink]="entry.path" class="mt-2" [routerLinkActive]="'active'">
         {{entry.title}}
     </button>
     } @else {
-    <button tuiButton [routerLink]="entry.path" appearance="flat" [icon]="entry.icon" class="w-fit">
+    <button tuiButton [routerLink]="entry.path" appearance="flat" [icon]="entry.icon" class="w-fit"
+        [routerLinkActive]="'active'">
         {{entry.title}}
     </button>
     }

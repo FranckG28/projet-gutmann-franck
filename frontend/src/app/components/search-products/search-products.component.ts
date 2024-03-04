@@ -47,8 +47,7 @@ export class SearchProductsComponent {
     router = inject(Router);
 
     onSelected(value: Product) {
-        console.log(value);
-        this.router.navigate(['/app', value.id]);
+        this.router.navigate(['/app', 'product', value.id]);
         this.search.setValue('')
     }
 
