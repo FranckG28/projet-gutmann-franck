@@ -4,8 +4,7 @@ import { TitleComponent } from '../../components/title/title.component';
 import { ProductCardComponent } from '../../components/product-card/product-card.component';
 import { TuiLetModule } from '@taiga-ui/cdk';
 import { ProductService } from '../../services/product.service';
-import { BehaviorSubject, combineLatest, debounceTime, map, startWith } from 'rxjs';
-import { SearchBarComponent } from '../../components/search-bar/search-bar.component';
+import { combineLatest, debounceTime, map, startWith } from 'rxjs';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TuiFilterModule } from '@taiga-ui/kit';
 import { IngredientsService } from '../../services/ingredients.service';
@@ -22,7 +21,6 @@ import { MoneyComponent } from '../../components/money/money.component';
         TitleComponent,
         ProductCardComponent,
         TuiLetModule,
-        SearchBarComponent,
         TuiFilterModule,
         FormsModule,
         ReactiveFormsModule,
@@ -45,7 +43,6 @@ import { MoneyComponent } from '../../components/money/money.component';
 })
 export class CatalogComponent {
 
-    search$ = new BehaviorSubject<string>('');
 
     ingredients$ = inject(IngredientsService).getAllIngredients().pipe(
         map((ingredients) => Object.values(ingredients))
@@ -55,24 +52,19 @@ export class CatalogComponent {
 
     products$ = combineLatest([
         inject(ProductService).getProducts(),
-        this.search$.pipe(
-            debounceTime(300),
-        ),
         this.filters.valueChanges.pipe(
             debounceTime(300),
             startWith([])
         )
     ]).pipe(
-        map(([products, search, filters]) => {
+        map(([products, filters]) => {
             return products.filter((product) => {
 
-                const searchMatch = product.name.toLowerCase().includes(search?.toLowerCase() ?? '');
-
-                if (searchMatch && (filters ?? []).length > 0) {
+                if (products && (filters ?? []).length > 0) {
                     return (filters ?? []).every((filter) => product.recipe.includes(filter.id));
                 }
 
-                return searchMatch;
+                return products;
             });
         })
     );

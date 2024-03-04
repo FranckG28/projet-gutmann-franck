@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, inject } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductService } from '../../services/product.service';
 import { Observable } from 'rxjs';
@@ -21,7 +21,7 @@ import { MoneyComponent } from '../../components/money/money.component';
     templateUrl: './product.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductComponent implements OnInit {
+export class ProductComponent implements OnChanges {
 
 
     @Input()
@@ -31,7 +31,7 @@ export class ProductComponent implements OnInit {
 
     product$?: Observable<Product>;
 
-    ngOnInit(): void {
+    ngOnChanges(): void {
         this.product$ = this.productService.getProduct(this.productId);
     }
 

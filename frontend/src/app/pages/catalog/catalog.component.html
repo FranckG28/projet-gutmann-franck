@@ -2,10 +2,7 @@
     Vos recettes préférés
     <div ngProjectAs="content" class="py-2 flex flex-col gap-4">
 
-        <p>Découvrez le plus grand catalogue de burgers du monde, créés par la communauté.</p>
-
-        <app-search-bar [search]="(search$ | async) ?? ''" (searchChange)="search$.next($event)"
-            placeholder="Rechercher une recette"></app-search-bar>
+        <p>Découvrez le plus grand catalogue de burgers du monde.</p>
 
         <!-- <tui-scrollbar class="overflow-y-hidden h-12 max-w-screen-sm">
             <tui-filter [formControl]="filters" [items]="(ingredients$ | async) ?? []" [content]="filterContent"
