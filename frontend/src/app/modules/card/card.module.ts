@@ -6,8 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TuiInputCVCModule, TuiInputCardModule, TuiInputExpireModule } from '@taiga-ui/addon-commerce';
 import { CardCreateComponent } from './card-create/card-create.component';
 import { CardPreviewComponent } from './card-preview/card-preview.component';
-import { TuiButtonModule, TuiGroupModule } from '@taiga-ui/core';
-import { TuiInputModule, TuiRadioBlockModule } from '@taiga-ui/kit';
+import { TuiButtonModule, TuiErrorModule, TuiGroupModule } from '@taiga-ui/core';
+import { TuiFieldErrorPipeModule, TuiInputModule, TuiRadioBlockModule } from '@taiga-ui/kit';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,9 @@ import { TuiInputModule, TuiRadioBlockModule } from '@taiga-ui/kit';
     TuiButtonModule,
     TuiGroupModule,
     TuiInputModule,
-    TuiRadioBlockModule
+    TuiRadioBlockModule,
+    TuiErrorModule,
+    TuiFieldErrorPipeModule,
   ],
   exports: [
     CardInputComponent,

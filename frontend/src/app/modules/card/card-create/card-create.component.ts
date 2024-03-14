@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { TuiDialogContext } from '@taiga-ui/core';
 import { POLYMORPHEUS_CONTEXT } from '@tinkoff/ng-polymorpheus';
 import { CreditCard } from '../../../models/credit-card';
@@ -11,10 +11,10 @@ import { CreditCard } from '../../../models/credit-card';
 export class CardCreateComponent {
 
   formGroup = this.formBuilder.group({
-    name: '',
-    number: '',
-    cvc: '',
-    expiration: '',
+    name: new FormControl('', [Validators.required]),
+    number: new FormControl('', [Validators.required, Validators.minLength(19), Validators.maxLength(19)]),
+    cvc: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]),
+    expiration: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]),
   });
 
   constructor(
@@ -24,6 +24,13 @@ export class CardCreateComponent {
   ) { }
 
   add(): void {
+
+    if (this.formGroup.invalid) {
+      this.formGroup.markAllAsTouched();
+      this.formGroup.updateValueAndValidity();
+      return;
+    }
+
     const creditCard: CreditCard = {
       name: this.formGroup.value.name || '',
       number: this.formGroup.value.number || '',
