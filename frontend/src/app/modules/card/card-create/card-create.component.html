@@ -1,0 +1,27 @@
+<form [formGroup]="formGroup" class="flex flex-col gap-4" (ngSubmit)="add()">
+    <tui-input formControlName="name">
+        Name
+    </tui-input>
+
+    <tui-input-card formControlName="number" [autocompleteEnabled]="true">
+        Card number
+    </tui-input-card>
+
+    <div tuiGroup class="w-full">
+
+        <tui-input-expire formControlName="expiration" [autocompleteEnabled]="true" class="">
+            Expire date
+        </tui-input-expire>
+        <tui-input-cvc formControlName="cvc" [autocompleteEnabled]="true">
+            CVC/CVV
+        </tui-input-cvc>
+    </div>
+
+    <div class="flex gap-2 justify-between items-center">
+
+        <button tuiButton appearance="outline" type="reset">Annuler</button>
+
+        <button tuiButton type="submit">Ajouter</button>
+
+    </div>
+</form>

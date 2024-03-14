@@ -1,0 +1,20 @@
+<div class="flex items-center justify-center gap-6">
+    <h5>Vos cartes</h5>
+    <button tuiButton appearance="secondary" size="s" (click)="addCard()">Ajouter une carte</button>
+</div>
+
+<form class="py-4 flex flex-col gap-2">
+
+    @for (card of (cards$ | async); track $index) {
+    <div class="flex items-center gap-2">
+        <tui-radio-block [formControl]="formControl" [item]="card" class="flex-1" contentAlign="left">
+            <app-card-preview [card]="card" class="flex-1 py-2 block"></app-card-preview>
+        </tui-radio-block>
+        <button tuiIconButton appearance="outline" icon="tuiIconTrash" (click)="removeCard(card)"></button>
+    </div>
+    } @empty {
+    <p>Aucune carte enregistrée</p>
+    }
+
+
+</form>

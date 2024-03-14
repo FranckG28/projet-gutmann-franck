@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { ContainerComponent } from '../../components/container/container.component';
 import { appName } from '../../app.config';
 import { TuiBadgedContentModule } from '@taiga-ui/kit';
+import { CardModule } from '../../modules/card/card.module';
 
 @Component({
   selector: 'app-homepage',
@@ -17,7 +18,8 @@ import { TuiBadgedContentModule } from '@taiga-ui/kit';
     RouterModule,
     ContainerComponent,
     TitleComponent,
-    TuiBadgedContentModule
+    TuiBadgedContentModule,
+    CardModule,
   ],
   templateUrl: './homepage.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
