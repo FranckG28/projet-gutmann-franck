@@ -3,17 +3,27 @@
         class="cursor-pointer transition hover:brightness-105" tuiHint="Retour à l'accueil" />
 
     <div class="flex flex-wrap items-center gap-6">
-        <ng-container *ngFor="let entry of menuEntries">
 
-            <button *ngIf="entry.style === 'primary'; else menuEntryLink" tuiButton [routerLink]="entry.path" size="m">
-                {{entry.title}}
-            </button>
+        @for (entry of menuEntries; track entry.path) {
 
-            <ng-template #menuEntryLink>
-                <a tuiLink class="!text-base" [routerLink]="entry.path" routerLinkActive="font-bold">
-                    {{entry.title}}
-                </a>
-            </ng-template>
-        </ng-container>
+        @if (entry.style === 'primary') {
+
+        <button tuiButton [routerLink]="entry.path" size="m">
+            {{entry.title}}
+        </button>
+        } @else {
+
+        @if (!entry.title) {
+        <button tuiIconButton size="s" appearance="flat" [routerLink]="entry.path" [icon]="entry.icon"
+            [routerLinkActive]="'font-bold'"></button>
+        } @else {
+        <a tuiLink class="!text-base" [routerLink]="entry.path" routerLinkActive="font-bold">
+            {{entry.title}}
+        </a>
+        }
+
+        }
+
+        }
     </div>
 </nav>

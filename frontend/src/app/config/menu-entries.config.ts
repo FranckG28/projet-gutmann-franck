@@ -10,6 +10,10 @@ export const menuEntries: MenuEntry[] = [
         path: '/app'
     },
     {
+        icon: 'tuiIconShoppingCartLarge',
+        path: '/cart',
+    },
+    {
         title: 'Créer ma recette',
         path: '/designer',
         style: 'primary'

@@ -19,6 +19,7 @@ import { appTitleProvider } from './providers/app-title.provider';
 import { FiltersService } from './services/filters.service';
 import { catalogOptionsProvider } from './providers/catalog-options.provider';
 import { newCatalogOptions, trendingCatalogOptions } from './config/catalog-options.config';
+import { CartComponent } from './pages/cart/cart.component';
 
 export const routes: Routes = [{
     path: '',
@@ -32,6 +33,10 @@ export const routes: Routes = [{
                     path: '',
                     component: HomepageComponent
                 },
+                {
+                    path: 'cart',
+                    component: CartComponent,
+                }
             ]
         },
         {
@@ -62,7 +67,7 @@ export const routes: Routes = [{
                     component: DesignerComponent,
                 }
             ]
-        }
+        },
     ]
 },
 {

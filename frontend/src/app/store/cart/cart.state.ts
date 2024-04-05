@@ -3,7 +3,7 @@ import { Product } from "../../models/product";
 import { Injectable } from "@angular/core";
 import { AddToCart, RemoveFromCart, UpdateCart } from "./cart.actions";
 
-type CartStateModel = Product[];
+export type CartStateModel = Product[];
 
 @State<CartStateModel>({
     name: 'cart',
