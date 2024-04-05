@@ -9,6 +9,9 @@ import { of } from "rxjs";
 import { TUI_VALIDATION_ERRORS } from "@taiga-ui/kit";
 import { NgDompurifySanitizer } from "@tinkoff/ng-dompurify";
 import { provideHttpClient } from "@angular/common/http";
+import { NgxsModule } from "@ngxs/store";
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { CartState } from "./store/cart/cart.state";
 
 export const appName = "Instagras";
 
@@ -40,6 +43,8 @@ export const appConfig: ApplicationConfig = {
     tuiButtonOptionsProvider({
       shape: 'rounded',
       size: 'm'
-    })
+    }),
+    importProvidersFrom(NgxsModule.forRoot([CartState], { developmentMode: true })),
+    importProvidersFrom(NgxsReduxDevtoolsPluginModule.forRoot())
   ]
 };
