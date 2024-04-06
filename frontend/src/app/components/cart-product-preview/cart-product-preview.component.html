@@ -1,0 +1,10 @@
+<div class="bg-white rounded-xl flex p-1">
+
+    <div class="flex flex-col flex-1">
+        <p class="text-sm font-medium">{{product.name}}</p>
+        <p class="text-xs">x{{count}}</p>
+    </div>
+
+    <app-money [value]="product.price * count" class="text-sm"></app-money>
+
+</div>
