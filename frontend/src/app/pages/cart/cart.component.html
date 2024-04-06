@@ -18,5 +18,8 @@
 
     <p class="text-lg font-medium text-right">Total : <app-money [value]="(total$ | async) ?? 0"></app-money></p>
 
-    <button tuiButton size="l" class="place-self-end">Passer commande</button>
+    <div class="flex justify-end gap-2">
+        <button tuiButton size="l" (click)="clearCart()" appearance="outline">Vider le panier</button>
+        <button tuiButton size="l" class="place-self-end">Passer commande</button>
+    </div>
 </div>

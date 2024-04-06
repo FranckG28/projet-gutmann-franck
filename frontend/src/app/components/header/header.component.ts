@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { TuiButtonModule, TuiHintModule, TuiLinkModule } from '@taiga-ui/core';
 import { appName } from '../../app.config';
 import { menuEntries } from '../../config/menu-entries.config';
+import { CartIconComponent } from '../cart-icon/cart-icon.component';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,8 @@ import { menuEntries } from '../../config/menu-entries.config';
     TuiLinkModule,
     RouterModule,
     TuiButtonModule,
-    TuiHintModule
+    TuiHintModule,
+    CartIconComponent
   ],
   templateUrl: './header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
