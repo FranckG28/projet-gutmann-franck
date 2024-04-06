@@ -6,6 +6,8 @@ import { CartState, CartStateModel } from '../../store/cart/cart.state';
 import { TuiButtonModule, TuiScrollbarModule, TuiSvgModule } from '@taiga-ui/core';
 import { CartProductPreviewComponent } from '../cart-product-preview/cart-product-preview.component';
 import { Product } from '../../models/product';
+import { MoneyComponent } from '../money/money.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
     selector: 'app-cart-preview',
@@ -16,6 +18,8 @@ import { Product } from '../../models/product';
         TuiButtonModule,
         TuiScrollbarModule,
         CartProductPreviewComponent,
+        MoneyComponent,
+        RouterModule
     ],
     templateUrl: './cart-preview.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -23,5 +27,7 @@ import { Product } from '../../models/product';
 export class CartPreviewComponent {
 
     @Select(CartState.list) cart$!: Observable<{ product: Product; count: number }[]>;
+
+    @Select(CartState.total) total$!: Observable<number>;
 
 }

@@ -1,8 +1,15 @@
-<div class="bg-white rounded-xl flex p-1">
+<div class="flex py-2 group">
 
     <div class="flex flex-col flex-1">
         <p class="text-sm font-medium">{{product.name}}</p>
-        <p class="text-xs">x{{count}}</p>
+        <div class="flex gap-1 items-center">
+            <p class="text-xs w-8">x{{count}}</p>
+            <button class="transition-all opacity-0 group-hover:opacity-100" appearance="outline"
+                (click)="removeProduct(product)" tuiIconButton size="s" icon="tuiIconMinus"></button>
+            <button class="transition-all opacity-0 group-hover:opacity-100" appearance="outline"
+                (click)="addProduct(product)" tuiIconButton size="s" icon="tuiIconPlus"></button>
+
+        </div>
     </div>
 
     <app-money [value]="product.price * count" class="text-sm"></app-money>

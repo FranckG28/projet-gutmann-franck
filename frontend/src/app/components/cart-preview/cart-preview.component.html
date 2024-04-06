@@ -1,17 +1,19 @@
-<div class="flex flex-col gap-2 h-full">
-    <p class="font-medium">Panier</p>
+<div class="flex flex-col flex-1">
+    <div class="flex justify-between border-b border-stone-200 pb-2">
+        <p class="font-medium">Panier</p>
+        <app-money [value]="(total$ | async) ?? 0" class="text-base"></app-money>
+    </div>
 
     <tui-scrollbar class="flex-1">
 
-        <div class="flex flex-col gap-2">
+        <div class="flex flex-col divide-y divide-stone-200">
 
             @for (item of cart$ | async; track item.product.id) {
 
-            <app-cart-product-preview [product]="item.product" [count]="item.count"
-                class="bg-white rounded-xl"></app-cart-product-preview>
+            <app-cart-product-preview [product]="item.product" [count]="item.count"></app-cart-product-preview>
 
             } @empty {
-            <div class="flex flex-col my-8 gap-2 justify-center items-center">
+            <div class="flex flex-col my-10 gap-2 justify-center items-center">
                 <tui-svg src="tuiIconShoppingCartLarge"></tui-svg>
                 <p class="text-center">Votre panier est vide</p>
                 <p class="text-sm opacity-50 text-center">Consultez le catalogue pour ajouter des produits au panier !
@@ -22,6 +24,6 @@
 
     </tui-scrollbar>
 
-    <button tuiButton appearance="flat" class="w-full" size="s" [disabled]="(cart$ | async)?.length === 0">Aller au
-        panier</button>
+    <button tuiButton appearance="primary" class="w-full" size="s" [routerLink]="'/cart'"
+        [disabled]="(cart$ | async)?.length === 0">Commander</button>
 </div>

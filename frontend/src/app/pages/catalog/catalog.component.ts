@@ -13,6 +13,7 @@ import { catalogOptionsProvider } from '../../providers/catalog-options.provider
 import { Product } from '../../models/product';
 import { Store } from '@ngxs/store';
 import { AddToCart } from '../../store/cart/cart.actions';
+import { StopPropagationDirective } from '../../directives/stop-propagation.directive';
 
 @Component({
     selector: 'app-catalog',
@@ -24,7 +25,8 @@ import { AddToCart } from '../../store/cart/cart.actions';
         TuiLetModule,
         RouterModule,
         MoneyComponent,
-        TuiButtonModule
+        TuiButtonModule,
+        StopPropagationDirective
     ],
     templateUrl: './catalog.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

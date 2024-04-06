@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
     standalone: true,
     imports: [
         CommonModule,
-        TitleComponent
+        TitleComponent,
     ],
     templateUrl: './cart.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

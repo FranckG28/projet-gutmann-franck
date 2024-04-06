@@ -48,18 +48,27 @@ export class CartState {
     removeFromCart({ getState, setState }: StateContext<CartStateModel>, { payload }: RemoveFromCart) {
         const state = { ...getState() }
 
-        payload.forEach(product => {
-            if (state.products[product.id]) {
-                state.counts[product.id]--;
+        const products = { ...state.products }
+        const counts = { ...state.counts }
 
-                if (state.counts[product.id] === 0) {
-                    delete state.products[product.id];
-                    delete state.counts[product.id];
-                }
+        const newCounts = payload.reduce((acc, product) => {
+            const id = product.id;
+            acc[id] = (acc[id] || state.counts[id] || 0) - 1;
+            if (acc[id] <= 0) {
+                delete acc[id];
             }
-        });
+            return acc;
+        }, counts);
 
-        setState(state);
+        setState({
+            products: Object.keys(products).reduce((acc, product) => {
+                if (newCounts[+product] > 0) {
+                    return { ...acc, [product]: products[+product] }
+                }
+                return acc;
+            }, {}),
+            counts: newCounts
+        })
 
     }
 
@@ -70,10 +79,24 @@ export class CartState {
 
     @Selector()
     static list(state: CartStateModel): { product: Product, count: number }[] {
-        return Object.keys(state.products).map((id) => ({
+        return Object.keys(state.counts).map((id) => ({
             product: state.products[+id],
             count: state.counts[+id]
         }))
+    }
+
+    @Selector()
+    static count(state: CartStateModel): number {
+        return Object.values(state.counts).reduce((acc, count) => acc + count, 0);
+    }
+
+    @Selector()
+    static total(state: CartStateModel): number {
+        return Object.keys(state.products).reduce((acc, id) => {
+            const product = state.products[+id];
+            const count = state.counts[+id];
+            return acc + product.price * count;
+        }, 0);
     }
 
 }
