@@ -19,7 +19,6 @@ import { CardModule } from '../../modules/card/card.module';
     ContainerComponent,
     TitleComponent,
     TuiBadgedContentModule,
-    CardModule,
   ],
   templateUrl: './homepage.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
