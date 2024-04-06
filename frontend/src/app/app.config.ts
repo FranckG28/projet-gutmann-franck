@@ -12,6 +12,7 @@ import { provideHttpClient } from "@angular/common/http";
 import { NgxsModule } from "@ngxs/store";
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { CartState } from "./store/cart/cart.state";
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 
 export const appName = "Instagras";
 
@@ -45,6 +46,7 @@ export const appConfig: ApplicationConfig = {
       size: 'm'
     }),
     importProvidersFrom(NgxsModule.forRoot([CartState], { developmentMode: true })),
-    importProvidersFrom(NgxsReduxDevtoolsPluginModule.forRoot())
+    importProvidersFrom(NgxsReduxDevtoolsPluginModule.forRoot()),
+    importProvidersFrom(NgxsStoragePluginModule.forRoot())
   ]
 };
