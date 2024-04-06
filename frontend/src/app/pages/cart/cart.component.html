@@ -1,5 +1,22 @@
-<app-title>
-    À table !
-</app-title>
+<div class="flex flex-col gap-6 pt-6">
+    <h1>
+        À table !
+    </h1>
 
-<p>{{ cart$ | async | json }}</p>
+    <p class="mb-6">Vous avez {{ count$ | async | i18nPlural: pluralMapping}} dans votre panier.</p>
+
+    <div class="flex flex-col divide-y divide-stone-200">
+        @for (item of cart$ | async; track item.product.id) {
+
+        <app-cart-product-preview [product]="item.product" [count]="item.count"></app-cart-product-preview>
+
+        } @empty {
+        <button tuiButton appearance="primary" size="s" [routerLink]="'/app/trending'" class="my-10">Voir le
+            catalogue</button>
+        }
+    </div>
+
+    <p class="text-lg font-medium text-right">Total : <app-money [value]="(total$ | async) ?? 0"></app-money></p>
+
+    <button tuiButton size="l" class="place-self-end">Passer commande</button>
+</div>

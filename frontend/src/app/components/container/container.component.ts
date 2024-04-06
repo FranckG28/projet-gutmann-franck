@@ -11,5 +11,13 @@ import { RouterOutlet } from '@angular/router';
   ],
   templateUrl: './container.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  styles: [
+    `
+      :host {
+        display: flex;
+        width: 100%;
+      }
+    `
+  ]
 })
 export class ContainerComponent { }
