@@ -6,7 +6,7 @@
     </div>
     <app-product-info [product]="product" class="flex-1"></app-product-info>
 
-    <button tuiButton size="l">
+    <button tuiButton size="l" (click)="addToCart(product)">
         Ajouter au panier •
         <app-money class="ml-2 font-semibold" [value]="product.price"></app-money>
     </button>

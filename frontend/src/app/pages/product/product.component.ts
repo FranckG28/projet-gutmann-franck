@@ -7,6 +7,8 @@ import { ProductInfoComponent } from '../../components/product-info/product-info
 import { ProductPreviewComponent } from '../../components/product-preview/product-preview.component';
 import { TuiButtonModule } from '@taiga-ui/core';
 import { MoneyComponent } from '../../components/money/money.component';
+import { Store } from '@ngxs/store';
+import { AddToCart } from '../../store/cart/cart.actions';
 
 @Component({
     selector: 'app-product',
@@ -28,11 +30,16 @@ export class ProductComponent implements OnChanges {
     productId!: string;
 
     private readonly productService = inject(ProductService);
+    private readonly store = inject(Store);
 
     product$?: Observable<Product>;
 
     ngOnChanges(): void {
         this.product$ = this.productService.getProduct(this.productId);
+    }
+
+    addToCart(product: Product): void {
+        this.store.dispatch(new AddToCart([product]));
     }
 
 }

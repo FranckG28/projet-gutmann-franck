@@ -10,6 +10,9 @@ import { RouterModule } from '@angular/router';
 import { MoneyComponent } from '../../components/money/money.component';
 import { FiltersService } from '../../services/filters.service';
 import { catalogOptionsProvider } from '../../providers/catalog-options.provider';
+import { Product } from '../../models/product';
+import { Store } from '@ngxs/store';
+import { AddToCart } from '../../store/cart/cart.actions';
 
 @Component({
     selector: 'app-catalog',
@@ -38,6 +41,7 @@ import { catalogOptionsProvider } from '../../providers/catalog-options.provider
 export class CatalogComponent {
 
     options = inject(catalogOptionsProvider);
+    store = inject(Store);
 
     products$ = combineLatest([
         inject(ProductService).getProducts(),
@@ -56,4 +60,7 @@ export class CatalogComponent {
         map((products) => this.options.sorter ? products.sort(this.options.sorter) : products)
     );
 
+    addProductToCart(product: Product) {
+        this.store.dispatch(new AddToCart([product]));
+    }
 }

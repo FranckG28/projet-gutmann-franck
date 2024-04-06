@@ -14,9 +14,8 @@ export class CartState {
     constructor() { }
 
     @Action(AddToCart)
-    addToCart({ getState, patchState }: StateContext<CartStateModel>, { payload }: AddToCart) {
-        const state = getState();
-        patchState([...state, ...payload]);
+    addToCart({ getState, setState }: StateContext<CartStateModel>, { payload }: AddToCart) {
+        setState([...getState(), ...payload]);
     }
 
     @Action(RemoveFromCart)
