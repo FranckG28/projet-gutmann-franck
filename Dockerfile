@@ -49,6 +49,7 @@ EXPOSE 80
 
 CMD ["/usr/bin/supervisord"]
 
+# Set environment variables
 ENV NODE_ENV production
 ENV HOST 0.0.0.0
 ENV PORT 3333
