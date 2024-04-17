@@ -39,18 +39,18 @@ COPY --from=builder-backend /app/build /app/backend
 # Set working directory
 WORKDIR /app/backend
 # Install dependencies
-RUN npm ci --production
-
+RUN corepack enable && pnpm install --prod --frozen-lockfile
 
 # Copy nginx configuration
 COPY docker/nginx.conf /etc/nginx/nginx.conf
-
-EXPOSE 80
-
-CMD ["/usr/bin/supervisord"]
 
 # Set environment variables
 ENV NODE_ENV production
 ENV HOST 0.0.0.0
 ENV PORT 3333
 ENV LOG_LEVEL info
+
+EXPOSE 80
+
+CMD ["/usr/bin/supervisord"]
+
