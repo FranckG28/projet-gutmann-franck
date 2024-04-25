@@ -18,4 +18,4 @@ router.get('/', async () => 'Welcome')
 router.get('/products', [ProductsController, 'index'])
 router.get('/ingredients', [IngredientsController, 'index'])
 
-router.get('/login', [AuthController, 'login'])
+router.post('/login', [AuthController, 'login'])

@@ -1,11 +1,9 @@
 import { Injectable } from "@angular/core";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
+import { User } from "../models/user";
 
 export type UserStateModel = {
-    user: {
-        id: string;
-        email: string;
-    }
+    user: User;
     token: string;
 }
 
@@ -19,7 +17,7 @@ const userInitialState: UserStateModel = {
 
 export class SetUser {
     static readonly type = '[User] Set User';
-    constructor(public payload: UserStateModel) { }
+    constructor(public payload: User) { }
 }
 
 export class SetToken {
@@ -36,8 +34,8 @@ export class UserState {
     constructor() { }
 
     @Action(SetUser)
-    setUser({ setState }: StateContext<UserStateModel>, { payload }: SetUser) {
-        setState(payload);
+    setUser({ patchState }: StateContext<UserStateModel>, { payload }: SetUser) {
+        patchState({ user: payload });
     }
 
     @Action(SetToken)

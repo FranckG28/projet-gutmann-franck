@@ -6,3 +6,30 @@
 
     </ng-container>
 </app-title>
+
+<form [formGroup]="formGroup" class="flex flex-col gap-8" (ngSubmit)="submit()">
+    <tui-input formControlName="email" tuiTextfieldIconLeft="tuiIconMail">
+        Email
+        <input tuiTextfield placeholder="contact@franck-g.fr" type="email">
+    </tui-input>
+
+    <tui-input formControlName="password" tuiTextfieldIconLeft="tuiIconLock">
+        Mot de passe
+        <input tuiTextfield type="password" placeholder="********">
+    </tui-input>
+
+    @if ((error$ | async) !== null) {
+    <p class="text-red-500">{{ error$ | async | json }}</p>
+    }
+
+    <div class="flex gap-3 justify-between max-md:flex-col-reverse">
+
+        <button tuiButton type="submit" class="ml-auto" [showLoader]="(isLoading$ | async) ?? false">
+            Se connecter
+        </button>
+
+    </div>
+
+
+
+</form>

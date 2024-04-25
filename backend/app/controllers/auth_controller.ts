@@ -1,11 +1,13 @@
 import { JwtService } from '#services/jwt_service'
 import { loginValidator } from '#validators/auth'
+import { inject } from '@adonisjs/core'
 import type { HttpContext } from '@adonisjs/core/http'
 import { randomUUID } from 'node:crypto'
 
 const DEFAULT_EMAIL = 'contact@franck-g.fr'
 const DEFAULT_PASSWORD = 'password'
 
+@inject()
 export default class AuthController {
   // eslint-disable-next-line prettier/prettier
   constructor(private jwt: JwtService) { }
