@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
 import { Product } from '../../models/product';
 import { Store } from '@ngxs/store';
-import { AddToCart, RemoveFromCart } from '../../store/cart/cart.actions';
 import { MoneyComponent } from '../money/money.component';
 import { TuiButtonModule } from '@taiga-ui/core';
+import { AddToCart, RemoveFromCart } from '../../store/cart.state';
 
 @Component({
     selector: 'app-cart-product-preview',

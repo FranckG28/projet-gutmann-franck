@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Select } from '@ngxs/store';
 import { TuiButtonModule } from '@taiga-ui/core';
 import { TuiBadgedContentModule } from '@taiga-ui/kit';
-import { CartState } from '../../store/cart/cart.state';
+import { CartState } from '../../store/cart.state';
 import { RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
 

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { CartState, CartStateModel } from '../../store/cart/cart.state';
+import { CartState } from '../../store/cart.state';
 import { TuiButtonModule, TuiScrollbarModule, TuiSvgModule } from '@taiga-ui/core';
 import { CartProductPreviewComponent } from '../cart-product-preview/cart-product-preview.component';
 import { Product } from '../../models/product';

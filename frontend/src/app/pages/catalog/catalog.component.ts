@@ -12,8 +12,8 @@ import { FiltersService } from '../../services/filters.service';
 import { catalogOptionsProvider } from '../../providers/catalog-options.provider';
 import { Product } from '../../models/product';
 import { Store } from '@ngxs/store';
-import { AddToCart } from '../../store/cart/cart.actions';
 import { StopPropagationDirective } from '../../directives/stop-propagation.directive';
+import { AddToCart } from '../../store/cart.state';
 
 @Component({
     selector: 'app-catalog',

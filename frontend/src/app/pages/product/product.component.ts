@@ -8,7 +8,7 @@ import { ProductPreviewComponent } from '../../components/product-preview/produc
 import { TuiButtonModule } from '@taiga-ui/core';
 import { MoneyComponent } from '../../components/money/money.component';
 import { Store } from '@ngxs/store';
-import { AddToCart } from '../../store/cart/cart.actions';
+import { AddToCart } from '../../store/cart.state';
 
 @Component({
     selector: 'app-product',

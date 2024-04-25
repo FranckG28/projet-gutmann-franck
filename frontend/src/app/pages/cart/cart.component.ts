@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { TitleComponent } from '../../components/title/title.component';
 import { Select, Store } from '@ngxs/store';
-import { CartState } from '../../store/cart/cart.state';
+import { CartState, EmptyCart } from '../../store/cart.state';
 import { Observable } from 'rxjs';
 import { productsPluralMapping } from '../../config/plurals';
 import { Product } from '../../models/product';
@@ -10,7 +10,6 @@ import { TuiButtonModule, TuiSvgModule } from '@taiga-ui/core';
 import { CartProductPreviewComponent } from '../../components/cart-product-preview/cart-product-preview.component';
 import { RouterModule } from '@angular/router';
 import { MoneyComponent } from '../../components/money/money.component';
-import { EmptyCart } from '../../store/cart/cart.actions';
 
 @Component({
     selector: 'app-cart',

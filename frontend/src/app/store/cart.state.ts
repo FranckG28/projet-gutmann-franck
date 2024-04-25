@@ -1,7 +1,6 @@
 import { Action, Selector, State, StateContext } from "@ngxs/store";
-import { Product } from "../../models/product";
+import { Product } from "../models/product";
 import { Injectable } from "@angular/core";
-import { AddToCart, EmptyCart, RemoveFromCart } from "./cart.actions";
 
 type ProductStateModel = { [key: number]: Product };
 type CountStateModel = { [key: number]: number };
@@ -15,6 +14,21 @@ const defaults = {
     products: {},
     counts: {}
 }
+
+export class AddToCart {
+    static readonly type = '[Cart] Add to Cart';
+    constructor(public payload: Product[]) { }
+}
+
+export class RemoveFromCart {
+    static readonly type = '[Cart] Remove from Cart';
+    constructor(public payload: Product[]) { }
+}
+
+export class EmptyCart {
+    static readonly type = '[Cart] Empty Cart';
+}
+
 
 @State<CartStateModel>({
     name: 'cart',
