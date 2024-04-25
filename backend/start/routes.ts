@@ -9,4 +9,10 @@
 
 import router from '@adonisjs/core/services/router'
 
+const ProductsController = () => import('#controllers/products_controller')
+const IngredientsController = () => import('#controllers/ingredients_controller')
+
 router.get('/', async () => 'It works!')
+
+router.get('/products', [ProductsController, 'index'])
+router.get('/ingredients', [IngredientsController, 'index'])

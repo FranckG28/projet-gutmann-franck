@@ -14,7 +14,7 @@ export class ProductService {
   ) { }
 
   getProducts() {
-    return this.http.get<Product[]>(API_ENDPOINT + '/products.json');
+    return this.http.get<Product[]>(API_ENDPOINT + '/products');
   }
 
   getProduct(productId: string): Observable<Product> {

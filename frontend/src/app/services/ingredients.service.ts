@@ -15,7 +15,7 @@ export class IngredientsService {
   ) { }
 
   getIngredientCategories(): Observable<IngredientsCategory[]> {
-    return this.httpClient.get<IngredientsCategory[]>(API_ENDPOINT + '/ingredients.json');
+    return this.httpClient.get<IngredientsCategory[]>(API_ENDPOINT + '/ingredients');
   }
 
   getAllIngredients(): Observable<{ [id: string]: Ingredient }> {
