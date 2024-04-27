@@ -19,3 +19,4 @@ router.get('/products', [ProductsController, 'index'])
 router.get('/ingredients', [IngredientsController, 'index'])
 
 router.post('/login', [AuthController, 'login'])
+router.post('/register', [AuthController, 'register'])

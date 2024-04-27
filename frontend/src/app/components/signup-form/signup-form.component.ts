@@ -1,13 +1,17 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, inject } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TuiAlertService, TuiButtonModule, TuiErrorModule, TuiHintModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
 import { TuiCountryIsoCode } from '@taiga-ui/i18n';
 import { TUI_COUNTRIES, TuiComboBoxModule, TuiDataListWrapperModule, TuiElasticContainerModule, TuiFieldErrorPipeModule, TuiFilterByInputPipeModule, TuiInputModule, TuiInputPhoneInternationalModule, TuiStepperModule } from '@taiga-ui/kit';
 import { confirmPasswordValidator } from '../../validators/confirmPassword.validator';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, catchError } from 'rxjs';
 import { TuiLetModule, TuiMapperPipeModule } from '@taiga-ui/cdk';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { Signup } from '../../models/signup';
+import { Store } from '@ngxs/store';
+import { SetUser } from '../../store/user.state';
 
 @Component({
   selector: 'app-signup-form',
@@ -46,16 +50,16 @@ export class SignupFormComponent {
   countryIsoCode = TuiCountryIsoCode.FR;
 
   formGroup = new FormGroup({
-    firstName: new FormControl('', Validators.required),
-    lastName: new FormControl('', Validators.required),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(this.PASSWORD_MIN_LENGTH)]),
-    passwordConfirm: new FormControl('', Validators.required),
-    phone: new FormControl('', Validators.required),
-    address: new FormControl('', Validators.required),
-    city: new FormControl('', Validators.required),
-    zipCode: new FormControl('', Validators.required),
-    country: new FormControl('', Validators.required),
+    firstName: new FormControl<string>('', Validators.required),
+    lastName: new FormControl<string>('', Validators.required),
+    email: new FormControl<string>('', [Validators.required, Validators.email]),
+    password: new FormControl<string>('', [Validators.required, Validators.minLength(this.PASSWORD_MIN_LENGTH)]),
+    passwordConfirm: new FormControl<string>('', Validators.required),
+    phone: new FormControl<string>('', Validators.required),
+    address: new FormControl<string>('', Validators.required),
+    city: new FormControl<string>('', Validators.required),
+    zipCode: new FormControl<string>('', Validators.required),
+    country: new FormControl<string>('', Validators.required),
   }, {
     validators: confirmPasswordValidator
   });
@@ -67,6 +71,9 @@ export class SignupFormComponent {
   ]
 
   isLoading$ = new BehaviorSubject<boolean>(false);
+
+  private readonly auth = inject(AuthService);
+  private readonly store = inject(Store);
 
   constructor(
     @Inject(TuiAlertService) private readonly alerts: TuiAlertService,
@@ -88,17 +95,25 @@ export class SignupFormComponent {
     this.isLoading$.next(true);
 
     try {
-      console.log('Form submitted', this.formGroup.value);
 
       if (this.formGroup.invalid) {
         throw new Error('Le formulaire contient des erreurs');
       }
 
-      this.router.navigate(['/account'], {
-        state: {
-          formData: this.formGroup.getRawValue()
-        }
-      })
+      this.auth.signup(this.formGroup.value as Signup)
+        .pipe(
+          catchError((error) => {
+            if (error.status === 400) {
+              throw new Error('Email déjà utilisé');
+            }
+            throw error;
+          })
+        )
+        .subscribe((user) => {
+          this.store.dispatch(new SetUser(user));
+          this.router.navigate(['/app/account']);
+        });
+
 
     } catch (error) {
       console.error(error);
