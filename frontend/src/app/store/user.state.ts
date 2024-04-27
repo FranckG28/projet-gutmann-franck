@@ -3,16 +3,13 @@ import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { User } from "../models/user";
 
 export type UserStateModel = {
-    user: User;
-    token: string;
+    user?: User;
+    token?: string;
 }
 
 const userInitialState: UserStateModel = {
-    user: {
-        id: '',
-        email: '',
-    },
-    token: '',
+    user: undefined,
+    token: undefined
 }
 
 export class SetUser {
@@ -23,6 +20,10 @@ export class SetUser {
 export class SetToken {
     static readonly type = '[User] Set Token';
     constructor(public payload: string) { }
+}
+
+export class Logout {
+    static readonly type = '[User] Logout';
 }
 
 @State<UserStateModel>({
@@ -43,6 +44,11 @@ export class UserState {
         patchState({ token: payload });
     }
 
+    @Action(Logout)
+    logout({ setState }: StateContext<UserStateModel>) {
+        setState(userInitialState);
+    }
+
     @Selector()
     static user(state: UserStateModel) {
         return state.user;
@@ -51,6 +57,11 @@ export class UserState {
     @Selector()
     static token(state: UserStateModel) {
         return state.token;
+    }
+
+    @Selector()
+    static isAuthenticated(state: UserStateModel) {
+        return !!state.token && !!state.user;
     }
 
 }

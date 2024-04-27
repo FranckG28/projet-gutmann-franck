@@ -1,7 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { TitleComponent } from '../title/title.component';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { User } from '../../models/user';
+import { UserState } from '../../store/user.state';
 
 @Component({
   selector: 'app-account',
@@ -15,21 +18,6 @@ import { TitleComponent } from '../title/title.component';
 })
 export class AccountComponent {
 
-  formData?: { [key: string]: string };
-  firstName?: string;
-
-  constructor(
-    private readonly router: Router,
-  ) {
-    const state = this.router.getCurrentNavigation()?.extras.state as Partial<AccountComponent>;
-
-    if (!state) {
-      this.router.navigate(['/'])
-      return;
-    }
-
-    this.formData = state.formData;
-    this.firstName = this.formData?.['firstName'] ?? '';
-  }
+  @Select(UserState.user) user$!: Observable<User>;
 
 }

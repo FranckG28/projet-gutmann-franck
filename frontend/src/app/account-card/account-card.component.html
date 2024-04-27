@@ -1,0 +1,42 @@
+<ng-container *tuiLet="user$ | async as user">
+
+    <tui-hosted-dropdown tuiDropdownAlign="right" [content]="dropdown" [sided]="true" [(open)]="open">
+        <button appearance="flat" size="l" tuiButton type="button" [icon]="user ? userAvatar : 'tuiIconUserLarge'"
+            [pseudoActive]="open || null">
+            @if (user) {
+            {{ user.email }}
+            } @else {
+            Se connecter
+            }
+        </button>
+    </tui-hosted-dropdown>
+
+    <ng-template #dropdown>
+        <tui-data-list>
+            @if (user) {
+            <tui-opt-group>
+                <button tuiOption routerLink="/app/account">
+                    Mon compte
+                </button>
+                <button tuiOption (click)="logout()">
+                    Se déconnecter
+                </button>
+            </tui-opt-group>
+            } @else {
+            <tui-opt-group>
+                <button tuiOption routerLink="/login">
+                    Se connecter
+                </button>
+                <button tuiOption routerLink="/signup">
+                    S'inscrire
+                </button>
+            </tui-opt-group>
+            }
+        </tui-data-list>
+    </ng-template>
+
+    <ng-template #userAvatar>
+        <tui-avatar [text]="user?.email ?? ''" size="s"></tui-avatar>
+    </ng-template>
+
+</ng-container>

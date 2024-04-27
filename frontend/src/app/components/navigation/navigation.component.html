@@ -1,11 +1,11 @@
-<div class="flex flex-col p-4 py-8 sticky top-0">
+<div class="flex flex-col p-4 py-8 sticky top-0 gap-2">
     <img routerLink="/" src="assets/instagras.svg" alt="Instagras logo" width="120" height="60"
         class="cursor-pointer transition mb-4 ml-6" />
 
     @for (entry of menuEntries; track entry.path) {
 
     @if (entry.style === 'primary') {
-    <button tuiButton [routerLink]="entry.path" class="mt-2" [routerLinkActive]="'active'">
+    <button tuiButton [routerLink]="entry.path" [routerLinkActive]="'active'">
         {{entry.title}}
     </button>
     } @else {
@@ -16,4 +16,6 @@
     }
 
     }
+
+    <app-account-card></app-account-card>
 </div>

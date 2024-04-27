@@ -1,5 +1,5 @@
 <app-title>
     Votre compte
-    <p *ngIf="formData" ngProjectAs="content">Bonjour {{firstName}}, bienvenue sur votre compte.</p>
+    <p *ngIf="user$ | async as user" ngProjectAs="content">Bonjour {{user.email}}, bienvenue sur votre compte.</p>
 </app-title>
-<pre>{{formData | json}}</pre>
+<pre>{{user$ | async | json}}</pre>
