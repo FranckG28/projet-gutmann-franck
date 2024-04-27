@@ -21,7 +21,7 @@ export const isNotConnectedGuard: CanActivateFn = () => {
     map(isConnected => !isConnected),
     tap(isNotConnected => {
       if (!isNotConnected) {
-        router.navigate(['/login']);
+        router.navigate(['/app/account']);
       }
     })
   );
