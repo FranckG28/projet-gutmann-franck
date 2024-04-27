@@ -26,7 +26,7 @@ export default class AuthController {
   }
 
   async register(ctx: HttpContext) {
-    const { email, password } = await ctx.request.validateUsing(registerValidator)
+    const { email } = await ctx.request.validateUsing(registerValidator)
 
     if (email === DEFAULT_EMAIL) {
       return ctx.response.badRequest('Email already exists')
