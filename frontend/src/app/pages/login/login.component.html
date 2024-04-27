@@ -8,6 +8,11 @@
 </app-title>
 
 <form [formGroup]="formGroup" class="flex flex-col gap-8" (ngSubmit)="submit()">
+
+    <pre>
+        {{ 'contact@franck-g.fr:admin' | json }}
+    </pre>
+
     <tui-input formControlName="email" tuiTextfieldIconLeft="tuiIconMail">
         Email
         <input tuiTextfield placeholder="contact@franck-g.fr" type="email">

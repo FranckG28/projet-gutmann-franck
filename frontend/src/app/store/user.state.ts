@@ -1,6 +1,7 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { User } from "../models/user";
+import { Router } from "@angular/router";
 
 export type UserStateModel = {
     user?: User;
@@ -32,6 +33,9 @@ export class Logout {
 })
 @Injectable()
 export class UserState {
+
+    private readonly router = inject(Router);
+
     constructor() { }
 
     @Action(SetUser)
@@ -46,6 +50,7 @@ export class UserState {
 
     @Action(Logout)
     logout({ setState }: StateContext<UserStateModel>) {
+        this.router.navigate(['/']);
         setState(userInitialState);
     }
 

@@ -20,6 +20,7 @@ import { FiltersService } from './services/filters.service';
 import { catalogOptionsProvider } from './providers/catalog-options.provider';
 import { newCatalogOptions, trendingCatalogOptions } from './config/catalog-options.config';
 import { CartComponent } from './pages/cart/cart.component';
+import { isConnectedGuard, isNotConnectedGuard } from './guards/isConnected.guard';
 
 export const routes: Routes = [{
     path: '',
@@ -40,12 +41,18 @@ export const routes: Routes = [{
             component: ContainerComponent,
             children: [
                 {
-                    path: 'login',
-                    component: LoginComponent
-                },
-                {
-                    path: 'signup',
-                    component: SignupComponent
+                    path: '',
+                    canActivate: [isNotConnectedGuard],
+                    children: [
+                        {
+                            path: 'login',
+                            component: LoginComponent
+                        },
+                        {
+                            path: 'signup',
+                            component: SignupComponent
+                        },
+                    ]
                 },
                 {
                     path: 'cart',
@@ -56,6 +63,7 @@ export const routes: Routes = [{
         {
             path: '',
             component: SidebarLayoutComponent,
+            canActivate: [isConnectedGuard],
             children: [
                 {
                     path: '',
@@ -109,6 +117,7 @@ export const routes: Routes = [{
         {
             path: 'account',
             component: AccountComponent,
+            canActivate: [isConnectedGuard]
         },
         {
             path: 'product',

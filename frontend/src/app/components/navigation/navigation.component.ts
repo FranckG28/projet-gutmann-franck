@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { appEntries } from '../../config/menu-entries.config';
 import { RouterModule } from '@angular/router';
 import { TuiButtonModule, tuiButtonOptionsProvider } from '@taiga-ui/core';
-import { AccountCardComponent } from '../../account-card/account-card.component';
+import { AccountCardComponent } from '../account-card/account-card.component';
 
 @Component({
     selector: 'app-navigation',
