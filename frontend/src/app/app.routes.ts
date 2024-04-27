@@ -21,6 +21,7 @@ import { catalogOptionsProvider } from './providers/catalog-options.provider';
 import { newCatalogOptions, trendingCatalogOptions } from './config/catalog-options.config';
 import { CartComponent } from './pages/cart/cart.component';
 import { isConnectedGuard, isNotConnectedGuard } from './guards/isConnected.guard';
+import { SearchComponent } from './pages/search/search.component';
 
 export const routes: Routes = [{
     path: '',
@@ -113,6 +114,10 @@ export const routes: Routes = [{
                     useValue: newCatalogOptions,
                 }
             ]
+        },
+        {
+            path: 'search',
+            component: SearchComponent
         },
         {
             path: 'account',
