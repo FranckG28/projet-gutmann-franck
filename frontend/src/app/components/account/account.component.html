@@ -1,4 +1,4 @@
-<app-title>
+<app-title class="px-8 block">
     Votre compte
     <p *ngIf="user$ | async as user" ngProjectAs="content">Bonjour {{user.email}}, bienvenue sur votre compte.</p>
 </app-title>
