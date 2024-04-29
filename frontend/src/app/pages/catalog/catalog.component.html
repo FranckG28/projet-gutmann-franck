@@ -7,25 +7,4 @@
     </div>
 </app-title>
 
-<ng-container *ngIf="products$ | async as products">
-
-    @if (!products?.length) {
-    <p class="text-center">Aucun burger ne correspond à votre recherche.</p>
-    } @else {
-    <div class="flex flex-col divide-y divide-stone-200">
-        @for (product of products; track product.id) {
-        <app-product-card [routerLink]="['/app','product',product.id]" [product]="product"
-            class="animate-in fade-in slide-in-from-top-2 transition-all cursor-pointer hover:bg-stone-200/20">
-
-            <button tuiButton size="s" appearance="secondary" ngProjectAs="actions" stopPropagation
-                (click)="addProductToCart(product)">
-                Ajouter •
-                <p class="font-semibold ml-1 text-sm"><app-money [value]=" product.price"></app-money></p>
-            </button>
-
-        </app-product-card>
-        }
-    </div>
-    }
-
-</ng-container>
+<app-product-list [products]="(products$ | async) ?? []"></app-product-list>
