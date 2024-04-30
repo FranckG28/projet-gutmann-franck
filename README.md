@@ -2,6 +2,8 @@
 
 Instagras is a social burgers network where you can share and taste burgers with the world.
 
+    ⚠️ Don't use real password to register, the app is not secure.
+
 ## Development installation
 
 ### Frontend
