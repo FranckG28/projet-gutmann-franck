@@ -12,7 +12,8 @@
             Abandonner
         </button>
 
-        <button tuiButton appearance="primary" (click)="validate()" iconRight="tuiIconArrowRight">
+        <button tuiButton appearance="primary" (click)="validate()" iconRight="tuiIconArrowRight"
+            [disabled]="designerService.list.length < 3">
             Déguster
         </button>
     </div>

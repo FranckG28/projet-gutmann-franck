@@ -5,7 +5,7 @@
         <span class="text-lg font-medium tracking-tight">{{product.name}}</span>
         <span class="opacity-60 text-sm ml-2">
             <app-product-author [user]="product.user" class=" hover:opacity-100 hover:underline"></app-product-author>
-            • {{product.createdOn | timeAgo}}
+            • {{product.createdAt | timeAgo}}
         </span>
     <p>
 

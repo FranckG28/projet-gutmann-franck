@@ -1,0 +1,20 @@
+<form class="flex flex-col gap-6" [formGroup]="formGroup" (ngSubmit)="validate()">
+
+    <img src="assets/instagras_icon.svg" alt="Instagras logo" class="w-10 aspect-square" />
+
+    <h2>Comment allez vous appeler ce burger ?</h2>
+
+    <tui-input formControlName="name" required [autofocus]="true">
+        Entrez un nom
+    </tui-input>
+
+    <tui-textarea formControlName="description">
+        Ajouter un message
+    </tui-textarea>
+
+    <div class="flex max-md:flex-col md:justify-between">
+        <button tuiButton appearance="outline" (click)="cancel()">Annuler</button>
+        <button tuiButton type="submit" [disabled]="formGroup.invalid">Enregistrer</button>
+    </div>
+
+</form>

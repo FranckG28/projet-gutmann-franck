@@ -10,7 +10,7 @@ export interface Product {
     user?: User;
     userId: number;
     // rating: number;
-    createdOn: string;
+    createdAt: string;
     // likes: number;
     // comments: number;
     // orders: number;

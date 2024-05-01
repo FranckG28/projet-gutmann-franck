@@ -4,7 +4,7 @@ export const newCatalogOptions: CatalogOptions = {
     title: 'Dernières recettes',
     description: 'Découvrez les dernières recettes publiés par la communauté.',
     sorter: (a, b) => {
-        return new Date(b.createdOn).getTime() - new Date(a.createdOn).getTime();
+        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
     }
 };
 

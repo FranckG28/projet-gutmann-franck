@@ -27,7 +27,7 @@ export class ProductService {
 
   addProduct(product: {
     name: string,
-    description: string,
+    description?: string,
     ingredients: number[]
   }): Observable<Product> {
     return this.http.post<Product>(API_ENDPOINT + '/products', product);
