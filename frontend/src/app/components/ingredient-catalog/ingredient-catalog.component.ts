@@ -10,7 +10,7 @@ import {
     CdkDropList,
 } from '@angular/cdk/drag-drop';
 import { IngredientTileComponent } from '../ingredient-tile/ingredient-tile.component';
-import { BehaviorSubject, debounceTime, distinctUntilChanged, of, switchMap } from 'rxjs';
+import { BehaviorSubject, debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
 
 @Component({
@@ -32,16 +32,15 @@ import { SearchBarComponent } from '../search-bar/search-bar.component';
 })
 export class IngredientCatalogComponent {
 
+    private readonly ingredientsService = inject(IngredientsService);
     search$ = new BehaviorSubject<string>('');
-
-    categories$ = inject(IngredientsService).categories();
+    categories$ = this.ingredientsService.categories();
 
     searchResults$ = this.search$.pipe(
         debounceTime(300),
         distinctUntilChanged(),
         switchMap((search) => {
-            // TODO : search from API
-            return of([]);
+            return this.ingredientsService.search(search);
         })
     );
 

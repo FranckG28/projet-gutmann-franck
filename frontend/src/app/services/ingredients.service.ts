@@ -18,6 +18,10 @@ export class IngredientsService {
     return this.httpClient.get<Ingredient[]>(API_ENDPOINT + '/ingredients');
   }
 
+  search(search: string): Observable<Ingredient[]> {
+    return this.httpClient.get<Ingredient[]>(API_ENDPOINT + `/ingredients?search=${search}`);
+  }
+
   categories(): Observable<IngredientsCategory[]> {
     return this.httpClient.get<IngredientsCategory[]>(API_ENDPOINT + '/categories');
   }
