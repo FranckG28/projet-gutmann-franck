@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { TitleComponent } from '../../components/title/title.component';
-import { TuiButtonModule, TuiDialogService, tuiButtonOptionsProvider } from '@taiga-ui/core';
+import { TuiAlertService, TuiButtonModule, TuiDialogService, tuiButtonOptionsProvider } from '@taiga-ui/core';
 import { IngredientTileComponent } from '../../components/ingredient-tile/ingredient-tile.component';
 import { MoneyComponent } from '../../components/money/money.component';
 import { DesignerDroplistComponent } from '../../components/designer-droplist/designer-droplist.component';
@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 import { DesignerConfigComponent } from '../../components/designer-config/designer-config.component';
 import { TUI_PROMPT } from '@taiga-ui/kit';
 import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
+import { Store } from '@ngxs/store';
+import { AddToCart } from '../../store/cart.state';
 
 @Component({
     selector: 'app-designer',
@@ -38,6 +40,8 @@ export class DesignerComponent {
     private readonly productService = inject(ProductService);
     private readonly router = inject(Router);
     private readonly dialogs = inject(TuiDialogService);
+    private readonly store = inject(Store);
+    private readonly toasts = inject(TuiAlertService);
 
     exit() {
         this.dialogs.open<boolean>(TUI_PROMPT, {
@@ -71,7 +75,15 @@ export class DesignerComponent {
                 description,
                 ingredients: this.designerService.list.map(ingredient => ingredient.id)
             }).subscribe((product) => {
-                this.router.navigate(['/app/product', product.id]);
+
+                if (!product) {
+                    this.toasts.open('Erreur lors de la création du produit', { status: 'error' });
+                    return;
+                }
+
+                this.toasts.open('Votre burger à été publié !', { status: 'success' });
+                this.store.dispatch(new AddToCart([product]));
+                this.router.navigate(['/cart']);
             });
 
         });
