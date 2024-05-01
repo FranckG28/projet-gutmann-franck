@@ -15,8 +15,14 @@ const IngredientsController = () => import('#controllers/ingredients_controller'
 
 router.get('/', async () => 'Welcome')
 
-router.get('/products', [ProductsController, 'index'])
-router.get('/ingredients', [IngredientsController, 'index'])
+router.get('ingredients', [IngredientsController, 'index'])
+router.get('categories', [IngredientsController, 'categories'])
 
-router.post('/login', [AuthController, 'login'])
-router.post('/register', [AuthController, 'register'])
+router.get('products', [ProductsController, 'index'])
+
+router
+  .group(() => {
+    router.post('login', [AuthController, 'login'])
+    router.post('register', [AuthController, 'register'])
+  })
+  .prefix('auth')

@@ -1,4 +1,4 @@
-<img src="assets/ingredients/{{ingredient.id}}.png" alt="{{ingredient.name}}" class="w-full" [tuiHint]="hint">
+<img [src]="ingredient.imageUrl" [alt]="ingredient.name" class="w-full" [tuiHint]="hint">
 
 <ng-template #hint>
     {{ingredient.name}}

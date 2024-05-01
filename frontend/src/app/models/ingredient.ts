@@ -1,7 +1,12 @@
+import { IngredientsCategory } from "./ingredients-category";
+
 export interface Ingredient {
     id: string;
     name: string;
-    price: number;
+    price: string;
     description: string;
-    thumbnail?: string;
+    thumbnailUrl?: string;
+    imageUrl?: string;
+    category?: IngredientsCategory;
+    categoryId: number;
 }

@@ -29,7 +29,7 @@ export class DesignerService {
   }
 
   get total(): number {
-    return this.list.reduce((acc, item) => acc + item.price, 0);
+    return this.list.reduce((acc, item) => acc + (+item.price), 0);
   }
 
 }

@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, manyToMany, hasOne, beforeSave } from '@adonisjs/lucid/orm'
+import { BaseModel, column, manyToMany, beforeSave, belongsTo } from '@adonisjs/lucid/orm'
 import Ingredient from './ingredient.js'
 import * as relations from '@adonisjs/lucid/types/relations'
 import User from './user.js'
@@ -33,8 +33,8 @@ export default class Product extends BaseModel {
     }
   }
 
-  @hasOne(() => User)
-  declare author: relations.HasOne<typeof User>
+  @belongsTo(() => User)
+  declare author: relations.BelongsTo<typeof User>
 
   // todo : ratings & comments
 

@@ -3,8 +3,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TuiFilterModule } from '@taiga-ui/kit';
 import { FiltersService } from '../../services/filters.service';
-import { IngredientsService } from '../../services/ingredients.service';
-import { map } from 'rxjs';
+import { of } from 'rxjs';
 
 @Component({
     selector: 'app-ingredient-filters',
@@ -22,8 +21,6 @@ export class IngredientFiltersComponent {
 
     readonly formControl = inject(FiltersService).formControl;
 
-    readonly ingredients$ = inject(IngredientsService).getAllIngredients().pipe(
-        map((ingredients) => Object.values(ingredients))
-    );
+    readonly ingredients$ = of([]);
 
 }

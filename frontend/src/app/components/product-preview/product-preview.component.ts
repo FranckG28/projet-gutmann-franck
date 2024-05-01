@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core
 import { Product } from '../../models/product';
 import { IngredientPreviewComponent } from '../ingredient-preview/ingredient-preview.component';
 import { IngredientsService } from '../../services/ingredients.service';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Ingredient } from '../../models/ingredient';
 
 @Component({
@@ -20,5 +20,12 @@ export class ProductPreviewComponent {
 
     @Input() product!: Product;
 
-    ingredients$: Observable<{ [id: string]: Ingredient }> = inject(IngredientsService).getAllIngredients();
+    ingredients$: Observable<{ [id: string]: Ingredient }> = inject(IngredientsService).all().pipe(
+        map((ingredients) => {
+            return ingredients.reduce((acc, ingredient) => {
+                acc[ingredient.id] = ingredient;
+                return acc;
+            }, {} as { [id: string]: Ingredient });
+        })
+    );
 }

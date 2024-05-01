@@ -1,5 +1,8 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@adonisjs/lucid/orm'
+import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
+import Category from './category.js'
+import * as relations from '@adonisjs/lucid/types/relations'
+import vine from '@vinejs/vine'
 
 export default class Ingredient extends BaseModel {
   @column({ isPrimary: true })
@@ -21,7 +24,30 @@ export default class Ingredient extends BaseModel {
   declare description: string
 
   @column()
-  declare thumbnail: string
+  declare thumbnailUrl: string
 
-  // todo : category
+  @column()
+  declare imageUrl: string
+
+  @column()
+  declare categoryId: number
+
+  @belongsTo(() => Category)
+  declare category: relations.BelongsTo<typeof Category>
+
+  private static schema = vine.object({
+    name: vine.string(),
+    price: vine.number(),
+    description: vine.string(),
+    image_url: vine.string(),
+    thumbnail_url: vine.string(),
+    category: vine.object({
+      name: vine.string(),
+      description: vine.string().optional(),
+    }),
+  })
+
+  static get arrayValidator() {
+    return vine.compile(vine.array(this.schema))
+  }
 }

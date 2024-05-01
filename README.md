@@ -39,13 +39,13 @@ pnpm i
 The app it configured to use a PostgreSQL database, so you should provide connexion info to a PostgreSQL database.
 A free Postgres database on [Render](https://render.com) can do the work, but lasts only 90 days.
 
-**3. Run migrations to setup the db**
+**3. Run migrations and setup the db**
 
 ```
-node ace migration:run
+node ace migration:fresh --seed
 ```
 
-**4. Run the server**
+**5. Run the server**
 
 ```
 node ace serve

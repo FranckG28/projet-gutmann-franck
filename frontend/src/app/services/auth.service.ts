@@ -13,11 +13,11 @@ export class AuthService {
   ) { }
 
   login(email: string, password: string) {
-    return this.httpClient.post<User>('/api/login', { email, password });
+    return this.httpClient.post<User>('/api/auth/login', { email, password });
   }
 
   signup(data: Signup) {
-    return this.httpClient.post<User>('/api/register', data);
+    return this.httpClient.post<User>('/api/auth/register', data);
   }
 
 }

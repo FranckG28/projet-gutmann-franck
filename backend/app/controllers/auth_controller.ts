@@ -1,5 +1,5 @@
 import { JwtService } from '#services/jwt_service'
-import { loginValidator, registerValidator } from '#validators/auth'
+import { loginValidator, registerValidator } from '#validators/auth.validators'
 import { inject } from '@adonisjs/core'
 import type { HttpContext } from '@adonisjs/core/http'
 import { randomUUID } from 'node:crypto'

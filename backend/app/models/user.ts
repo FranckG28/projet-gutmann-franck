@@ -1,5 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@adonisjs/lucid/orm'
+import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
+import Product from './product.js'
+import * as relations from '@adonisjs/lucid/types/relations'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -37,4 +39,7 @@ export default class User extends BaseModel {
 
   @column()
   declare country: string
+
+  @hasMany(() => Product)
+  declare products: relations.HasMany<typeof Product>
 }
