@@ -1,10 +1,10 @@
+@if (product) {
 <div class="flex flex-col flex-1">
 
     <p>
         <span class="text-lg font-medium tracking-tight">{{product.name}}</span>
         <span class="opacity-60 text-sm ml-2">
-            <app-product-author [author]="product.author"
-                class=" hover:opacity-100 hover:underline"></app-product-author>
+            <app-product-author [user]="product.user" class=" hover:opacity-100 hover:underline"></app-product-author>
             • {{product.createdOn | timeAgo}}
         </span>
     <p>
@@ -17,3 +17,4 @@
 
     </app-product-stats>
 </div>
+}

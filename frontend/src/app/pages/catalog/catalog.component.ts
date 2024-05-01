@@ -31,22 +31,24 @@ export class CatalogComponent {
 
     options = inject(catalogOptionsProvider);
 
-    products$ = combineLatest([
-        inject(ProductService).getProducts(),
-        inject(FiltersService).filters$
-    ]).pipe(
-        map(([products, filters]) => {
-            return products.filter((product) => {
+    products$ = inject(ProductService).getProducts();
 
-                if (products && (filters ?? []).length > 0) {
-                    return (filters ?? []).every((filter) => product.recipe.includes(filter.id));
-                }
+    // combineLatest([
+    //     inject(ProductService).getProducts(),
+    //     inject(FiltersService).filters$
+    // ]).pipe(
+    //     map(([products, filters]) => {
+    //         return products.filter((product) => {
 
-                return products;
-            });
-        }),
-        map((products) => this.options.sorter ? products.sort(this.options.sorter) : products)
-    );
+    //             if (products && (filters ?? []).length > 0) {
+    //                 return (filters ?? []).every((filter) => product.ingredients.includes(filter.id));
+    //             }
+
+    //             return products;
+    //         });
+    //     }),
+    //     map((products) => this.options.sorter ? products.sort(this.options.sorter) : products)
+    // );
 
 
 }

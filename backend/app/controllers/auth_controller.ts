@@ -1,11 +1,7 @@
+import User from '#models/user'
 import { JwtService } from '#services/jwt_service'
-import { loginValidator, registerValidator } from '#validators/auth.validators'
 import { inject } from '@adonisjs/core'
 import type { HttpContext } from '@adonisjs/core/http'
-import { randomUUID } from 'node:crypto'
-
-const DEFAULT_EMAIL = 'contact@franck-g.fr'
-const DEFAULT_PASSWORD = 'password'
 
 @inject()
 export default class AuthController {
@@ -13,28 +9,54 @@ export default class AuthController {
   constructor(private jwt: JwtService) { }
 
   async login(ctx: HttpContext) {
-    const { email, password } = await ctx.request.validateUsing(loginValidator)
+    const { email, password } = await ctx.request.validateUsing(User.loginValidator)
 
-    if (email !== DEFAULT_EMAIL || password !== DEFAULT_PASSWORD) {
+    let user: User
+
+    try {
+      user = await User.findByOrFail('email', email)
+    } catch {
       return ctx.response.unauthorized('Invalid credentials')
     }
 
-    const user = { email, id: randomUUID() }
-    const jwt = this.jwt.generateAccessToken(user)
+    if (user.password !== password) {
+      return ctx.response.unauthorized('Invalid credentials')
+    }
 
-    return ctx.response.header('Authorization', `Bearer ${jwt}`).send(user)
+    const jwt = this.jwt.generateAccessToken(user.$attributes)
+
+    return ctx.response.header('Authorization', `Bearer ${jwt}`).send(user.$attributes)
   }
 
   async register(ctx: HttpContext) {
-    const { email } = await ctx.request.validateUsing(registerValidator)
+    const data = await ctx.request.validateUsing(User.registerValidator)
 
-    if (email === DEFAULT_EMAIL) {
-      return ctx.response.badRequest('Email already exists')
+    if (data.password !== data.passwordConfirm) {
+      return ctx.response.badRequest('Passwords do not match')
     }
 
-    const user = { email, id: randomUUID() }
-    const jwt = this.jwt.generateAccessToken(user)
+    if (await User.findBy('email', data.email)) {
+      return ctx.response.badRequest('User already exists')
+    }
 
-    return ctx.response.header('Authorization', `Bearer ${jwt}`).send(user)
+    const user = await User.create({
+      email: data.email,
+      password: data.password,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      phone: data.phone,
+      address: data.address,
+      city: data.city,
+      zipCode: data.zipCode,
+      country: data.country,
+    })
+
+    if (!user) {
+      return ctx.response.internalServerError('User could not be created')
+    }
+
+    const jwt = this.jwt.generateAccessToken(user.$attributes)
+
+    return ctx.response.header('Authorization', `Bearer ${jwt}`).send(user.$attributes)
   }
 }

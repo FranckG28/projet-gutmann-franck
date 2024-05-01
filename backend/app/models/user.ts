@@ -2,6 +2,7 @@ import { DateTime } from 'luxon'
 import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
 import Product from './product.js'
 import * as relations from '@adonisjs/lucid/types/relations'
+import vine from '@vinejs/vine'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -20,7 +21,7 @@ export default class User extends BaseModel {
   declare password: string
 
   @column()
-  declare fistName: string
+  declare firstName: string
 
   @column()
   declare lastName: string
@@ -42,4 +43,26 @@ export default class User extends BaseModel {
 
   @hasMany(() => Product)
   declare products: relations.HasMany<typeof Product>
+
+  static loginValidator = vine.compile(
+    vine.object({
+      email: vine.string().email().trim(),
+      password: vine.string().minLength(6),
+    })
+  )
+
+  static registerValidator = vine.compile(
+    vine.object({
+      firstName: vine.string(),
+      lastName: vine.string(),
+      email: vine.string().email().trim(),
+      password: vine.string().minLength(6),
+      passwordConfirm: vine.string(),
+      phone: vine.string(),
+      address: vine.string(),
+      city: vine.string(),
+      zipCode: vine.string(),
+      country: vine.string(),
+    })
+  )
 }

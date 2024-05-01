@@ -18,7 +18,7 @@ export default class Ingredient extends BaseModel {
   declare name: string
 
   @column()
-  declare price: number
+  declare price: string
 
   @column()
   declare description: string

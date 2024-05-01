@@ -8,6 +8,7 @@
 */
 
 import router from '@adonisjs/core/services/router'
+import { middleware } from './kernel.js'
 
 const AuthController = () => import('#controllers/auth_controller')
 const ProductsController = () => import('#controllers/products_controller')
@@ -19,6 +20,7 @@ router.get('ingredients', [IngredientsController, 'index'])
 router.get('categories', [IngredientsController, 'categories'])
 
 router.get('products', [ProductsController, 'index'])
+router.post('products', [ProductsController, 'save']).middleware(middleware.jwt())
 
 router
   .group(() => {

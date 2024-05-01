@@ -1,1 +1,3 @@
-<a>{{author}}</a>
+@if (user) {
+<a>{{('@'+user.firstName+user.lastName) | lowercase}}</a>
+}

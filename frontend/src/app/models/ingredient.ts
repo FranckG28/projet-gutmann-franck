@@ -1,7 +1,7 @@
 import { IngredientsCategory } from "./ingredients-category";
 
 export interface Ingredient {
-    id: string;
+    id: number;
     name: string;
     price: string;
     description: string;

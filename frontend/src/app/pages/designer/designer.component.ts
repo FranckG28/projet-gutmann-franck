@@ -6,6 +6,8 @@ import { IngredientTileComponent } from '../../components/ingredient-tile/ingred
 import { MoneyComponent } from '../../components/money/money.component';
 import { DesignerDroplistComponent } from '../../components/designer-droplist/designer-droplist.component';
 import { DesignerService } from './designer.service';
+import { ProductService } from '../../services/product.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-designer',
@@ -30,17 +32,25 @@ import { DesignerService } from './designer.service';
 export class DesignerComponent {
 
     readonly designerService = inject(DesignerService);
+    private readonly productService = inject(ProductService);
+    private readonly router = inject(Router);
 
     exit() {
 
     }
 
-    save() {
+    validate(): void {
+        if (this.designerService.list.length === 0) {
+            return;
+        }
 
-    }
-
-    validate() {
-
+        this.productService.addProduct({
+            name: 'Custom product',
+            description: 'Custom product description',
+            ingredients: this.designerService.list.map(ingredient => ingredient.id)
+        }).subscribe((product) => {
+            this.router.navigate(['/app/product', product.id]);
+        });
     }
 
 }

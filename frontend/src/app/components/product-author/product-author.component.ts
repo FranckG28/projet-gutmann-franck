@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { User } from '../../models/user';
 
 @Component({
     selector: 'app-product-author',
@@ -12,6 +13,6 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 })
 export class ProductAuthorComponent {
 
-    @Input() author!: string;
+    @Input() user: User | undefined;
 
 }

@@ -1,13 +1,11 @@
-<ng-container *ngIf="ingredients$ | async as ingredients">
-    @if (product.recipe.length) {
-    <div class="flex flex-col -space-y-2 max-w-40">
+@if (product.ingredients.length) {
+<div class="flex flex-col -space-y-2 max-w-40">
 
-        @for (ingredient of product.recipe; track ingredient) {
-        <app-ingredient-preview [ingredient]="ingredients[ingredient]"></app-ingredient-preview>
-        }
-
-    </div>
-    } @else {
-    <p class="text-xl flex">?</p>
+    @for (ingredient of product.ingredients; track ingredient) {
+    <app-ingredient-preview [ingredient]="ingredient"></app-ingredient-preview>
     }
-</ng-container>
+
+</div>
+} @else {
+<p class="text-xl flex">?</p>
+}

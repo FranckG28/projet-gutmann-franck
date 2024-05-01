@@ -12,6 +12,7 @@ export const trendingCatalogOptions: CatalogOptions = {
     title: 'Tendances',
     description: 'Les recettes les plus likées du moment 🔥',
     sorter: (a, b) => {
-        return b.likes - a.likes;
+        return 0
+        // return b.likes - a.likes;
     }
 };

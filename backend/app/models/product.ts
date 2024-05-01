@@ -1,8 +1,9 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, manyToMany, beforeSave, belongsTo } from '@adonisjs/lucid/orm'
+import { BaseModel, column, manyToMany, belongsTo } from '@adonisjs/lucid/orm'
 import Ingredient from './ingredient.js'
 import * as relations from '@adonisjs/lucid/types/relations'
 import User from './user.js'
+import vine from '@vinejs/vine'
 
 export default class Product extends BaseModel {
   @column({ isPrimary: true })
@@ -26,15 +27,11 @@ export default class Product extends BaseModel {
   @manyToMany(() => Ingredient)
   declare ingredients: relations.ManyToMany<typeof Ingredient>
 
-  @beforeSave()
-  static async setPrice(product: Product) {
-    if (product.$dirty.ingredients) {
-      product.price = product.ingredients.reduce((acc, ingredient) => acc + ingredient.price, 0)
-    }
-  }
-
   @belongsTo(() => User)
-  declare author: relations.BelongsTo<typeof User>
+  declare user: relations.BelongsTo<typeof User>
+
+  @column()
+  declare userId: number
 
   // todo : ratings & comments
 
@@ -43,4 +40,12 @@ export default class Product extends BaseModel {
   // todo : remixes
 
   // todo : orders
+
+  static saveValidator = vine.compile(
+    vine.object({
+      name: vine.string().minLength(3).maxLength(80),
+      description: vine.string().maxLength(255).optional(),
+      ingredients: vine.array(vine.number().positive()),
+    })
+  )
 }
