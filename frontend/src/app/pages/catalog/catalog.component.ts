@@ -31,7 +31,7 @@ export class CatalogComponent {
 
     options = inject(catalogOptionsProvider);
 
-    products$ = inject(ProductService).getProducts();
+    products$ = inject(ProductService).all();
 
     // combineLatest([
     //     inject(ProductService).getProducts(),

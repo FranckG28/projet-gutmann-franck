@@ -13,17 +13,16 @@ export class ProductService {
     private readonly http: HttpClient
   ) { }
 
-  getProducts() {
+  all() {
     return this.http.get<Product[]>(API_ENDPOINT + '/products');
   }
 
-  getProduct(productId: string): Observable<Product> {
-    return this.getProducts().pipe(
-      map(products => {
-        const product = products.find(product => product.id === +productId)
-        return product as unknown as Product
-      })
-    )
+  search(search: string) {
+    return this.http.get<Product[]>(API_ENDPOINT + `/products?search=${search}`);
+  }
+
+  get(id: number) {
+    return this.http.get<Product>(API_ENDPOINT + `/products/${id}`);
   }
 
   addProduct(product: {

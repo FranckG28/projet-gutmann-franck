@@ -7,7 +7,7 @@ import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product';
 import { ProductPreviewComponent } from '../product-preview/product-preview.component';
 import { TuiLetModule, tuiControlValue } from '@taiga-ui/cdk';
-import { combineLatest, map } from 'rxjs';
+import { switchMap } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({
@@ -29,7 +29,8 @@ import { Router } from '@angular/router';
 })
 export class SearchProductsComponent {
 
-    products$ = inject(ProductService).getProducts();
+    private readonly productService = inject(ProductService);
+    private router = inject(Router);
 
     search = new FormControl('');
 
@@ -37,14 +38,10 @@ export class SearchProductsComponent {
         search: this.search
     })
 
-    filteredProducts = combineLatest([
-        tuiControlValue<string>(this.search),
-        this.products$
-    ]).pipe(
-        map(([search, products]) => products.filter(product => product.name.toLowerCase().includes(search.toLowerCase())))
-    )
-
-    router = inject(Router);
+    filteredProducts =
+        tuiControlValue<string>(this.search).pipe(
+            switchMap((search) => this.productService.search(search)),
+        )
 
     onSelected(value: Product) {
         this.router.navigate(['/app', 'product', value.id]);

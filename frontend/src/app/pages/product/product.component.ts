@@ -27,7 +27,7 @@ export class ProductComponent implements OnChanges {
 
 
     @Input()
-    productId!: string;
+    productId!: number;
 
     private readonly productService = inject(ProductService);
     private readonly store = inject(Store);
@@ -35,7 +35,7 @@ export class ProductComponent implements OnChanges {
     product$?: Observable<Product>;
 
     ngOnChanges(): void {
-        this.product$ = this.productService.getProduct(this.productId);
+        this.product$ = this.productService.get(this.productId);
     }
 
     addToCart(product: Product): void {

@@ -3,9 +3,29 @@ import Product from '#models/product'
 import User from '#models/user'
 import Ingredient from '#models/ingredient'
 
+const DEFAULT_LIMIT = 50
+
 export default class ProductsController {
-  async index() {
-    return Product.query().preload('ingredients').preload('user')
+  async index({ request }: HttpContext) {
+    const { search } = request.qs()
+
+    if (!search) {
+      return Product.query().preload('ingredients').preload('user').limit(DEFAULT_LIMIT)
+    }
+
+    return Product.query()
+      .where('name', 'ilike', `%${search}%`)
+      .preload('ingredients')
+      .preload('user')
+      .limit(DEFAULT_LIMIT)
+  }
+
+  async get({ params }: HttpContext) {
+    return Product.query()
+      .where('id', params.id)
+      .preload('ingredients')
+      .preload('user')
+      .firstOrFail()
   }
 
   async save({ request }: HttpContext) {
@@ -26,19 +46,13 @@ export default class ProductsController {
       throw new Error('Invalid ingredient')
     }
 
-    console.log('ingredients', ingredients)
-
     const price = ingredients.reduce((acc, ingredient) => acc + +ingredient.price, 0)
-
-    console.log('price', price)
 
     const product = await user.related('products').create({
       name: data.name,
       description: data.description,
       price,
     })
-
-    console.log('product', product)
 
     await product.related('ingredients').attach(data.ingredients)
 

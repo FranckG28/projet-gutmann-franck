@@ -20,6 +20,7 @@ router.get('ingredients', [IngredientsController, 'index'])
 router.get('categories', [IngredientsController, 'categories'])
 
 router.get('products', [ProductsController, 'index'])
+router.get('products/:id', [ProductsController, 'get'])
 router.post('products', [ProductsController, 'save']).middleware(middleware.jwt())
 
 router
