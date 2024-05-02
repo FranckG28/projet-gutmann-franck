@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
+import { BaseModel, column, hasMany, manyToMany } from '@adonisjs/lucid/orm'
 import Product from './product.js'
 import * as relations from '@adonisjs/lucid/types/relations'
 import vine from '@vinejs/vine'
@@ -43,6 +43,11 @@ export default class User extends BaseModel {
 
   @hasMany(() => Product)
   declare products: relations.HasMany<typeof Product>
+
+  @manyToMany(() => Product, {
+    pivotTable: 'user_likes',
+  })
+  declare likes: relations.ManyToMany<typeof Product>
 
   static loginValidator = vine.compile(
     vine.object({

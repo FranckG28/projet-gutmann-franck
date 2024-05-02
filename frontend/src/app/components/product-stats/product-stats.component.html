@@ -1,8 +1,9 @@
 <div class="flex justify-between items-center gap-2 w-full">
 
-    <app-stat (click)="likeClick.emit()" label="Likes" [icon]="'tuiIconHeart'" [value]="0"></app-stat>
-    <app-stat (click)="reviewClick.emit()" label="Avis" [icon]="'tuiIconMessageCircle'"
-        value="{{0}} ({{0}}/5)"></app-stat>
+    <app-stat (click)="like()" label="Likes" [icon]="'tuiIconHeart'" [value]="product.meta.likedBy_count"
+        [ngClass]="(isLiked$ | async) === true ? 'text-red-500' : ''" stopPropagation></app-stat>
+    <app-stat (click)="reviewClick.emit()" label="Avis" [icon]="'tuiIconMessageCircle'" value="{{0}} ({{0}}/5)"
+        stopPropagation></app-stat>
     <app-stat (click)="remixClick.emit()" label="Remixes" [icon]="'tuiIconRefreshCcw'" [value]="0"></app-stat>
     <app-stat (click)="orderClick.emit()" label="Commandes" [icon]="'tuiIconShoppingCart'" [value]="0"></app-stat>
     <ng-content></ng-content>

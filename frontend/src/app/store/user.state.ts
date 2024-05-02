@@ -1,7 +1,8 @@
 import { Injectable, inject } from "@angular/core";
-import { Action, Selector, State, StateContext } from "@ngxs/store";
+import { Action, Selector, State, StateContext, Store } from "@ngxs/store";
 import { User } from "../models/user";
 import { Router } from "@angular/router";
+import { ClearLikes, FetchLikes } from "./like.state";
 
 export type UserStateModel = {
     user?: User;
@@ -35,12 +36,14 @@ export class Logout {
 export class UserState {
 
     private readonly router = inject(Router);
+    private readonly store = inject(Store);
 
     constructor() { }
 
     @Action(SetUser)
     setUser({ patchState }: StateContext<UserStateModel>, { payload }: SetUser) {
         patchState({ user: payload });
+        this.store.dispatch(new FetchLikes());
     }
 
     @Action(SetToken)
@@ -52,6 +55,7 @@ export class UserState {
     logout({ setState }: StateContext<UserStateModel>) {
         this.router.navigate(['/']);
         setState(userInitialState);
+        this.store.dispatch(new ClearLikes());
     }
 
     @Selector()

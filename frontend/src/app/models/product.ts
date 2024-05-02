@@ -11,7 +11,9 @@ export interface Product {
     userId: number;
     // rating: number;
     createdAt: string;
-    // likes: number;
+    meta: {
+        likedBy_count: number;
+    }
     // comments: number;
     // orders: number;
     // remixes: number;

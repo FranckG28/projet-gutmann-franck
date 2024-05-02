@@ -15,6 +15,7 @@ import { CartState } from "./store/cart.state";
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { UserState } from "./store/user.state";
 import { appendJwtInterceptor, jwtSetterInterceptor } from "./interceptors/jwt.interceptors";
+import { LikesState } from "./store/like.state";
 
 export const appName = "Instagras";
 
@@ -47,7 +48,7 @@ export const appConfig: ApplicationConfig = {
       shape: 'rounded',
       size: 'm'
     }),
-    importProvidersFrom(NgxsModule.forRoot([CartState, UserState], { developmentMode: true })),
+    importProvidersFrom(NgxsModule.forRoot([CartState, UserState, LikesState], { developmentMode: true })),
     importProvidersFrom(NgxsReduxDevtoolsPluginModule.forRoot()),
     importProvidersFrom(NgxsStoragePluginModule.forRoot())
   ]

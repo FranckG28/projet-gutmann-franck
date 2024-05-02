@@ -2,30 +2,33 @@ import type { HttpContext } from '@adonisjs/core/http'
 import Product from '#models/product'
 import User from '#models/user'
 import Ingredient from '#models/ingredient'
+import { ModelQueryBuilderContract } from '@adonisjs/lucid/types/model'
 
 const DEFAULT_LIMIT = 50
 
 export default class ProductsController {
+  private defaultQuery(query: ModelQueryBuilderContract<typeof Product, Product>) {
+    return query.preload('ingredients').preload('user').withCount('likedBy').limit(DEFAULT_LIMIT)
+  }
+
   async index({ request }: HttpContext) {
     const { search } = request.qs()
 
-    if (!search) {
-      return Product.query().preload('ingredients').preload('user').limit(DEFAULT_LIMIT)
+    let query = Product.query()
+
+    if (search) {
+      query = query.where('name', 'ilike', `%${search}%`)
     }
 
-    return Product.query()
-      .where('name', 'ilike', `%${search}%`)
-      .preload('ingredients')
-      .preload('user')
-      .limit(DEFAULT_LIMIT)
+    const results = await this.defaultQuery(query)
+
+    console.log(results)
+
+    return results
   }
 
   async get({ params }: HttpContext) {
-    return Product.query()
-      .where('id', params.id)
-      .preload('ingredients')
-      .preload('user')
-      .firstOrFail()
+    return await this.defaultQuery(Product.query().where('id', params.id)).firstOrFail()
   }
 
   async save({ request }: HttpContext) {

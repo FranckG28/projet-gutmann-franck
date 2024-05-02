@@ -6,6 +6,8 @@ import User from './user.js'
 import vine from '@vinejs/vine'
 
 export default class Product extends BaseModel {
+  serializeExtras = true
+
   @column({ isPrimary: true })
   declare id: number
 
@@ -32,6 +34,11 @@ export default class Product extends BaseModel {
 
   @column()
   declare userId: number
+
+  @manyToMany(() => User, {
+    pivotTable: 'user_likes',
+  })
+  declare likedBy: relations.ManyToMany<typeof User>
 
   // todo : ratings & comments
 

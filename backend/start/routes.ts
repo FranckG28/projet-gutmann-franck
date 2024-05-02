@@ -13,6 +13,7 @@ import { middleware } from './kernel.js'
 const AuthController = () => import('#controllers/auth_controller')
 const ProductsController = () => import('#controllers/products_controller')
 const IngredientsController = () => import('#controllers/ingredients_controller')
+const LikesController = () => import('#controllers/likes_controller')
 
 router.get('/', async () => 'Welcome')
 
@@ -22,6 +23,14 @@ router.get('categories', [IngredientsController, 'categories'])
 router.get('products', [ProductsController, 'index'])
 router.get('products/:id', [ProductsController, 'get'])
 router.post('products', [ProductsController, 'save']).middleware(middleware.jwt())
+
+router
+  .group(() => {
+    router.get('likes', [LikesController, 'index'])
+    router.post('likes', [LikesController, 'save'])
+    router.delete('likes', [LikesController, 'delete'])
+  })
+  .middleware(middleware.jwt())
 
 router
   .group(() => {
