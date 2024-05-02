@@ -2,7 +2,10 @@
     Rechercher
     <div ngProjectAs="content" class="py-2 flex flex-col gap-4">
 
-        <p>Coucou</p>
+        <app-search-bar (searchChange)="search$.next($event)" [search]="(search$ | async) ?? ''"
+            class="w-full"></app-search-bar>
 
     </div>
 </app-title>
+
+<app-product-list [products]="products$ | async"></app-product-list>

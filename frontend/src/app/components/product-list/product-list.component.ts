@@ -25,7 +25,7 @@ import { StopPropagationDirective } from "../../directives/stop-propagation.dire
 })
 export class ProductListComponent {
 
-    @Input() products: Product[] = [];
+    @Input() products?: Product[] | null = [];
 
     private readonly store = inject(Store);
 

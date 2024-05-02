@@ -1,8 +1,10 @@
 import { CommonModule } from "@angular/common";
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { TitleComponent } from "../../components/title/title.component";
-import { TuiInputModule } from "@taiga-ui/kit";
-import { TuiTextfieldControllerModule } from "@taiga-ui/core";
+import { ProductService } from "../../services/product.service";
+import { BehaviorSubject, debounceTime, distinctUntilChanged, switchMap } from "rxjs";
+import { ProductListComponent } from "../../components/product-list/product-list.component";
+import { SearchBarComponent } from "../../components/search-bar/search-bar.component";
 
 @Component({
     selector: 'app-search',
@@ -10,14 +12,22 @@ import { TuiTextfieldControllerModule } from "@taiga-ui/core";
     imports: [
         CommonModule,
         TitleComponent,
-        TuiInputModule,
-        TuiTextfieldControllerModule,
+        ProductListComponent,
+        SearchBarComponent
     ],
     templateUrl: './search.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchComponent {
 
+    private readonly productService = inject(ProductService);
 
+    search$ = new BehaviorSubject<string>('');
+
+    products$ = this.search$.pipe(
+        debounceTime(300),
+        distinctUntilChanged(),
+        switchMap(search => this.productService.search(search))
+    );
 
 }

@@ -22,8 +22,6 @@ export default class ProductsController {
 
     const results = await this.defaultQuery(query)
 
-    console.log(results)
-
     return results
   }
 

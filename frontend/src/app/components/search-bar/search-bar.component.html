@@ -1,4 +1,5 @@
 <tui-input class="w-full" tuiTextfieldIconLeft="tuiIconSearch" tuiTextfieldSize="m" [tuiTextfieldCleaner]="true"
-    [ngModel]="search" (ngModelChange)="emit($event)" [tuiTextfieldLabelOutside]="true">
+    [readOnly]="readonly" [ngModel]="search" (ngModelChange)="emit($event)" [tuiTextfieldLabelOutside]="true"
+    tuiAutoFocus>
     {{placeholder}}
 </tui-input>
