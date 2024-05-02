@@ -111,7 +111,7 @@ export class SignupFormComponent {
         )
         .subscribe((user) => {
           this.store.dispatch(new SetUser(user));
-          this.router.navigate(['/app/account']);
+          this.router.navigate(['/account']);
         });
 
 

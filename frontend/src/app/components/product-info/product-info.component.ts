@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductStatsComponent } from '../product-stats/product-stats.component';
-import { ProductAuthorComponent } from '../product-author/product-author.component';
 import { TimeAgoPipe } from '../../pipes/time-ago.pipe';
+import { UserNamePipe } from '../../pipes/user-name.pipe';
 
 @Component({
     selector: 'app-product-info',
@@ -11,7 +11,7 @@ import { TimeAgoPipe } from '../../pipes/time-ago.pipe';
     imports: [
         CommonModule,
         ProductStatsComponent,
-        ProductAuthorComponent,
+        UserNamePipe,
         TimeAgoPipe
     ],
     templateUrl: './product-info.component.html',

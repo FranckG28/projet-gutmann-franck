@@ -1,4 +1,4 @@
-<app-title>
+<app-title class="px-8 block">
     Se connecter
     <ng-container ngProjectAs="content">
         <p>Nous sommes heureux de vous revoir ! Connectez vous pour continuer.</p>
@@ -7,7 +7,7 @@
     </ng-container>
 </app-title>
 
-<form [formGroup]="formGroup" class="flex flex-col gap-8" (ngSubmit)="submit()">
+<form [formGroup]="formGroup" class="flex flex-col gap-8 px-8" (ngSubmit)="submit()">
 
     <tui-input formControlName="email" tuiTextfieldIconLeft="tuiIconMail">
         Email

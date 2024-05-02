@@ -12,7 +12,6 @@ import { AccountCardComponent } from '../account-card/account-card.component';
         CommonModule,
         RouterModule,
         TuiButtonModule,
-        AccountCardComponent
     ],
     providers: [
         tuiButtonOptionsProvider({

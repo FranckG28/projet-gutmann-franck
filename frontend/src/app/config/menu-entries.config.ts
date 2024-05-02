@@ -2,44 +2,35 @@ import { MenuEntry } from "../models/menu-entry";
 
 export const menuEntries: MenuEntry[] = [
     {
-        title: 'Nos ingredients',
-        path: '/ingredients'
+        title: 'Recettes',
+        path: '/'
     },
-    {
-        title: 'Vos recettes',
-        path: '/app'
-    },
-    {
-        title: 'Créer ma recette',
-        path: '/designer',
-        style: 'primary'
-    }
 ];
 
 export const appEntries: MenuEntry[] = [
     {
         title: 'Tendances',
-        path: '/app/trending',
+        path: '/trending',
         icon: 'tuiIconChartLineLarge'
     },
     {
         title: 'Nouveautés',
-        path: '/app/latest',
+        path: '/latest',
         icon: 'tuiIconSunLarge'
     },
     {
         title: 'Rechercher',
-        path: '/app/search',
+        path: '/search',
         icon: 'tuiIconSearchLarge'
     },
     {
         title: 'Favoris',
-        path: '/app/likes',
+        path: '/likes',
         icon: 'tuiIconHeartLarge'
     },
     {
         title: 'Historique',
-        path: '/app/orders',
+        path: '/orders',
         icon: 'tuiIconBookmarkLarge'
     },
     {

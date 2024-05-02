@@ -4,7 +4,7 @@
         <button appearance="flat" size="l" tuiButton type="button" [icon]="user ? userAvatar : 'tuiIconUserLarge'"
             [pseudoActive]="open || null">
             @if (user) {
-            {{ user.email }}
+            {{ user | username }}
             } @else {
             Se connecter
             }
@@ -15,7 +15,7 @@
         <tui-data-list>
             @if (user) {
             <tui-opt-group>
-                <button tuiOption routerLink="/app/account">
+                <button tuiOption routerLink="/account">
                     Mon compte
                 </button>
                 <button tuiOption (click)="logout()">
@@ -36,7 +36,7 @@
     </ng-template>
 
     <ng-template #userAvatar>
-        <tui-avatar [text]="user?.email ?? ''" size="s"></tui-avatar>
+        <tui-avatar [text]="user?.firstName ?? ''" size="s"></tui-avatar>
     </ng-template>
 
 </ng-container>

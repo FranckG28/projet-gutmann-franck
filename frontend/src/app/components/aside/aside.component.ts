@@ -1,10 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { TuiSvgModule, TuiTooltipModule } from '@taiga-ui/core';
-import { IngredientFiltersComponent } from '../ingredient-filters/ingredient-filters.component';
 import { CartPreviewComponent } from '../cart-preview/cart-preview.component';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
-import { RouterModule } from '@angular/router';
+import { AccountCardComponent } from '../account-card/account-card.component';
 
 @Component({
     selector: 'app-aside',
@@ -12,11 +10,8 @@ import { RouterModule } from '@angular/router';
     imports: [
         CommonModule,
         SearchBarComponent,
-        RouterModule,
-        TuiTooltipModule,
-        IngredientFiltersComponent,
         CartPreviewComponent,
-        TuiSvgModule
+        AccountCardComponent
     ],
     templateUrl: './aside.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

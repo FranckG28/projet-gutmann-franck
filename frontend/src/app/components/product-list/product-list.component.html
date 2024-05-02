@@ -3,7 +3,7 @@
 } @else {
 <div class="flex flex-col divide-y divide-stone-200">
     @for (product of products; track product.id) {
-    <app-product-card [routerLink]="['/app','product',product.id]" [product]="product"
+    <app-product-card [routerLink]="['/product',product.id]" [product]="product"
         class="animate-in fade-in slide-in-from-top-2 transition-all cursor-pointer hover:bg-stone-200/20">
 
         <button tuiButton size="s" appearance="secondary" ngProjectAs="actions" stopPropagation

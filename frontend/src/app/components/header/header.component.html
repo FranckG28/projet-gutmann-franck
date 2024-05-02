@@ -2,30 +2,7 @@
     <img routerLink="/" src="assets/instagras.svg" alt="Logo" width="120" height="60"
         class="cursor-pointer transition hover:brightness-105" tuiHint="Retour à l'accueil" />
 
-    <div class="flex flex-wrap items-center gap-6">
-
-        @for (entry of menuEntries; track entry.path) {
-
-        @if (entry.style === 'primary') {
-
-        <button tuiButton [routerLink]="entry.path" size="m">
-            {{entry.title}}
-        </button>
-        } @else {
-
-        @if (!entry.title) {
-        <button tuiIconButton size="s" appearance="flat" [routerLink]="entry.path" [icon]="entry.icon"
-            [routerLinkActive]="'font-bold'"></button>
-        } @else {
-        <a tuiLink class="!text-base" [routerLink]="entry.path" routerLinkActive="font-bold">
-            {{entry.title}}
-        </a>
-        }
-
-        }
-
-        }
-
+    <div class="flex flex-wrap items-center gap-2">
         <app-account-card></app-account-card>
         <app-cart-icon></app-cart-icon>
     </div>

@@ -8,6 +8,7 @@ import { Observable } from "rxjs";
 import { User } from "../../models/user";
 import { TuiLetModule } from "@taiga-ui/cdk";
 import { TuiAvatarModule } from "@taiga-ui/kit";
+import { UserNamePipe } from "../../pipes/user-name.pipe";
 
 @Component({
     selector: 'app-account-card',
@@ -20,7 +21,8 @@ import { TuiAvatarModule } from "@taiga-ui/kit";
         TuiDataListModule,
         RouterModule,
         TuiLetModule,
-        TuiAvatarModule
+        TuiAvatarModule,
+        UserNamePipe
     ],
     templateUrl: './account-card.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
