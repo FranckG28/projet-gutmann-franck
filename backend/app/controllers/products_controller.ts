@@ -3,21 +3,55 @@ import Product from '#models/product'
 import User from '#models/user'
 import Ingredient from '#models/ingredient'
 import { ModelQueryBuilderContract } from '@adonisjs/lucid/types/model'
+import { JwtService } from '#services/jwt_service'
+import { inject } from '@adonisjs/core'
 
 const DEFAULT_LIMIT = 50
 
+@inject()
 export default class ProductsController {
+  constructor(private readonly jwt: JwtService) {
+    //
+  }
+
   private defaultQuery(query: ModelQueryBuilderContract<typeof Product, Product>) {
     return query.preload('ingredients').preload('user').withCount('likedBy').limit(DEFAULT_LIMIT)
   }
 
-  async index({ request }: HttpContext) {
-    const { search } = request.qs()
+  async index(ctx: HttpContext) {
+    const { request } = ctx
 
-    let query = Product.query()
+    const { search, view } = request.qs()
+    // views = 'trending' | 'latest' | 'liked'
+
+    let query: ModelQueryBuilderContract<typeof Product, Product>
+
+    switch (view) {
+      case 'latest':
+        query = Product.query().orderBy('created_at', 'desc')
+        break
+      case 'liked':
+        const token = request.header('authorization')
+        ctx.request.jwt = this.jwt.verifyJwt(token ?? '')
+        const user = await this.jwt.getUser(ctx)
+
+        return user
+          .related('likes')
+          .query()
+          .preload('user')
+          .preload('ingredients')
+          .withCount('likedBy')
+          .limit(DEFAULT_LIMIT)
+
+      default:
+        // trending
+        query = Product.query()
+        // todo : implement trending, sort by likes
+        break
+    }
 
     if (search) {
-      query = query.where('name', 'ilike', `%${search}%`)
+      query = query.whereILike('name', `%${search}%`)
     }
 
     const results = await this.defaultQuery(query)

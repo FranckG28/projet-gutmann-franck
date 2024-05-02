@@ -15,7 +15,7 @@ import { AppbarComponent } from './components/appbar/appbar.component';
 import { appTitleProvider } from './providers/app-title.provider';
 import { FiltersService } from './services/filters.service';
 import { catalogOptionsProvider } from './providers/catalog-options.provider';
-import { newCatalogOptions, trendingCatalogOptions } from './config/catalog-options.config';
+import { likedCatalogOptions, newCatalogOptions, trendingCatalogOptions } from './config/catalog-options.config';
 import { CartComponent } from './pages/cart/cart.component';
 import { isConnectedGuard, isNotConnectedGuard } from './guards/isConnected.guard';
 import { SearchComponent } from './pages/search/search.component';
@@ -72,6 +72,16 @@ export const routes: Routes = [
                     {
                         provide: catalogOptionsProvider,
                         useValue: newCatalogOptions,
+                    }
+                ]
+            },
+            {
+                path: 'liked',
+                component: CatalogComponent,
+                providers: [
+                    {
+                        provide: catalogOptionsProvider,
+                        useValue: likedCatalogOptions,
                     }
                 ]
             },

@@ -3,6 +3,7 @@ import { Observable, map } from 'rxjs';
 import { Product } from '../models/product';
 import { API_ENDPOINT } from '../config/environment';
 import { HttpClient } from '@angular/common/http';
+import { ProductView } from '../models/catalog-options';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,8 @@ export class ProductService {
     private readonly http: HttpClient
   ) { }
 
-  all() {
-    return this.http.get<Product[]>(API_ENDPOINT + '/products');
+  view(view: ProductView) {
+    return this.http.get<Product[]>(API_ENDPOINT + `/products?view=${view}`);
   }
 
   search(search: string) {

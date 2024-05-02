@@ -25,7 +25,7 @@ export const appEntries: MenuEntry[] = [
     },
     {
         title: 'Favoris',
-        path: '/likes',
+        path: '/liked',
         icon: 'tuiIconHeartLarge'
     },
     {

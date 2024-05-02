@@ -1,5 +1,7 @@
+import User from '#models/user'
 import env from '#start/env'
 import { inject } from '@adonisjs/core'
+import { HttpContext } from '@adonisjs/core/http'
 import jwt, { Jwt } from 'jsonwebtoken'
 
 const JWT_ACCESS_EXPIRES_IN = '365d'
@@ -21,5 +23,15 @@ export class JwtService {
     })
 
     return payload
+  }
+
+  async getUser({ request }: HttpContext): Promise<User> {
+    console.log('request.jwt', request.jwt)
+
+    if (!(typeof request.jwt?.payload === 'object' && request.jwt?.payload.id)) {
+      throw new Error('User not authenticated')
+    }
+
+    return await User.findOrFail(request.jwt?.payload.id)
   }
 }

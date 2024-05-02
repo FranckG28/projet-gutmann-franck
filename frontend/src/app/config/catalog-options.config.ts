@@ -3,16 +3,17 @@ import { CatalogOptions } from "../models/catalog-options";
 export const newCatalogOptions: CatalogOptions = {
     title: 'Dernières recettes',
     description: 'Découvrez les dernières recettes publiés par la communauté.',
-    sorter: (a, b) => {
-        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-    }
-};
+    view: 'latest',
+}
 
 export const trendingCatalogOptions: CatalogOptions = {
     title: 'Tendances',
     description: 'Les recettes les plus likées du moment 🔥',
-    sorter: (a, b) => {
-        return 0
-        // return b.likes - a.likes;
-    }
+    view: 'trending',
+};
+
+export const likedCatalogOptions: CatalogOptions = {
+    title: 'Recettes aimées',
+    description: 'Retrouvez toutes les recettes que vous avez aimées.',
+    view: 'liked',
 };

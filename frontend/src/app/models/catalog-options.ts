@@ -1,7 +1,7 @@
-import { Product } from "./product";
-
-export interface CatalogOptions {
+export type CatalogOptions = {
     title: string;
     description: string;
-    sorter: (a: Product, b: Product) => number;
+    view: ProductView;
 }
+
+export type ProductView = 'latest' | 'liked' | 'trending';

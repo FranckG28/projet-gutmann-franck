@@ -1,18 +1,16 @@
 import Product from '#models/product'
-import User from '#models/user'
+import { JwtService } from '#services/jwt_service'
+import { inject } from '@adonisjs/core'
 import type { HttpContext } from '@adonisjs/core/http'
 
+@inject()
 export default class LikesController {
-  private async getUser({ request }: HttpContext): Promise<User> {
-    if (!(typeof request.jwt?.payload === 'object' && request.jwt?.payload.id)) {
-      throw new Error('User not authenticated')
-    }
-
-    return await User.findOrFail(request.jwt?.payload.id)
+  constructor(private readonly jwt: JwtService) {
+    //
   }
 
   async index(ctx: HttpContext) {
-    const user = await this.getUser(ctx)
+    const user = await this.jwt.getUser(ctx)
 
     return user.related('likes').query()
   }
@@ -30,7 +28,7 @@ export default class LikesController {
       throw new Error('Product not found')
     }
 
-    const user = await this.getUser(ctx)
+    const user = await this.jwt.getUser(ctx)
 
     await user.related('likes').attach([productId])
 
@@ -44,7 +42,7 @@ export default class LikesController {
       throw new Error('Product ID is required')
     }
 
-    const user = await this.getUser(ctx)
+    const user = await this.jwt.getUser(ctx)
 
     await user.related('likes').detach([productId])
 
