@@ -20,7 +20,8 @@ import { MoneyComponent } from '../../components/money/money.component';
         CartProductPreviewComponent,
         RouterModule,
         TuiSvgModule,
-        MoneyComponent
+        MoneyComponent,
+        TitleComponent
     ],
     templateUrl: './cart.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,9 +1,9 @@
-<div class="flex flex-col gap-6 pt-6">
-    <h1>
-        À table !
-    </h1>
+<div class="flex flex-col gap-6 mx-8">
 
-    <p class="mb-6">Vous avez {{ count$ | async | i18nPlural: pluralMapping}} dans votre panier.</p>
+    <app-title>
+        À table !
+        <p ngProjectAs="content">Vous avez {{ count$ | async | i18nPlural: pluralMapping}} dans votre panier.</p>
+    </app-title>
 
     <div class="flex flex-col divide-y divide-stone-200">
         @for (item of cart$ | async; track item.product.id) {
