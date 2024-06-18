@@ -2,6 +2,7 @@ import User from '#models/user'
 import { JwtService } from '#services/jwt_service'
 import { inject } from '@adonisjs/core'
 import type { HttpContext } from '@adonisjs/core/http'
+import hash from '@adonisjs/core/services/hash'
 
 @inject()
 export default class AuthController {
@@ -19,7 +20,7 @@ export default class AuthController {
       return ctx.response.unauthorized('Invalid credentials')
     }
 
-    if (user.password !== password) {
+    if (!(await hash.verify(user.password, password))) {
       return ctx.response.unauthorized('Invalid credentials')
     }
 
@@ -39,9 +40,11 @@ export default class AuthController {
       return ctx.response.badRequest('User already exists')
     }
 
+    const password = await hash.make(data.password)
+
     const user = await User.create({
       email: data.email,
-      password: data.password,
+      password: password,
       firstName: data.firstName,
       lastName: data.lastName,
       phone: data.phone,
