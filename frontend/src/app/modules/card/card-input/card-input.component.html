@@ -1,4 +1,4 @@
-<div class="flex items-center justify-center gap-6">
+<div class="flex items-center justify-between gap-6 w-full">
     <h5>Vos cartes</h5>
     <button tuiButton appearance="secondary" size="s" (click)="addCard()">Ajouter une carte</button>
 </div>
@@ -13,7 +13,7 @@
         <button tuiIconButton appearance="outline" icon="tuiIconTrash" (click)="removeCard(card)"></button>
     </div>
     } @empty {
-    <p>Aucune carte enregistrée</p>
+    <p class="text-stone-500">Aucune carte enregistrée</p>
     }
 
 

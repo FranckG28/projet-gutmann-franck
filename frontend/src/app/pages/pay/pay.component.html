@@ -1,0 +1,14 @@
+<div class="flex flex-col gap-6 mx-8">
+
+    <app-title>
+        Valider la commande
+        <p ngProjectAs="content">Veuillez choisir un mode de paiement</p>
+    </app-title>
+
+    <app-card-input></app-card-input>
+
+    <div class="flex justify-end gap-2">
+        <button tuiButton size="l" routerLink="/cart" appearance="outline">Retour au panier</button>
+        <button tuiButton size="l" class="place-self-end" (click)="pay()">Passer commande</button>
+    </div>
+</div>

@@ -19,6 +19,7 @@ import { likedCatalogOptions, newCatalogOptions, trendingCatalogOptions } from '
 import { CartComponent } from './pages/cart/cart.component';
 import { isConnectedGuard, isNotConnectedGuard } from './guards/isConnected.guard';
 import { SearchComponent } from './pages/search/search.component';
+import { PayComponent } from './pages/pay/pay.component';
 
 export const routes: Routes = [
     {
@@ -44,6 +45,11 @@ export const routes: Routes = [
             {
                 path: 'cart',
                 component: CartComponent,
+            },
+            {
+                path: 'pay',
+                component: PayComponent,
+                canActivate: [isConnectedGuard]
             },
             {
                 path: '',
